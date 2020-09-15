@@ -27,7 +27,7 @@ export default {
 
   #header {
     width:100%;
-    height:40%;
+    height:60%;
     background: url("../src/assets/background.jpg") no-repeat left;
     background-size: cover;
   }
@@ -46,7 +46,7 @@ export default {
 
   #header-title {
     width:100%;
-    height:14%;
+    height:9%;
   }
 
   #link {
@@ -57,7 +57,7 @@ export default {
 
   #header-content {
     width:100%;
-    height:85%;
+    height:90%;
   }
 
 </style>
