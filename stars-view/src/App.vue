@@ -23,25 +23,27 @@ export default {
   #body{
     width:100%;
     height:1200px;
+    background: url("../src/assets/background.jpg") no-repeat left;
+    background-size: cover;
   }
 
   #header {
     width:100%;
     height:60%;
-    background: url("../src/assets/background.jpg") no-repeat left;
-    background-size: cover;
   }
 
   #weather-content1 {
     width:100%;
     height:20%;
-    background-color: #42b983;
+    background-color: white;
+    opacity: 0.3;
   }
 
   #weather-content2 {
     width:100%;
-    height:40%;
-    background-color: #2c3e50;
+    height:20%;
+    background-color: white;
+    opacity: 0.3;
   }
 
   #header-title {
@@ -49,7 +51,7 @@ export default {
     height:9%;
   }
 
-  #link {
+  #link-one {
     width:100%;
     height:1%;
     border-top:solid #ACC0D8 1px;
@@ -58,6 +60,12 @@ export default {
   #header-content {
     width:100%;
     height:90%;
+  }
+
+  #link-two {
+    width:100%;
+    height:1%;
+    border-top:solid #ACC0D8 1px;
   }
 
 </style>
