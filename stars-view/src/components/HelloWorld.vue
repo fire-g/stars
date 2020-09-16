@@ -2,18 +2,20 @@
   <div id="body">
     <div id="header">
       <div id="header-title">
-        <p class="title">星乐天气</p>
-        <img class="img-place" src="../assets/place.png">
+        <img class="img-logo" src="../assets/logo.png">
+        <!--<img class="img-place" src="../assets/place.png">-->
         <input class="city-place" type="text" placeholder="搜索市、区、县等">
       </div>
       <div id="link-one"></div>
       <div id="header-content">
-        <img class="img-nowPlace" src="../assets/nowplace.png">  <!--当前位置-->
-        <img class="img-weather" src="../assets/sun to cloud.png">  <!--天气图标-->
-        <img class="img-windDirection" src="../assets/wind direction.png">  <!--风向-->
-        <img class="img-humidity" src="../assets/humidity.png">  <!--湿度-->
-        <img class="img-airQuality" src="../assets/air quality.png">  <!--空气质量-->
-        <img class="img-speechSound" src="../assets/speech sound.png">  <!--语音播报-->
+        <div id="content-align">
+          <img class="img-nowPlace small-componentslogo"  src="../assets/nowplace.png">  <!--当前位置-->
+          <img class="img-weather" src="../assets/sun to cloud.png">  <!--天气图标-->
+          <img class="img-windDirection small-componentslogo" src="../assets/wind direction.png">  <!--风向-->
+          <img class="img-humidity small-componentslogo" src="../assets/humidity.png">  <!--湿度-->
+          <img class="img-airQuality small-componentslogo" src="../assets/air quality.png">  <!--空气质量-->
+          <img class="img-speechSound" src="../assets/speech sound.png">  <!--语音播报-->
+        </div>
 
         <!--变色当前位置nowplace cover.png-->
         <!--变色语音播报speech sound cover.png-->
@@ -61,6 +63,13 @@
     font-style: italic;
   }
 
+  .img-logo{
+    float: left;
+    width: 200px;
+    height: 80px;
+    margin-left: 80px;
+  }
+
   .img-place {
     float: left;
     width: 36px;
@@ -71,7 +80,7 @@
   }
 
   .city-place {
-    float: left;
+    float: right;
     width: 250px;
     height: 30px;
     margin-top: 0.5%;
@@ -93,6 +102,11 @@
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+  }
+
+  .small-componentslogo {
+    width: 32px;
+    height: 32px;
   }
 
 </style>

@@ -48,7 +48,7 @@ export default {
 
   #header-title {
     width:100%;
-    height:9%;
+    height:11%;
   }
 
   #link-one {
@@ -59,13 +59,22 @@ export default {
 
   #header-content {
     width:100%;
-    height:90%;
+    height:88%;
   }
 
   #link-two {
     width:100%;
     height:1%;
     border-top:solid #ACC0D8 1px;
+  }
+
+  #content-align{
+
+    width: 30%;
+    height: 70%;
+    margin-left: 35%;
+    margin-top: 10%;
+    border: solid 1px #2c3e50;
   }
 
 </style>
