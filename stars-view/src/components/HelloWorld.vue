@@ -8,15 +8,42 @@
       </div>
       <div id="link-one"></div>
       <div id="header-content">
-        <div id="content-align">
-          <img class="img-nowPlace small-componentslogo"  src="../assets/nowplace.png">  <!--当前位置-->
-          <img class="img-weather" src="../assets/sun to cloud.png">  <!--天气图标-->
-          <img class="img-windDirection small-componentslogo" src="../assets/wind direction.png">  <!--风向-->
-          <img class="img-humidity small-componentslogo" src="../assets/humidity.png">  <!--湿度-->
-          <img class="img-airQuality small-componentslogo" src="../assets/air quality.png">  <!--空气质量-->
-          <img class="img-speechSound" src="../assets/speech sound.png">  <!--语音播报-->
+        <div id="content-current">
+          <!--当时天气详情-->
+          <div class="content-temperature">
+            <p class="text-temperature">28℃</p>
+            <img class="img-weather" src="../assets/sun to cloud.png">  <!--天气图标-->
+            <p class="text-weather">阴</p>
+          </div>
+          <!--最高 / 最低 温度-->
+          <div class="content-maximumTemperature">
+            <p class = "text-uplow">16℃ / 29℃</p>
+          </div>
+          <div class = "content-other">
+            <!--风向-->
+            <p class="item">
+              <img class="icon windDirection" src="../assets/humidity.png">
+              <span class="txt">东北风&nbsp;1级</span>
+            </p>
+            <!--湿度-->
+            <p class="item">
+              <i class="icon humidity"></i>
+              <span class="txt">湿度&nbsp;80%</span>
+            </p>
+            <!--空气质量-->
+            <p class="item">
+              <i class="icon airQuality"></i>
+              <span class="txt">空气质量&nbsp;优</span>
+            </p>
+          </div>
+          <!--建议-->
+          <div class="content-tips">
+          </div>
+          <!--当前位置-->
+          <div class="content-locate">
+            <img class="img-nowPlace small-componentslogo"  src="../assets/nowplace.png">
+          </div>
         </div>
-
         <!--变色当前位置nowplace cover.png-->
         <!--变色语音播报speech sound cover.png-->
       </div>
@@ -34,6 +61,8 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+@import "../css/index.css";
+
   h1, h2 {
     font-weight: normal;
   }
@@ -67,7 +96,7 @@
     float: left;
     width: 200px;
     height: 80px;
-    margin-left: 80px;
+    margin-left: 10%;
   }
 
   .img-place {
@@ -85,7 +114,7 @@
     height: 30px;
     margin-top: 0.5%;
     margin-bottom: 0px;
-    margin-left: 0%;
+    margin-right: 10%;
     padding-left:10px;
     border-radius: 20px;
     background-color: #ffffff;

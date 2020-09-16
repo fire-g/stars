@@ -17,7 +17,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin-top: 0px;
+  margin-top: 0;
 }
 
   #body{
@@ -68,13 +68,20 @@ export default {
     border-top:solid #ACC0D8 1px;
   }
 
-  #content-align{
-
+  #content-current{
     width: 30%;
-    height: 70%;
+    height: 80%;
     margin-left: 35%;
-    margin-top: 10%;
-    border: solid 1px #2c3e50;
+    margin-top: 5%;
+    border: solid 1px #c6e6de;
+  }
+
+  *,body,html{
+    font-family: "PingFang SC","Microsoft YaHei",Simsun,Helvetica,Arial,sans-serif;
+  }
+
+  div{
+    display: block;
   }
 
 </style>
