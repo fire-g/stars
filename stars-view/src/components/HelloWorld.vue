@@ -49,7 +49,17 @@
       </div>
     </div>
 
-    <div id="weather-content1"></div>
+    <div id="weather-content1">
+      <div id="day-weather">
+        <ul class="day-weather-ul">
+          <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+          <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+          <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+          <li class="day-weather-li"><p class="day-weather-windDirection">东北风&nbsp;1级</p></li>
+          <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+        </ul>
+      </div>
+    </div>
     <div id="link-two"></div>
     <div id="weather-content2"></div>
   </div>
@@ -99,20 +109,11 @@
     margin-left: 10%;
   }
 
-  .img-place {
-    float: left;
-    width: 36px;
-    height: 36px;
-    margin-top: 0.5%;
-    margin-bottom: 0px;
-    margin-left: 35%;
-  }
-
   .city-place {
     float: right;
     width: 250px;
-    height: 30px;
-    margin-top: 0.5%;
+    height: 35px;
+    margin-top: 1%;
     margin-bottom: 0px;
     margin-right: 10%;
     padding-left:10px;

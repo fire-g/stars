@@ -35,14 +35,14 @@ export default {
   #weather-content1 {
     width:100%;
     height:20%;
-    background-color: white;
+    background-color: gray;
     opacity: 0.3;
   }
 
   #weather-content2 {
     width:100%;
     height:20%;
-    background-color: white;
+    background-color: gray;
     opacity: 0.3;
   }
 
@@ -82,6 +82,13 @@ export default {
 
   div{
     display: block;
+  }
+
+  #day-weather{
+    width: 90%;
+    height: 90%;
+    margin-left: 5%;
+    padding-top: 10px;
   }
 
 </style>
