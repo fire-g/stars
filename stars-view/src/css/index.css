@@ -118,3 +118,21 @@
   padding-top: 5px;
   text-align: center;
 }
+
+.day-trend{
+  width: 30%;
+  height: 20%;
+  font-size: 20px;
+  margin-top: 5%;
+  margin-left: 35%;
+  vertical-align: center;
+}
+
+.week-trend{
+  width: 30%;
+  height: 20%;
+  font-size: 20px;
+  margin-top: 5%;
+  margin-left: 35%;
+  vertical-align: center;
+}

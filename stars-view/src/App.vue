@@ -73,7 +73,7 @@ export default {
     height: 80%;
     margin-left: 35%;
     margin-top: 5%;
-    border: solid 1px #c6e6de;
+    border: solid 0px #c6e6de;
   }
 
   *,body,html{
@@ -89,6 +89,20 @@ export default {
     height: 90%;
     margin-left: 5%;
     padding-top: 10px;
+  }
+
+  #weather-trend{
+    width: 40%;
+    height: 90%;
+    float: left;
+    margin-left: 5%;
+  }
+
+  #system-propose{
+    width: 40%;
+    height: 90%;
+    float: right;
+    margin-right: 5%;
   }
 
 </style>

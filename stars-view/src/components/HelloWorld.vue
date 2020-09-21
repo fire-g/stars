@@ -60,8 +60,18 @@
         </ul>
       </div>
     </div>
+
     <div id="link-two"></div>
-    <div id="weather-content2"></div>
+
+    <div id="weather-content2">
+      <div id="weather-trend">
+        <input class="day-trend" type="button" value="本日温度趋势图" onclick="window.location.href='/day-trend'">
+        <input class="week-trend" type="button" value="本周天气趋势图" onclick="window.location.href='/week-trend'">
+
+        <!-- <router-link to="/">小广告专用</router-link> -->
+      </div>
+      <div id="system-propose"></div>
+    </div>
   </div>
 </template>
 
