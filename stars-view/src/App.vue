@@ -1,13 +1,16 @@
 <template>
   <div id="app">
+    <Nav/>
 <!--    <img src="./assets/logo.png">-->
     <router-view/>
   </div>
 </template>
 
 <script>
+import Nav from './components/Nav'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {Nav}
 }
 </script>
 
@@ -103,6 +106,13 @@ export default {
     height: 90%;
     float: right;
     margin-right: 5%;
+  }
+
+  #trend-body{
+    width:100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
   }
 
 </style>
