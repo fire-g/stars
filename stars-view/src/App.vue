@@ -44,7 +44,7 @@ export default {
 
   #weather-content2 {
     width:100%;
-    height:20%;
+    height:39%;
     background-color: gray;
     opacity: 0.3;
   }
@@ -102,24 +102,38 @@ export default {
   }
 
   #day-weather{
-    width: 90%;
+    width: 80%;
     height: 90%;
-    margin-left: 5%;
+    margin-left: 10%;
     padding-top: 10px;
+    border: solid 1px #c6e6de;
   }
 
-  #weather-trend{
-    width: 40%;
+  #day-weather-trend{
+    width: 30%;
     height: 90%;
     float: left;
-    margin-left: 5%;
+    margin-left: 10%;
+    margin-top: 1%;
+    border: solid 1px #c6e6de;
+  }
+
+  #week-weather-trend{
+    width: 30%;
+    height: 90%;
+    float: left;
+    margin-left: 1%;
+    margin-top: 1%;
+    border: solid 1px #c6e6de;
   }
 
   #system-propose{
-    width: 40%;
+    width: 18%;
     height: 90%;
-    float: right;
-    margin-right: 5%;
+    float: left;
+    margin-left: 1%;
+    margin-top: 1%;
+    border: solid 1px #c6e6de;
   }
 
   #trend-body{

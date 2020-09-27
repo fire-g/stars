@@ -22,17 +22,17 @@
             <div class = "content-other">
               <!--风向-->
               <p class="item">
-                <img class="icon windDirection" src="../assets/humidity.png">
+                <img class="icon windDirection" src="../assets/wind direction.png">
                 <span class="txt">东北风&nbsp;1级</span>
               </p>
               <!--湿度-->
               <p class="item">
-                <i class="icon humidity"></i>
+                <img class="icon windDirection" src="../assets/humidity.png">
                 <span class="txt">湿度&nbsp;80%</span>
               </p>
               <!--空气质量-->
               <p class="item">
-                <i class="icon airQuality"></i>
+                <img class="icon windDirection" src="../assets/air quality.png">
                 <span class="txt">空气质量&nbsp;优</span>
               </p>
             </div>
@@ -42,6 +42,7 @@
             <!--当前位置-->
             <div class="content-locate">
               <img class="img-nowPlace small-componentslogo"  src="../assets/nowplace.png">
+              <span class="txt-nowplace">江西省&nbsp;南昌市</span>
             </div>
           </div>
           <div id = "content-current-right">
@@ -59,7 +60,7 @@
           <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
           <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
           <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
-          <li class="day-weather-li"><p class="day-weather-windDirection">东北风&nbsp;1级</p></li>
+          <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
           <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
         </ul>
       </div>
@@ -68,19 +69,19 @@
     <div id="link-two"></div>
 
     <div id="weather-content2">
-      <div id="weather-trend">
-        <input class="day-trend" type="button" value="本日温度趋势图" onclick="window.location.href='/day-trend'">
-        <input class="week-trend" type="button" value="本周天气趋势图" onclick="window.location.href='/week-trend'">
+      <div id="day-weather-trend">
+        <!-- <input class="day-trend" type="button" value="本日温度趋势图" onclick="window.location.href='/day-trend'"> -->
+        <!-- <input class="week-trend" type="button" value="本周天气趋势图" onclick="window.location.href='/week-trend'"> -->
 
         <!-- <router-link to="/">小广告专用</router-link> -->
       </div>
+      <div id="week-weather-trend"></div>
       <div id="system-propose"></div>
     </div>
   </div>
 </template>
 
 <script>
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
