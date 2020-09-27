@@ -1,5 +1,6 @@
 <template>
-  <div id="header">
+  <div></div>
+<!--  <div id="header">
     <div id="header-title">
       <img class="img-logo" src="../assets/logo.png">
       <input class="city-place" type="text" placeholder="搜索市、区、县等">
@@ -7,9 +8,9 @@
     </div>
     <div id="link-one"></div>
     <div id="header-content">
-      <!-- 趋势图 -->
-    </div>
   </div>
+  </div>
+  -->
 </template>
 
 <script>

@@ -9,39 +9,43 @@
       <div id="link-one"></div>
       <div id="header-content">
         <div id="content-current">
-          <!--当时天气详情-->
-          <div class="content-temperature">
-            <p class="text-temperature">28℃</p>
+          <div id = "content-current-left">
+            <!--当时天气详情-->
+            <div class="content-temperature">
+              <p class="text-temperature">28℃</p>
+              <p class="text-weather">阴</p>
+            </div>
+            <!--最高 / 最低 温度-->
+            <div class="content-maximumTemperature">
+              <p class = "text-uplow">16℃ / 29℃</p>
+            </div>
+            <div class = "content-other">
+              <!--风向-->
+              <p class="item">
+                <img class="icon windDirection" src="../assets/humidity.png">
+                <span class="txt">东北风&nbsp;1级</span>
+              </p>
+              <!--湿度-->
+              <p class="item">
+                <i class="icon humidity"></i>
+                <span class="txt">湿度&nbsp;80%</span>
+              </p>
+              <!--空气质量-->
+              <p class="item">
+                <i class="icon airQuality"></i>
+                <span class="txt">空气质量&nbsp;优</span>
+              </p>
+            </div>
+            <!--建议-->
+            <div class="content-tips">
+            </div>
+            <!--当前位置-->
+            <div class="content-locate">
+              <img class="img-nowPlace small-componentslogo"  src="../assets/nowplace.png">
+            </div>
+          </div>
+          <div id = "content-current-right">
             <img class="img-weather" src="../assets/sun to cloud.png">  <!--天气图标-->
-            <p class="text-weather">阴</p>
-          </div>
-          <!--最高 / 最低 温度-->
-          <div class="content-maximumTemperature">
-            <p class = "text-uplow">16℃ / 29℃</p>
-          </div>
-          <div class = "content-other">
-            <!--风向-->
-            <p class="item">
-              <img class="icon windDirection" src="../assets/humidity.png">
-              <span class="txt">东北风&nbsp;1级</span>
-            </p>
-            <!--湿度-->
-            <p class="item">
-              <i class="icon humidity"></i>
-              <span class="txt">湿度&nbsp;80%</span>
-            </p>
-            <!--空气质量-->
-            <p class="item">
-              <i class="icon airQuality"></i>
-              <span class="txt">空气质量&nbsp;优</span>
-            </p>
-          </div>
-          <!--建议-->
-          <div class="content-tips">
-          </div>
-          <!--当前位置-->
-          <div class="content-locate">
-            <img class="img-nowPlace small-componentslogo"  src="../assets/nowplace.png">
           </div>
         </div>
         <!--变色当前位置nowplace cover.png-->

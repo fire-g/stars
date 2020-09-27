@@ -32,7 +32,7 @@ export default {
 
   #header {
     width:100%;
-    height:60%;
+    height:40%;
   }
 
   #weather-content1 {
@@ -51,7 +51,7 @@ export default {
 
   #header-title {
     width:100%;
-    height:11%;
+    height:17%;
   }
 
   #link-one {
@@ -62,7 +62,7 @@ export default {
 
   #header-content {
     width:100%;
-    height:88%;
+    height:80%;
   }
 
   #link-two {
@@ -72,10 +72,24 @@ export default {
   }
 
   #content-current{
-    width: 30%;
-    height: 80%;
-    margin-left: 35%;
-    margin-top: 5%;
+    width: 100%;
+    height: 100%;
+    border: solid 0px #c6e6de;
+  }
+
+  #content-current-left{
+    width: 50%;
+    float: left;
+    margin-left: 10%;
+    margin-top: 3%;
+    border: solid 0px #c6e6de;
+  }
+
+  #content-current-right{
+    width: 20%;
+    float: right;
+    margin-right: 10%;
+    margin-top: 3%;
     border: solid 0px #c6e6de;
   }
 
