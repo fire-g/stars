@@ -57,11 +57,11 @@
     <div id="weather-content1">
       <div id="day-weather">
         <ul class="day-weather-ul">
-<!--          <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>-->
-<!--          <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>-->
-<!--          <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>-->
-<!--          <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>-->
-<!--          <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>-->
+          <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+          <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+          <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+          <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+          <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
         </ul>
       </div>
     </div>
@@ -77,22 +77,32 @@
       </div>
       <div id="week-weather-trend"></div>
         <div id="system-propose">   <!--生活建议-->
-          <div class="wrapper">
+          <div class = tipsDiv>
             <ul>
-              <li>
-                <div class='picBox'>
-                  <div class='show'>
-                    <img style="width:180px;height: 180px " src="../img/pic1.png">
-                  <div class='hide'>
-                    <h3>
-                      Picture1
-                    </h3>
-                  </div>
-                </div>
-                </div>
-              </li>
-            </ul>
+            <li>
+              <p class = 'tipsText'>生活建议</p>
+            </li>
+          </ul>
           </div>
+          <div class = 'tipsRetrace'>
+            <div class="wrapper">
+              <ul>
+                <li class="retrace">
+                  <div class='picBox'>
+                    <div class='show'>
+                      <img style="width:90px;height: 90px " src="../assets/pic1.png">
+                      <div class='hide'>
+                        <h3>
+                          Picture1
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
         </div>
     </div>
   </div>
@@ -113,7 +123,7 @@ export default {
   },
   mounted () {
     // eslint-disable-next-line no-new
-    var a = new F($('li'))
+    var a = new F($('li.retrace'))
     a.init()
     console.log('asd')
   },
