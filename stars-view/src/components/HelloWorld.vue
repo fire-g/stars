@@ -57,11 +57,11 @@
     <div id="weather-content1">
       <div id="day-weather">
         <ul class="day-weather-ul">
-          <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
-          <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
-          <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
-          <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
-          <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+<!--          <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>-->
+<!--          <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>-->
+<!--          <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>-->
+<!--          <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>-->
+<!--          <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>-->
         </ul>
       </div>
     </div>
@@ -76,15 +76,55 @@
         <!-- <router-link to="/">小广告专用</router-link> -->
       </div>
       <div id="week-weather-trend"></div>
-      <div id="system-propose"></div>
+        <div id="system-propose">   <!--生活建议-->
+          <div class="wrapper">
+            <ul>
+              <li>
+                <div class='picBox'>
+                  <div class='show'>
+                    <img style="width:180px;height: 180px " src="../img/pic1.png">
+                  <div class='hide'>
+                    <h3>
+                      Picture1
+                    </h3>
+                  </div>
+                </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
     </div>
   </div>
 </template>
 
 <script>
+import $ from 'jquery'
+import F from '../js/demo'
+// import $ from "jquery"
+
+export default {
+  name: 'Hello',
+  data () {
+    return {
+      name: 'Ne',
+      list: []
+    }
+  },
+  mounted () {
+    // eslint-disable-next-line no-new
+    var a = new F($('li'))
+    a.init()
+    console.log('asd')
+  },
+  methods: {
+
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   @import "../css/index.css";
+  @import "../css/demo.css";
 </style>
