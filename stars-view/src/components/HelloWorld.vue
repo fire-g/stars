@@ -331,7 +331,67 @@
                 <li class="retrace">
                   <div class='picBox'>
                     <div class='show'>
-                      <img style="width:90px;height: 90px " src="../assets/pic1.png">
+                      <img style="width:90px;height: 90px ;border-radius: 10%;" src="../assets/pic1.png">
+                      <div class='hide'>
+                        <h3>
+                          Picture1
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="retrace">
+                  <div class='picBox'>
+                    <div class='show'>
+                      <img style="width:90px;height: 90px ;border-radius: 10%;" src="../assets/pic1.png">
+                      <div class='hide'>
+                        <h3>
+                          Picture1
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="retrace">
+                  <div class='picBox'>
+                    <div class='show'>
+                      <img style="width:90px;height: 90px ;border-radius: 10%;" src="../assets/pic1.png">
+                      <div class='hide'>
+                        <h3>
+                          Picture1
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="retrace">
+                  <div class='picBox'>
+                    <div class='show'>
+                      <img style="width:90px;height: 90px ;border-radius: 10%;" src="../assets/pic1.png">
+                      <div class='hide'>
+                        <h3>
+                          Picture1
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="retrace">
+                  <div class='picBox'>
+                    <div class='show'>
+                      <img style="width:90px;height: 90px ;border-radius: 10%;" src="../assets/pic1.png">
+                      <div class='hide'>
+                        <h3>
+                          Picture1
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="retrace">
+                  <div class='picBox'>
+                    <div class='show'>
+                      <img style="width:90px;height: 90px ;border-radius: 10%;" src="../assets/pic1.png">
                       <div class='hide'>
                         <h3>
                           Picture1

@@ -31,11 +31,13 @@ body {
   transform-style: preserve-3d;
   transform-origin: 50% 50% -45px;
   animation: 200ms ease-out 0ms 1 normal forwards;
+  margin-left: 10px;
 }
 
 .show,
 .hide {
   position: absolute;
+  border-radius: 10%;
   top: 0;
   right: 0;
   bottom: 0;
@@ -44,9 +46,10 @@ body {
 
 .hide {         //隐藏文字样式
   color: #fff;
-  background-color: #000;
+  background-color: #e5e6fd;
   text-align: center;
   line-height: 90px;
+  font-size: 10px;
   transform: translate3d(0, 0, -1px);
   /* 3D空间内移动一个元素的位置 */
 }
