@@ -19,28 +19,28 @@
           <div id = "content-current-left">
             <!--当时天气详情-->
             <div class="content-temperature">
-              <p class="text-temperature">28℃</p>
-              <p class="text-weather">阴</p>
+              <p class="text-temperature">{{temperature}}</p>
+              <p class="text-weather">{{weather}}</p>
             </div>
             <!--最高 / 最低 温度-->
             <div class="content-maximumTemperature">
-              <p class = "text-uplow">16℃ / 29℃</p>
+              <p class = "text-uplow">{{day_weather_low}} / {{day_weather_high}}</p>
             </div>
             <div class = "content-other">
               <!--风向-->
               <p class="item">
                 <img class="icon windDirection" src="../assets/wind direction.png">
-                <span class="txt">东北风&nbsp;1级</span>
+                <span class="txt">{{wind_direction}}</span>
               </p>
               <!--湿度-->
               <p class="item">
                 <img class="icon windDirection" src="../assets/humidity.png">
-                <span class="txt">湿度&nbsp;80%</span>
+                <span class="txt">湿度&nbsp;{{humidity}}</span>
               </p>
               <!--空气质量-->
               <p class="item">
                 <img class="icon windDirection" src="../assets/air quality.png">
-                <span class="txt">空气质量&nbsp;优</span>
+                <span class="txt">空气质量&nbsp;{{air_quality}}</span>
               </p>
             </div>
             <!--建议-->
@@ -49,7 +49,7 @@
             <!--当前位置-->
             <div class="content-locate">
               <img class="img-nowPlace small-componentslogo"  src="../assets/nowplace.png">
-              <span class="txt-nowplace">江西省&nbsp;南昌市</span>
+              <span class="txt-nowplace" id="txt-nowplace">{{city}}</span>
             </div>
           </div>
           <div id = "content-current-right">
@@ -409,10 +409,6 @@
   </div>
 </template>
 
-<!--<script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>-->
-<!--<script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>-->
-<!--<script src="https://code.highcharts.com.cn/highcharts/modules/oldie.js"></script>-->
-<!--<script src="https://code.highcharts.com.cn/highcharts-plugins/highcharts-zh_CN.js"></script>-->
 <script>
 import $ from 'jquery'
 import F from '../js/demo'
@@ -424,7 +420,18 @@ export default {
   data () {
     return {
       name: 'Ne',
-      list: []
+      list: [],
+      city: '江西省 南昌市 新建区',
+      temperature: '100℃',
+      weather: '阴',
+      day_weather_low: '16℃',
+      day_weather_high: '29℃',
+      wind_direction: '东北风 1级',
+      humidity: '80%',
+      air_quality: '优',
+      day_weather: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 7.0, 6.9, 9.5, 6.9, 9.5],
+      week_weather_low: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0],
+      week_weather_high: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2]
     }
   },
   mounted () {
@@ -433,6 +440,7 @@ export default {
     a.init()
     console.log(this.name)
 
+    // 日平均气温
     var chart1 = Highcharts.chart('container1', {
       chart: {
         type: 'line'
@@ -460,10 +468,12 @@ export default {
       },
       series: [{
         name: '气温',
-        data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 7.0, 6.9, 9.5, 6.9, 9.5]
+        // eslint-disable-next-line no-undef
+        data: this.day_weather
       }]
     })
 
+    // 周平均气温
     var chart2 = Highcharts.chart('container2', {
       chart: {
         type: 'line'
@@ -491,10 +501,10 @@ export default {
       },
       series: [{
         name: '最高气温',
-        data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2]
+        data: this.week_weather_high
       }, {
         name: '最低气温',
-        data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0]
+        data: this.week_weather_low
       }]
     })
   },
