@@ -4,7 +4,14 @@
       <div id="header-title">
         <img class="img-logo" src="../assets/logo.png">
         <!--<img class="img-place" src="../assets/place.png">-->
-        <input class="city-place" type="text" placeholder="搜索市、区、县等">
+        <input class="city-place" type="text" placeholder="搜索市、区、县等" list="placeholder">
+        <datalist id="placeholder">
+          <option>上饶</option>
+          <option>宜春</option>
+          <option>新余</option>
+          <option>广丰</option>
+          <option>就这</option>
+        </datalist>
       </div>
       <div id="link-one"></div>
       <div id="header-content">
