@@ -5,6 +5,7 @@
         <img class="img-logo" src="../assets/logo.png">
         <!--<img class="img-place" src="../assets/place.png">-->
         <input class="city-place" type="text" placeholder="搜索市、区、县等" list="placeholder">
+         <button @click="getDayWeather">666</button>
         <datalist id="placeholder">
           <option value="南昌-上饶"></option>
           <option value="南昌-宜春"></option>
@@ -19,28 +20,28 @@
           <div id = "content-current-left">
             <!--当时天气详情-->
             <div class="content-temperature">
-              <p class="text-temperature">{{temperature}}</p>
-              <p class="text-weather">{{weather}}</p>
+              <p class="text-temperature">{{today_weather.temperature}}</p>
+              <p class="text-weather">{{today_weather.weather}}</p>
             </div>
             <!--最高 / 最低 温度-->
             <div class="content-maximumTemperature">
-              <p class = "text-uplow">{{day_weather_low}} / {{day_weather_high}}</p>
+              <p class = "text-uplow">{{today_weather.day_weather_low}} / {{today_weather.day_weather_high}}</p>
             </div>
             <div class = "content-other">
               <!--风向-->
               <p class="item">
                 <img class="icon windDirection" src="../assets/wind direction.png">
-                <span class="txt">{{wind_direction}}</span>
+                <span class="txt">{{today_weather.wind_direction}}</span>
               </p>
               <!--湿度-->
               <p class="item">
                 <img class="icon windDirection" src="../assets/humidity.png">
-                <span class="txt">湿度&nbsp;{{humidity}}</span>
+                <span class="txt">湿度&nbsp;{{today_weather.humidity}}</span>
               </p>
               <!--空气质量-->
               <p class="item">
                 <img class="icon windDirection" src="../assets/air quality.png">
-                <span class="txt">空气质量&nbsp;{{air_quality}}</span>
+                <span class="txt">空气质量&nbsp;{{today_weather.air_quality}}</span>
               </p>
             </div>
             <!--建议-->
@@ -413,7 +414,7 @@
 import $ from 'jquery'
 import F from '../js/demo'
 import Highcharts from 'highcharts'
-// import $ from "jquery"
+import axios from 'axios'
 
 export default {
   name: 'Hello',
@@ -422,14 +423,17 @@ export default {
       name: 'Ne',
       list: [],
       city: '江西省 南昌市 新建区',
-      temperature: '100℃',
-      weather: '阴',
-      day_weather_low: '16℃',
-      day_weather_high: '29℃',
-      wind_direction: '东北风 1级',
-      humidity: '80%',
-      air_quality: '优',
-      day_weather: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 7.0, 6.9, 9.5, 6.9, 9.5],
+      today_weather:
+        {
+          temperature: '100℃',
+          weather: '阴',
+          day_weather_low: '16℃',
+          day_weather_high: '29℃',
+          wind_direction: '东北风 1级',
+          humidity: '80%',
+          air_quality: '优'
+        },
+      today_temperature: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 7.0, 6.9, 9.5, 6.9, 9.5],
       week_weather_low: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0],
       week_weather_high: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2]
     }
@@ -469,12 +473,12 @@ export default {
       series: [{
         name: '气温',
         // eslint-disable-next-line no-undef
-        data: this.day_weather
+        data: this.today_temperature
       }]
     })
 
     // 周平均气温
-    var chart2 = Highcharts.chart('container2', {
+    const chart2 = Highcharts.chart('container2', {
       chart: {
         type: 'line'
       },
@@ -509,7 +513,20 @@ export default {
     })
   },
   methods: {
-
+    getDayWeather: function () {
+      $.ajax({
+        url: '/api/weather?locationId=101240312',
+        method: 'GET',
+        success: function (res) {
+          this.today_weather.temperature = res.temp
+          this.today_weather.weather = res.text
+          this.today_weather.day_weather_low = res.temp
+          this.today_weather.day_weather_high = res.temp
+          this.today_weather.wind_direction = res.windDir
+          this.today_weather.humidity = res.humidity
+        }
+      })
+    }
   }
 }
 
