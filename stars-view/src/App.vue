@@ -102,9 +102,8 @@ export default {
     height: 90%;
     margin-left: 10%;
     margin-top: 10px;
-    border: solid 2px #d7d9f6;
     border-radius: 5px;
-    box-shadow: 1px 1px 1px 1px gray;
+    box-shadow: 0 0 14px 0 rgba(0,0,0,.08);
   }
 
   #day-weather-trend{
@@ -113,9 +112,8 @@ export default {
     float: left;
     margin-left: 10%;
     margin-top: 1%;
-    border: solid 2px #d7d9f6;
     border-radius: 5px;
-    box-shadow: 1px 1px 1px 1px gray;
+    box-shadow: 0 0 14px 0 rgba(0,0,0,.08);
   }
 
   #week-weather-trend{
@@ -124,9 +122,8 @@ export default {
     float: left;
     margin-left: 1%;
     margin-top: 1%;
-    border: solid 2px #d7d9f6;
     border-radius: 5px;
-    box-shadow: 1px 1px 1px 1px gray;
+    box-shadow: 0 0 14px 0 rgba(0,0,0,.08);
   }
 
   #system-propose{
