@@ -6,11 +6,11 @@
         <!--<img class="img-place" src="../assets/place.png">-->
         <input class="city-place" type="text" placeholder="搜索市、区、县等" list="placeholder">
         <datalist id="placeholder">
-          <option>上饶</option>
-          <option>宜春</option>
-          <option>新余</option>
-          <option>广丰</option>
-          <option>就这</option>
+          <option value="南昌-上饶"></option>
+          <option value="南昌-宜春"></option>
+          <option value="南昌-新余"></option>
+          <option value="南昌-广丰"></option>
+          <option value="重庆-重庆"></option>
         </datalist>
       </div>
       <div id="link-one"></div>
@@ -63,13 +63,248 @@
 
     <div id="weather-content1">
       <div id="day-weather">
-        <ul class="day-weather-ul">
-          <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
-          <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
-          <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
-          <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
-          <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
-        </ul>
+        <div class="day-weather-list">
+          <!--time-1-->
+          <div class="weather-box">
+            <ul class="day-weather-ul">
+              <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+              <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+            </ul>
+          </div>
+          <!--time-2-->
+          <div class="weather-box">
+            <ul class="day-weather-ul">
+              <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+              <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+            </ul>
+          </div>
+          <!--time-3-->
+          <div class="weather-box">
+            <ul class="day-weather-ul">
+              <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+              <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+            </ul>
+          </div>
+          <!--time-4-->
+          <div class="weather-box">
+            <ul class="day-weather-ul">
+              <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+              <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+            </ul>
+          </div>
+          <!--time-5-->
+          <div class="weather-box">
+            <ul class="day-weather-ul">
+              <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+              <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+            </ul>
+          </div>
+          <!--time-6-->
+          <div class="weather-box">
+            <ul class="day-weather-ul">
+              <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+              <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+            </ul>
+          </div>
+          <!--time-7-->
+          <div class="weather-box">
+            <ul class="day-weather-ul">
+              <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+              <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+            </ul>
+          </div>
+          <!--time-8-->
+          <div class="weather-box">
+            <ul class="day-weather-ul">
+              <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+              <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+            </ul>
+          </div>
+          <!--time-9-->
+          <div class="weather-box">
+            <ul class="day-weather-ul">
+              <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+              <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+            </ul>
+          </div>
+          <!--time-10-->
+          <div class="weather-box">
+            <ul class="day-weather-ul">
+              <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+              <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+            </ul>
+          </div>
+          <!--time-11-->
+          <div class="weather-box">
+            <ul class="day-weather-ul">
+              <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+              <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+            </ul>
+          </div>
+          <!--time-12-->
+          <div class="weather-box">
+            <ul class="day-weather-ul">
+              <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+              <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+            </ul>
+          </div>
+          <!--time-13-->
+          <div class="weather-box">
+            <ul class="day-weather-ul">
+              <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+              <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+            </ul>
+          </div>
+          <!--time-14-->
+          <div class="weather-box">
+            <ul class="day-weather-ul">
+              <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+              <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+            </ul>
+          </div>
+          <!--time-15-->
+          <div class="weather-box">
+            <ul class="day-weather-ul">
+              <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+              <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+            </ul>
+          </div>
+          <!--time-16-->
+          <div class="weather-box">
+            <ul class="day-weather-ul">
+              <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+              <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+            </ul>
+          </div>
+          <!--time-17-->
+          <div class="weather-box">
+            <ul class="day-weather-ul">
+              <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+              <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+            </ul>
+          </div>
+          <!--time-18-->
+          <div class="weather-box">
+            <ul class="day-weather-ul">
+              <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+              <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+            </ul>
+          </div>
+          <!--time-19-->
+          <div class="weather-box">
+            <ul class="day-weather-ul">
+              <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+              <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+            </ul>
+          </div>
+          <!--time-20-->
+          <div class="weather-box">
+            <ul class="day-weather-ul">
+              <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+              <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+            </ul>
+          </div>
+          <!--time-21-->
+          <div class="weather-box">
+            <ul class="day-weather-ul">
+              <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+              <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+            </ul>
+          </div>
+          <!--time-22-->
+          <div class="weather-box">
+            <ul class="day-weather-ul">
+              <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+              <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+            </ul>
+          </div>
+          <!--time-23-->
+          <div class="weather-box">
+            <ul class="day-weather-ul">
+              <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+              <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+            </ul>
+          </div>
+          <!--time-24-->
+          <div class="weather-box">
+            <ul class="day-weather-ul">
+              <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
+              <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
+              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection">1级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -77,12 +312,11 @@
 
     <div id="weather-content2">
       <div id="day-weather-trend">
-        <!-- <input class="day-trend" type="button" value="本日温度趋势图" onclick="window.location.href='/day-trend'"> -->
-        <!-- <input class="week-trend" type="button" value="本周天气趋势图" onclick="window.location.href='/week-trend'"> -->
-
-        <!-- <router-link to="/">小广告专用</router-link> -->
+        <div id="container1"></div>
       </div>
-      <div id="week-weather-trend"></div>
+      <div id="week-weather-trend">
+        <div id="container2"></div>
+      </div>
         <div id="system-propose">   <!--生活建议-->
           <div class = tipsDiv>
             <ul>
@@ -115,9 +349,14 @@
   </div>
 </template>
 
+<!--<script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>-->
+<!--<script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>-->
+<!--<script src="https://code.highcharts.com.cn/highcharts/modules/oldie.js"></script>-->
+<!--<script src="https://code.highcharts.com.cn/highcharts-plugins/highcharts-zh_CN.js"></script>-->
 <script>
 import $ from 'jquery'
 import F from '../js/demo'
+import Highcharts from 'highcharts'
 // import $ from "jquery"
 
 export default {
@@ -132,12 +371,78 @@ export default {
     // eslint-disable-next-line no-new
     var a = new F($('li.retrace'))
     a.init()
-    console.log('asd')
+    console.log(this.name)
+
+    var chart1 = Highcharts.chart('container1', {
+      chart: {
+        type: 'line'
+      },
+      title: {
+        text: '日平均气温'
+      },
+      xAxis: {
+        categories: ['1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00']
+      },
+      yAxis: {
+        title: {
+          text: '气温 (°C)'
+        }
+      },
+      plotOptions: {
+        line: {
+          dataLabels: {
+            // 开启数据标签
+            enabled: true
+          },
+          // 关闭鼠标跟踪，对应的提示框、点击事件会失效
+          enableMouseTracking: false
+        }
+      },
+      series: [{
+        name: '气温',
+        data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 7.0, 6.9, 9.5, 6.9, 9.5]
+      }]
+    })
+
+    var chart2 = Highcharts.chart('container2', {
+      chart: {
+        type: 'line'
+      },
+      title: {
+        text: '周平均气温'
+      },
+      xAxis: {
+        categories: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+      },
+      yAxis: {
+        title: {
+          text: '气温 (°C)'
+        }
+      },
+      plotOptions: {
+        line: {
+          dataLabels: {
+            // 开启数据标签
+            enabled: true
+          },
+          // 关闭鼠标跟踪，对应的提示框、点击事件会失效
+          enableMouseTracking: false
+        }
+      },
+      series: [{
+        name: '最高气温',
+        data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2]
+      }, {
+        name: '最低气温',
+        data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0]
+      }]
+    })
   },
   methods: {
 
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

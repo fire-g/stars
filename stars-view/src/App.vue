@@ -141,4 +141,14 @@ export default {
     margin: 0;
   }
 
+  #container1{
+    width:100%;
+    height: 100%;
+  }
+
+  #container2{
+    width:100%;
+    height: 100%;
+  }
+
 </style>
