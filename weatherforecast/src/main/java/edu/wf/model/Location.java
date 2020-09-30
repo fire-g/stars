@@ -7,19 +7,19 @@ import org.springframework.data.relational.core.mapping.Table;
 public class Location {
 	@Id
     private int id;
-	//城市编号
+	//locationId
 	private String locationId;
-    //城市名
+    //鍚嶇О
     private String name;
-    //纬度
+    //缁忓害
     private double lat;
-    //经度
+    //绾害
     private double lon;
-    //市级
+    //甯傜骇鍚嶇О
     private String adm2;
-    //省级
+    //鐪佺骇鍚嶇О
     private String adm1;
-    //国家
+    //鍥藉
     private String country;
     
 	public int getId() {

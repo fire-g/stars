@@ -5,6 +5,8 @@ import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Table("FORECAST_WEATHER")
 public class ForecastWeather {
 	@Id
@@ -12,6 +14,7 @@ public class ForecastWeather {
 	//更新时间
 	private Date date;
 	//预报的日期
+	@JsonFormat(pattern="yyyy-MM-dd", timezone="GMT+8")
 	private Date fxDate;
 	//日出时间
 	private String sunrise;

@@ -5,6 +5,8 @@ import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Table("HOURLY_WEATHER")
 public class HourlyWeather {
 	@Id
@@ -12,6 +14,7 @@ public class HourlyWeather {
 	//更新时间
 	private Date date;
 	//预报的时间
+	@JsonFormat(pattern="HH:mm", timezone="GMT+8")
 	private Date fxDate;
 	//温度
 	private int temp;
