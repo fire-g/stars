@@ -3,6 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import instance from 'axios'
+
+Vue.prototype.$ajax = instance
 
 Vue.config.productionTip = false
 
