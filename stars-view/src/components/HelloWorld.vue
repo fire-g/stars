@@ -69,12 +69,12 @@
           <!--time-1-->
           <div class="weather-box"  v-for="item in daily_weather" v-bind:key="item.id">
             <ul class="day-weather-ul">
-              <li class="day-weather-li"><p class="day-weather-time" style="font-size: 12px">{{item.id}}</p></li>
+              <li class="day-weather-li"><p class="day-weather-time" style="font-size: 12px">{{item.fxDate}}</p></li>
               <li class="day-weather-li"><p class="day-weather-temperature" style="font-size: 20px">{{item.temp}}℃</p></li>
               <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png" style="width: 32px;height: 32px" alt=""></li>
               <li class="day-weather-li"><p class="day-weather-windDirection" style="font-size: 14px">{{item.text}}</p></li>
-              <li class="day-weather-li"><p class="day-weather-windDirection" style="font-size: 14px">1级</p></li>
-              <li class="day-weather-li"><p class="day-weather-airQuality" style="font-size: 14px">优</p></li>
+              <li class="day-weather-li"><p class="day-weather-windDirection" style="font-size: 14px">{{item.windScale}}级</p></li>
+              <li class="day-weather-li"><p class="day-weather-airQuality" style="font-size: 14px">良</p></li>
             </ul>
           </div>
         </div>
@@ -196,424 +196,84 @@ export default {
       city: '江西省 南昌市 新建区',
       temperature: '',
       weather: '',
-      day_weather_low: 16,
-      day_weather_high: 29,
-      wind_direction: '东北风',
-      wind_scale: 1,
-      humidity: 80,
-      air_quality: '优',
+      day_weather_low: '',
+      day_weather_high: '',
+      wind_direction: '',
+      wind_scale: '',
+      humidity: '',
+      air_quality: '良',
       today_temperature: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 7.0, 6.9, 9.5, 6.9, 9.5],
-      week_weather_low: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0],
-      week_weather_high: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2],
+      week_data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+      week_weather_low: [0, 0, 0, 0, 0, 0, 0],
+      week_weather_high: [0, 0, 0, 0, 0, 0, 0],
       daily_weather: [
         {
-          'id': 1,
-          'date': '2020-09-30T09:59:45.510+08:00',
-          'fxDate': '2020-09-30T10:00:00.000+08:00',
-          'temp': 23,
-          'text': '多云',
-          'windDir': '东北风',
-          'windScale': '3-4',
-          'windSpeed': 14,
-          'humidity': 77,
-          'pop': 7,
-          'precip': 0.0,
-          'pressure': 1005,
-          'cloud': 61,
-          'dew': 0,
-          'locationId': '101240101'
-        }, {
-          'id': 2,
-          'date': '2020-09-30T09:59:45.510+08:00',
-          'fxDate': '2020-09-30T11:00:00.000+08:00',
-          'temp': 24,
-          'text': '多云',
-          'windDir': '东北风',
-          'windScale': '3-4',
-          'windSpeed': 16,
-          'humidity': 71,
-          'pop': 7,
-          'precip': 0.0,
-          'pressure': 1005,
-          'cloud': 64,
-          'dew': 0,
-          'locationId': '101240101'
-        }, {
-          'id': 3,
-          'date': '2020-09-30T09:59:45.510+08:00',
-          'fxDate': '2020-09-30T12:00:00.000+08:00',
-          'temp': 25,
-          'text': '多云',
-          'windDir': '东北风',
-          'windScale': '3-4',
-          'windSpeed': 16,
-          'humidity': 66,
-          'pop': 5,
-          'precip': 0.0,
-          'pressure': 1005,
-          'cloud': 62,
-          'dew': 0,
-          'locationId': '101240101'
-        }, {
-          'id': 4,
-          'date': '2020-09-30T09:59:45.510+08:00',
-          'fxDate': '2020-09-30T13:00:00.000+08:00',
-          'temp': 25,
-          'text': '多云',
-          'windDir': '东北风',
-          'windScale': '3-4',
-          'windSpeed': 16,
-          'humidity': 63,
-          'pop': 0,
-          'precip': 0.0,
-          'pressure': 1005,
-          'cloud': 60,
-          'dew': 0,
-          'locationId': '101240101'
-        }, {
-          'id': 5,
-          'date': '2020-09-30T09:59:45.510+08:00',
-          'fxDate': '2020-09-30T14:00:00.000+08:00',
-          'temp': 26,
-          'text': '多云',
-          'windDir': '东北风',
-          'windScale': '3-4',
-          'windSpeed': 16,
-          'humidity': 62,
-          'pop': 0,
-          'precip': 0.0,
-          'pressure': 1006,
-          'cloud': 57,
-          'dew': 0,
-          'locationId': '101240101'
-        }, {
-          'id': 6,
-          'date': '2020-09-30T09:59:45.510+08:00',
-          'fxDate': '2020-09-30T15:00:00.000+08:00',
-          'temp': 25,
-          'text': '晴',
-          'windDir': '东北风',
-          'windScale': '3-4',
-          'windSpeed': 16,
-          'humidity': 64,
-          'pop': 0,
-          'precip': 0.0,
-          'pressure': 1006,
-          'cloud': 42,
-          'dew': 0,
-          'locationId': '101240101'
-        }, {
-          'id': 7,
-          'date': '2020-09-30T09:59:45.510+08:00',
-          'fxDate': '2020-09-30T16:00:00.000+08:00',
-          'temp': 25,
-          'text': '晴',
-          'windDir': '东北风',
-          'windScale': '3-4',
-          'windSpeed': 14,
-          'humidity': 67,
-          'pop': 0,
-          'precip': 0.0,
-          'pressure': 1006,
-          'cloud': 28,
-          'dew': 0,
-          'locationId': '101240101'
-        }, {
-          'id': 8,
-          'date': '2020-09-30T09:59:45.510+08:00',
-          'fxDate': '2020-09-30T17:00:00.000+08:00',
-          'temp': 24,
-          'text': '晴',
-          'windDir': '东北风',
-          'windScale': '3-4',
-          'windSpeed': 14,
-          'humidity': 74,
-          'pop': 0,
-          'precip': 0.0,
-          'pressure': 1006,
-          'cloud': 13,
-          'dew': 0,
-          'locationId': '101240101'
-        }, {
-          'id': 9,
-          'date': '2020-09-30T09:59:45.510+08:00',
-          'fxDate': '2020-09-30T18:00:00.000+08:00',
-          'temp': 22,
-          'text': '晴',
-          'windDir': '东北风',
-          'windScale': '3-4',
-          'windSpeed': 14,
-          'humidity': 80,
-          'pop': 0,
-          'precip': 0.0,
-          'pressure': 1005,
-          'cloud': 10,
-          'dew': 0,
-          'locationId': '101240101'
-        }, {
-          'id': 10,
-          'date': '2020-09-30T09:59:45.510+08:00',
-          'fxDate': '2020-09-30T19:00:00.000+08:00',
-          'temp': 22,
-          'text': '晴',
-          'windDir': '北风',
-          'windScale': '3-4',
-          'windSpeed': 18,
-          'humidity': 79,
-          'pop': 0,
-          'precip': 0.0,
-          'pressure': 1005,
-          'cloud': 8,
-          'dew': 0,
-          'locationId': '101240101'
-        }, {
-          'id': 11,
-          'date': '2020-09-30T09:59:45.510+08:00',
-          'fxDate': '2020-09-30T20:00:00.000+08:00',
-          'temp': 21,
-          'text': '晴',
-          'windDir': '北风',
-          'windScale': '3-4',
-          'windSpeed': 18,
-          'humidity': 80,
-          'pop': 0,
-          'precip': 0.0,
-          'pressure': 1005,
-          'cloud': 6,
-          'dew': 0,
-          'locationId': '101240101'
-        }, {
-          'id': 12,
-          'date': '2020-09-30T09:59:45.510+08:00',
-          'fxDate': '2020-09-30T21:00:00.000+08:00',
-          'temp': 21,
-          'text': '晴',
-          'windDir': '北风',
-          'windScale': '3-4',
-          'windSpeed': 16,
-          'humidity': 81,
-          'pop': 0,
-          'precip': 0.0,
-          'pressure': 1006,
-          'cloud': 4,
-          'dew': 0,
-          'locationId': '101240101'
-        }, {
-          'id': 13,
-          'date': '2020-09-30T09:59:45.510+08:00',
-          'fxDate': '2020-09-30T22:00:00.000+08:00',
-          'temp': 21,
-          'text': '晴',
-          'windDir': '北风',
-          'windScale': '3-4',
-          'windSpeed': 16,
-          'humidity': 82,
-          'pop': 0,
-          'precip': 0.0,
-          'pressure': 1006,
-          'cloud': 3,
-          'dew': 0,
-          'locationId': '101240101'
-        }, {
-          'id': 14,
-          'date': '2020-09-30T09:59:45.510+08:00',
-          'fxDate': '2020-09-30T23:00:00.000+08:00',
-          'temp': 21,
-          'text': '晴',
-          'windDir': '北风',
-          'windScale': '3-4',
-          'windSpeed': 14,
-          'humidity': 82,
-          'pop': 0,
-          'precip': 0.0,
-          'pressure': 1006,
-          'cloud': 1,
-          'dew': 0,
-          'locationId': '101240101'
-        }, {
-          'id': 15,
-          'date': '2020-09-30T09:59:45.510+08:00',
-          'fxDate': '2020-10-01T00:00:00.000+08:00',
-          'temp': 20,
-          'text': '晴',
-          'windDir': '北风',
-          'windScale': '3-4',
-          'windSpeed': 14,
-          'humidity': 82,
-          'pop': 1,
-          'precip': 0.0,
-          'pressure': 1006,
-          'cloud': 4,
-          'dew': 0,
-          'locationId': '101240101'
-        }, {
-          'id': 16,
-          'date': '2020-09-30T09:59:45.510+08:00',
-          'fxDate': '2020-10-01T01:00:00.000+08:00',
-          'temp': 20,
-          'text': '晴',
-          'windDir': '北风',
-          'windScale': '3-4',
-          'windSpeed': 14,
-          'humidity': 83,
-          'pop': 4,
-          'precip': 0.0,
-          'pressure': 1007,
-          'cloud': 7,
-          'dew': 0,
-          'locationId': '101240101'
-        }, {
-          'id': 17,
-          'date': '2020-09-30T09:59:45.510+08:00',
-          'fxDate': '2020-10-01T02:00:00.000+08:00',
-          'temp': 20,
-          'text': '晴',
-          'windDir': '北风',
-          'windScale': '3-4',
-          'windSpeed': 14,
-          'humidity': 83,
-          'pop': 4,
-          'precip': 0.0,
-          'pressure': 1007,
-          'cloud': 9,
-          'dew': 0,
-          'locationId': '101240101'
-        }, {
-          'id': 18,
-          'date': '2020-09-30T09:59:45.510+08:00',
-          'fxDate': '2020-10-01T03:00:00.000+08:00',
-          'temp': 20,
-          'text': '晴',
-          'windDir': '北风',
-          'windScale': '3-4',
-          'windSpeed': 13,
-          'humidity': 84,
-          'pop': 4,
-          'precip': 0.0,
-          'pressure': 1006,
-          'cloud': 27,
-          'dew': 0,
-          'locationId': '101240101'
-        }, {
-          'id': 19,
-          'date': '2020-09-30T09:59:45.510+08:00',
-          'fxDate': '2020-10-01T04:00:00.000+08:00',
-          'temp': 19,
-          'text': '多云',
-          'windDir': '东北风',
-          'windScale': '3-4',
-          'windSpeed': 13,
-          'humidity': 83,
-          'pop': 4,
-          'precip': 0.0,
-          'pressure': 1005,
-          'cloud': 46,
-          'dew': 0,
-          'locationId': '101240101'
-        }, {
-          'id': 20,
-          'date': '2020-09-30T09:59:45.510+08:00',
-          'fxDate': '2020-10-01T05:00:00.000+08:00',
-          'temp': 19,
-          'text': '多云',
-          'windDir': '东北风',
-          'windScale': '3-4',
-          'windSpeed': 13,
-          'humidity': 82,
-          'pop': 4,
-          'precip': 0.0,
-          'pressure': 1005,
-          'cloud': 64,
-          'dew': 0,
-          'locationId': '101240101'
-        }, {
-          'id': 21,
-          'date': '2020-09-30T09:59:45.510+08:00',
-          'fxDate': '2020-10-01T06:00:00.000+08:00',
-          'temp': 19,
-          'text': '多云',
-          'windDir': '东北风',
-          'windScale': '3-4',
-          'windSpeed': 13,
-          'humidity': 89,
-          'pop': 5,
-          'precip': 0.0,
-          'pressure': 1004,
-          'cloud': 71,
-          'dew': 0,
-          'locationId': '101240101'
-        }, {
-          'id': 22,
-          'date': '2020-09-30T09:59:45.510+08:00',
-          'fxDate': '2020-10-01T07:00:00.000+08:00',
-          'temp': 20,
-          'text': '多云',
-          'windDir': '北风',
-          'windScale': '1-2',
-          'windSpeed': 7,
-          'humidity': 85,
-          'pop': 7,
-          'precip': 0.0,
-          'pressure': 1003,
-          'cloud': 79,
-          'dew': 0,
-          'locationId': '101240101'
-        }, {
-          'id': 23,
-          'date': '2020-09-30T09:59:45.510+08:00',
-          'fxDate': '2020-10-01T08:00:00.000+08:00',
-          'temp': 21,
-          'text': '多云',
-          'windDir': '北风',
-          'windScale': '1-2',
-          'windSpeed': 7,
-          'humidity': 80,
-          'pop': 7,
-          'precip': 0.0,
-          'pressure': 1003,
-          'cloud': 86,
-          'dew': 0,
-          'locationId': '101240101'
-        }, {
-          'id': 24,
-          'date': '2020-09-30T09:59:45.510+08:00',
-          'fxDate': '2020-10-01T09:00:00.000+08:00',
-          'temp': 22,
-          'text': '多云',
-          'windDir': '东北风',
-          'windScale': '1-2',
-          'windSpeed': 7,
-          'humidity': 75,
-          'pop': 7,
-          'precip': 0.0,
-          'pressure': 1003,
-          'cloud': 90,
-          'dew': 0,
-          'locationId': '101240101'
+          'id': '',
+          'date': '',
+          'fxDate': '',
+          'temp': '',
+          'text': '',
+          'windDir': '',
+          'windScale': '',
+          'windSpeed': '',
+          'humidity': '',
+          'pop': '',
+          'precip': '',
+          'pressure': '',
+          'cloud': '',
+          'dew': '',
+          'locationId': ''
         }]
     }
   },
-  created () {
+  created: function () {
     this.$ajax({
       method: 'GET',
       url: '/api/weather/101240312'
     }).then((response) => {
       const res = response.data
-      console.log(res)
       this.temperature = res.temp
       this.weather = res.text
       this.day_weather_low = res.temp
       this.day_weather_high = res.temp
       this.wind_direction = res.windDir
+      this.wind_scale = res.windScale
       this.humidity = res.humidity
-      console.log(this.weather)
+    })
+
+    this.$ajax({
+      method: 'GET',
+      url: '/api/hourly_weather/101240101'
+    }).then((response) => {
+      const res = response.data
+      this.daily_weather = res
+      var i
+      for (i = 0; i < 24; i++) {
+        this.daily_weather[i].fxDate = res[i].fxDate.substring(11, 16)
+      }
+      this.daily_weather[0].fxDate = '现在'
+    })
+
+    this.$ajax({
+      method: 'GET',
+      url: '/api/forecast_weather/101240312'
+    }).then((response) => {
+      const res = response.data
+      var i
+      for (i = 0; i < 7; i++) {
+        this.week_weather_low[i] = res[i].tempMin
+        this.week_weather_high[i] = res[i].tempMax
+        this.week_data[i] = res[i].fxDate.substring(5, 10)
+      }
+      console.log(this.week_data)
+      console.log(this.week_weather_low)
+      console.log(this.week_weather_high)
     })
   },
   mounted () {
     // eslint-disable-next-line no-new
     const a = new F($('li.retrace'))
     a.init()
-    console.log(this.name)
 
     // 日平均气温
     Highcharts.chart('container1', {
@@ -657,7 +317,7 @@ export default {
         text: '周平均气温'
       },
       xAxis: {
-        categories: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+        categories: this.week_data
       },
       yAxis: {
         title: {
