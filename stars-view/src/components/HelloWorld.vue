@@ -23,7 +23,7 @@
             <!--当时天气详情-->
             <div class="content-temperature">
               <p class="text-temperature">{{temperature}}℃</p>
-              <input class="text-weather" type="hidden" v-model="weather">
+              <input type="hidden" v-model="weather">
               <p class="text-weather">{{weather}}</p>
             </div>
             <!--最高 / 最低 温度-->
@@ -69,7 +69,7 @@
       <div id="day-weather">
         <div class="day-weather-list">
           <!--time-1-->
-          <div class="weather-box">
+          <div class="weather-box" v-for="item in 24">
             <ul class="day-weather-ul">
               <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
               <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
