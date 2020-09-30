@@ -8,8 +8,7 @@ body {
 
 .wrapper {
   max-width: 900px;
-  margin: 40px auto;
-  margin-left: 20px;
+  margin: 40px auto 40px 20px;
 }
 
 .wrapper li {
