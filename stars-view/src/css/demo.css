@@ -30,29 +30,53 @@ body {
   transform-style: preserve-3d;
   transform-origin: 50% 50% -45px;
   animation: 200ms ease-out 0ms 1 normal forwards;
-  margin-left: 10px;
+  margin-left: 20px;
+  width: 90px;
+  height: 90px;
+}
+
+.picContent {
+  background: rgba(255,255,255,0.5);
+  width: 90px;
+  height: 90px;
+}
+
+.picTitle {
+  font-family: "PingFang SC", "Microsoft YaHei", Simsun, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  color: #384c78;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.picture {
+  height: 30px;
+  width: 30px;
+  margin-left: 30px;
+  margin-top: 15px;
 }
 
 .show,
 .hide {
+  background: rgba(255,255,255,0.1);
+  width: 90px;
+  height: 90px;
   position: absolute;
-  border-radius: 10%;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
 }
 
-.hide {         //隐藏文字样式
-  color: #fff;
-  background-color: #e5e6fd;
+.hide {
+/ / 隐藏文字样式   color: rgba(255,255,255,0.1);
+  background-color: rgba(255,255,255,0.5);
   text-align: center;
   line-height: 90px;
   font-size: 10px;
   transform: translate3d(0, 0, -1px);
   /* 3D空间内移动一个元素的位置 */
 }
-
 
 .in-top .hide,
 .out-top .hide {
@@ -189,6 +213,7 @@ body {
   animation-name: out-left;
   animation-play-state: running;
 }
+
 
 
 

@@ -92,11 +92,7 @@
       </div>
       <div id="system-propose">   <!--生活建议-->
         <div class=tipsDiv>
-          <ul>
-            <li>
               <p class='tipsText'>生活建议</p>
-            </li>
-          </ul>
         </div>
         <div class='tipsRetrace'>
           <div class="wrapper">
@@ -104,7 +100,25 @@
               <li class="retrace">
                 <div class='picBox'>
                   <div class='show'>
-                    <img style="width:90px;height: 90px ;border-radius: 10%;" src="../assets/pic1.png" alt="">
+                    <div class='picContent'>
+                      <img class='picture' src="../assets/yusan.png">
+                      <p class="picTitle">雨伞&nbsp;需要</p>
+                    </div>
+                    <div class='hide'>
+                      <h3>
+                        天冷注意穿衣
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="retrace">
+                <div class='picBox'>
+                  <div class='show'>
+                    <div class='picContent'>
+                      <img class='picture' src="../assets/yao.png">
+                      <p class="picTitle">感冒&nbsp;不易</p>
+                    </div>
                     <div class='hide'>
                       <h3>
                         Picture1
@@ -116,7 +130,10 @@
               <li class="retrace">
                 <div class='picBox'>
                   <div class='show'>
-                    <img style="width:90px;height: 90px ;border-radius: 10%;" src="../assets/pic1.png" alt="">
+                    <div class='picContent'>
+                      <img class='picture' src="../assets/car.png">
+                      <p class="picTitle">洗车&nbsp;适宜</p>
+                    </div>
                     <div class='hide'>
                       <h3>
                         Picture1
@@ -128,7 +145,10 @@
               <li class="retrace">
                 <div class='picBox'>
                   <div class='show'>
-                    <img style="width:90px;height: 90px ;border-radius: 10%;" src="../assets/pic1.png" alt="">
+                    <div class='picContent'>
+                      <img class='picture' src="../assets/taiyang.png">
+                      <p class="picTitle">防晒&nbsp;适宜</p>
+                    </div>
                     <div class='hide'>
                       <h3>
                         Picture1
@@ -140,7 +160,10 @@
               <li class="retrace">
                 <div class='picBox'>
                   <div class='show'>
-                    <img style="width:90px;height: 90px ;border-radius: 10%;" src="../assets/pic1.png" alt="">
+                    <div class='picContent'>
+                      <img class='picture' src="../assets/basketball.png">
+                      <p class="picTitle">运动&nbsp;适宜</p>
+                    </div>
                     <div class='hide'>
                       <h3>
                         Picture1
@@ -152,19 +175,11 @@
               <li class="retrace">
                 <div class='picBox'>
                   <div class='show'>
-                    <img style="width:90px;height: 90px ;border-radius: 10%;" src="../assets/pic1.png" alt="">
-                    <div class='hide'>
-                      <h3>
-                        Picture1
-                      </h3>
+                    <div class='picContent'>
+                      <img class='picture' src="../assets/clother.png">
+                      <p class="picTitle">穿衣&nbsp;长袖</p>
                     </div>
-                  </div>
-                </div>
-              </li>
-              <li class="retrace">
-                <div class='picBox'>
-                  <div class='show'>
-                    <img style="width:90px;height: 90px ;border-radius: 10%;" src="../assets/pic1.png" alt="">
+
                     <div class='hide'>
                       <h3>
                         Picture1
@@ -279,6 +294,8 @@ export default {
     Highcharts.chart('container1', {
       chart: {
         type: 'line'
+        backgroundColor: 'rgba(255,255,255,0.3)',
+        borderRadius: '10px'
       },
       title: {
         text: '日平均气温'
@@ -312,6 +329,8 @@ export default {
     Highcharts.chart('container2', {
       chart: {
         type: 'line'
+        backgroundColor: 'rgba(255,255,255,0.3)',
+        borderRadius: '10px'
       },
       title: {
         text: '周平均气温'
