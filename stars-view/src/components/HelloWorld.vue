@@ -264,7 +264,7 @@ export default {
       this.daily_weather = res
       var i
       for (i = 0; i < 24; i++) {
-        this.daily_weather[i].fxDate = res[i].fxDate.substring(11, 16)
+        this.daily_weather[i].fxDate = res[i].fxDate
       }
       this.daily_weather[0].fxDate = '现在'
     })
@@ -278,7 +278,7 @@ export default {
       for (i = 0; i < 7; i++) {
         this.week_weather_low[i] = res[i].tempMin
         this.week_weather_high[i] = res[i].tempMax
-        this.week_data[i] = res[i].fxDate.substring(5, 10)
+        this.week_data[i] = res[i].fxDate
       }
       console.log(this.week_data)
       console.log(this.week_weather_low)
@@ -293,7 +293,7 @@ export default {
     // 日平均气温
     Highcharts.chart('container1', {
       chart: {
-        type: 'line'
+        type: 'line',
         backgroundColor: 'rgba(255,255,255,0.3)',
         borderRadius: '10px'
       },
@@ -328,7 +328,7 @@ export default {
     // 周平均气温
     Highcharts.chart('container2', {
       chart: {
-        type: 'line'
+        type: 'line',
         backgroundColor: 'rgba(255,255,255,0.3)',
         borderRadius: '10px'
       },
