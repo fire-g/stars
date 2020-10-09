@@ -202,10 +202,14 @@ import $ from 'jquery'
 import F from '../js/demo'
 import Highcharts from 'highcharts'
 
+var chart1
+var chart2
+
 export default {
   name: 'Hello',
   data () {
     return {
+      city_id: 101240101,
       name: 'Ne',
       list: [],
       city: '江西省 南昌市 新建区',
@@ -217,10 +221,11 @@ export default {
       wind_scale: '',
       humidity: '',
       air_quality: '良',
-      today_temperature: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 7.0, 6.9, 9.5, 6.9, 9.5],
-      week_data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-      week_weather_low: [0, 0, 0, 0, 0, 0, 0],
-      week_weather_high: [0, 0, 0, 0, 0, 0, 0],
+      today_data: ['', '', '', '', '', '', '', '', '', '', '', ''],
+      today_temperature: ['', '', '', '', '', '', '', '', '', '', '', ''],
+      week_data: ['', '', '', '', '', '', ''],
+      week_weather_low: ['', '', '', '', '', '', ''],
+      week_weather_high: ['', '', '', '', '', '', ''],
       daily_weather: [
         {
           'id': '',
@@ -244,7 +249,7 @@ export default {
   created: function () {
     this.$ajax({
       method: 'GET',
-      url: '/api/weather/101240312'
+      url: '/api/weather/' + this.city_id
     }).then((response) => {
       const res = response.data
       this.temperature = res.temp
@@ -258,50 +263,59 @@ export default {
 
     this.$ajax({
       method: 'GET',
-      url: '/api/hourly_weather/101240101'
+      url: '/api/hourly_weather/' + this.city_id
     }).then((response) => {
       const res = response.data
       this.daily_weather = res
       var i
+      var j
       for (i = 0; i < 24; i++) {
         this.daily_weather[i].fxDate = res[i].fxDate
       }
+      for (i = 0, j = 0; i < 24; i = i + 2, j++) {
+        this.today_data[j] = res[i].fxDate
+        this.today_temperature[j] = res[i].temp
+      }
+      chart1.xAxis[0].setCategories(this.today_data)
+      chart1.series[0].setData(this.today_temperature)
       this.daily_weather[0].fxDate = '现在'
     })
 
     this.$ajax({
       method: 'GET',
-      url: '/api/forecast_weather/101240312'
+      url: '/api/forecast_weather/' + this.city_id
     }).then((response) => {
       const res = response.data
       var i
       for (i = 0; i < 7; i++) {
         this.week_weather_low[i] = res[i].tempMin
         this.week_weather_high[i] = res[i].tempMax
-        this.week_data[i] = res[i].fxDate
+        this.week_data[i] = res[i].fxDate.substring(5, 11)
       }
-      console.log(this.week_data)
-      console.log(this.week_weather_low)
-      console.log(this.week_weather_high)
+      chart2.xAxis[0].setCategories(this.week_data)
+      chart2.series[0].setData(this.week_weather_low)
+      chart2.series[1].setData(this.week_weather_high)
     })
   },
   mounted () {
-    // eslint-disable-next-line no-new
     const a = new F($('li.retrace'))
     a.init()
 
     // 日平均气温
-    Highcharts.chart('container1', {
+    chart1 = new Highcharts.Chart('container1', {
       chart: {
         type: 'line',
         backgroundColor: 'rgba(255,255,255,0.3)',
         borderRadius: '10px'
       },
+      credits: {
+        enabled: false
+      },
       title: {
-        text: '日平均气温'
+        text: '未来24小时温度变化'
       },
       xAxis: {
-        categories: ['1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00']
+        categories: []
       },
       yAxis: {
         title: {
@@ -320,23 +334,25 @@ export default {
       },
       series: [{
         name: '气温',
-        // eslint-disable-next-line no-undef
-        data: this.today_temperature
+        data: []
       }]
     })
 
     // 周平均气温
-    Highcharts.chart('container2', {
+    chart2 = new Highcharts.Chart('container2', {
       chart: {
         type: 'line',
         backgroundColor: 'rgba(255,255,255,0.3)',
         borderRadius: '10px'
       },
+      credits: {
+        enabled: false
+      },
       title: {
-        text: '周平均气温'
+        text: '未来一周温度变化'
       },
       xAxis: {
-        categories: this.week_data
+        categories: []
       },
       yAxis: {
         title: {
@@ -355,10 +371,10 @@ export default {
       },
       series: [{
         name: '最高气温',
-        data: this.week_weather_high
+        data: []
       }, {
         name: '最低气温',
-        data: this.week_weather_low
+        data: []
       }]
     })
   },
@@ -366,7 +382,7 @@ export default {
     getDayWeather () {
       this.$ajax({
         method: 'GET',
-        url: '/api/weather/101240312'
+        url: '/api/weather/' + this.city_id
       }).then((response) => {
         const res = response.data
         console.log(res)
