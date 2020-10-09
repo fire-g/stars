@@ -4,7 +4,7 @@
       <div id="header-title">
         <img class="img-logo" src="../assets/logo.png" alt="">
         <label>
-          <input class="city-place" type="text" placeholder="搜索市、区、县等" list="placeholder">
+          <input id="city-name" class="city-place" type="text" placeholder="搜索市、区、县等" list="placeholder" value="nanchang">
         </label>
         <datalist id="placeholder">
           <option value="南昌-上饶"/>
@@ -12,7 +12,17 @@
           <option value="南昌-新余"/>
           <option value="南昌-广丰"/>
           <option value="重庆-重庆"/>
+          <option value="北京/北京/北京"/>
+          <option value="北京/北京/海淀"/>
+          <option value="北京/北京/朝阳"/>
+          <option value="北京/北京/顺义"/>
+          <option value="北京/北京/怀柔"/>
+          <option value="北京/北京/通州"/>
+          <option value="北京/北京/昌平"/>
+          <option value="北京/北京/延庆"/>
+          <option value="北京/北京/丰台"/>
         </datalist>
+        <input id="aaa" class="bbb" type="button" @click="getCityName()" value="搜索">
       </div>
       <div id="link-one"></div>
       <div id="header-content">
@@ -51,7 +61,7 @@
             <!--当前位置-->
             <div class="content-locate">
               <img class="img-nowPlace small-components-logo" src="../assets/now_place.png" alt="">
-              <span class="txt-now-place" id="txt-now-place">{{city}}</span>
+              <span class="txt-now-place" id="txt-now-place">{{adm1}} {{adm2}} {{city_name}}</span>
             </div>
           </div>
           <div id="content-current-right">
@@ -206,13 +216,13 @@ var chart1
 var chart2
 
 export default {
-  name: 'Hello',
   data () {
     return {
-      city_id: 101240101,
-      name: 'Ne',
+      city_id: 101240102,
+      city_name: '新建',
+      adm1: '',
+      adm2: '',
       list: [],
-      city: '江西省 南昌市 新建区',
       temperature: '',
       weather: '',
       day_weather_low: '',
@@ -254,11 +264,19 @@ export default {
       const res = response.data
       this.temperature = res.temp
       this.weather = res.text
-      this.day_weather_low = res.temp
-      this.day_weather_high = res.temp
       this.wind_direction = res.windDir
       this.wind_scale = res.windScale
       this.humidity = res.humidity
+    })
+
+    this.$ajax({
+      method: 'GET',
+      url: '/api/location/' + this.city_id
+    }).then((response) => {
+      const res = response.data
+      this.city_name = res[0].name
+      this.adm1 = res[0].adm1
+      this.adm2 = res[0].adm2
     })
 
     this.$ajax({
@@ -287,6 +305,8 @@ export default {
     }).then((response) => {
       const res = response.data
       var i
+      this.day_weather_low = res[0].tempMin
+      this.day_weather_high = res[0].tempMax
       for (i = 0; i < 7; i++) {
         this.week_weather_low[i] = res[i].tempMin
         this.week_weather_high[i] = res[i].tempMax
@@ -379,21 +399,20 @@ export default {
     })
   },
   methods: {
-    getDayWeather () {
+    getCityName () {
+      var name = document.getElementById('city-name').value
       this.$ajax({
-        method: 'GET',
-        url: '/api/weather/' + this.city_id
+        method: 'POST',
+        url: '/api/v1/location/' + name
       }).then((response) => {
         const res = response.data
         console.log(res)
-        this.temperature = res.temp
-        this.weather = res.text
-        this.day_weather_low = res.temp
-        this.day_weather_high = res.temp
-        this.wind_direction = res.windDir
-        this.humidity = res.humidity
-        console.log(this.weather)
       })
+    },
+
+    button () {
+      var name = document.getElementById('city-name').value
+      console.log(name)
     }
   }
 }
