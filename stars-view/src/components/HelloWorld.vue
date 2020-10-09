@@ -4,7 +4,7 @@
       <div id="header-title">
         <img class="img-logo" src="../assets/logo.png" alt="">
         <label>
-          <input id="city-name" class="city-place" type="text" placeholder="搜索市、区、县等" list="placeholder" value="nanchang">
+          <input id="city-name" class="city-place" type="text" placeholder="搜索市、区、县等" list="placeholder" value="新建">
         </label>
         <datalist id="placeholder">
           <option value="南昌-上饶"/>
@@ -231,11 +231,11 @@ export default {
       wind_scale: '',
       humidity: '',
       air_quality: '良',
-      today_data: ['', '', '', '', '', '', '', '', '', '', '', ''],
-      today_temperature: ['', '', '', '', '', '', '', '', '', '', '', ''],
-      week_data: ['', '', '', '', '', '', ''],
-      week_weather_low: ['', '', '', '', '', '', ''],
-      week_weather_high: ['', '', '', '', '', '', ''],
+      today_data: [],
+      today_temperature: [],
+      week_data: [],
+      week_weather_low: [],
+      week_weather_high: [],
       daily_weather: [
         {
           'id': '',
@@ -326,7 +326,7 @@ export default {
       chart: {
         type: 'line',
         backgroundColor: 'rgba(255,255,255,0.3)',
-        borderRadius: '10px'
+        borderRadius: 10
       },
       credits: {
         enabled: false
@@ -363,7 +363,7 @@ export default {
       chart: {
         type: 'line',
         backgroundColor: 'rgba(255,255,255,0.3)',
-        borderRadius: '10px'
+        borderRadius: 10
       },
       credits: {
         enabled: false
@@ -402,11 +402,71 @@ export default {
     getCityName () {
       var name = document.getElementById('city-name').value
       this.$ajax({
-        method: 'POST',
-        url: '/api/v1/location/' + name
+        method: 'GET',
+        url: '/api/location/' + name
       }).then((response) => {
         const res = response.data
-        console.log(res)
+        this.city_id = res[0].locationId
+      })
+
+      this.$ajax({
+        method: 'GET',
+        url: '/api/weather/' + this.city_id
+      }).then((response) => {
+        const res = response.data
+        this.temperature = res.temp
+        this.weather = res.text
+        this.wind_direction = res.windDir
+        this.wind_scale = res.windScale
+        this.humidity = res.humidity
+      })
+
+      this.$ajax({
+        method: 'GET',
+        url: '/api/location/' + this.city_id
+      }).then((response) => {
+        const res = response.data
+        this.city_name = res[0].name
+        this.adm1 = res[0].adm1
+        this.adm2 = res[0].adm2
+      })
+
+      this.$ajax({
+        method: 'GET',
+        url: '/api/hourly_weather/' + this.city_id
+      }).then((response) => {
+        const res = response.data
+        this.daily_weather = res
+        var i
+        var j
+        for (i = 0; i < 24; i++) {
+          this.daily_weather[i].fxDate = res[i].fxDate
+        }
+        for (i = 0, j = 0; i < 24; i = i + 2, j++) {
+          this.today_data[j] = res[i].fxDate
+          this.today_temperature[j] = res[i].temp
+        }
+        chart1.xAxis[0].setCategories(this.today_data)
+        chart1.series[0].setData(this.today_temperature)
+        this.daily_weather[0].fxDate = '现在'
+      })
+
+      this.$ajax({
+        method: 'GET',
+        url: '/api/forecast_weather/' + this.city_id
+      }).then((response) => {
+        const res = response.data
+        var i
+        this.day_weather_low = res[0].tempMin
+        this.day_weather_high = res[0].tempMax
+        for (i = 0; i < 7; i++) {
+          this.week_weather_low[i] = res[i].tempMin
+          this.week_weather_high[i] = res[i].tempMax
+          this.week_data[i] = res[i].fxDate.substring(5, 11)
+        }
+        chart2.xAxis[0].setCategories(this.week_data)
+        chart2.series[0].setData(this.week_weather_low)
+        chart2.series[1].setData(this.week_weather_high)
       })
     },
 
