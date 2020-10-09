@@ -23,6 +23,9 @@ public class WebLocationDaoImpl implements WebLocationDao {
 		// json字符串转java对象
 		Map<String, Object> map = JSON.parseObject(json);
 		//System.out.println(json);
+		if ("404".equals(map.get("code"))) {
+			return locations;
+		}
 		List<Map<String, Object>> list = (List<Map<String, Object>>) map.get("location");
 		for (Map<String, Object> temp : list) {
 			Location location = new Location();
