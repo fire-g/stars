@@ -37,11 +37,14 @@ a {
 
 .voice{
   margin-left: 30px;
-  background: url(../assets/yuyin.png) 50% 50% no-repeat;
+  width: 32px;
+  height: 32px;
+  background: url("../assets/yuyin.png");
+  border: 0;
 }
 
 .voice:hover{
-  background: url(../assets/yuyin-cover.png) 50% 50% no-repeat;
+  background: url("../assets/yuyin-cover.png");
 }
 
 .confirm{
