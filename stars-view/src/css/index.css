@@ -34,6 +34,16 @@ a {
   margin-left: 10%;
 }
 
+
+.voice{
+  margin-left: 30px;
+  background: url(../assets/yuyin.png) 50% 50% no-repeat;
+}
+
+.voice:hover{
+  background: url(../assets/yuyin-cover.png) 50% 50% no-repeat;
+}
+
 .confirm{
   float: right;
   width: 80px;

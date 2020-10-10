@@ -45,6 +45,7 @@
             <div class="content-locate">
               <img class="img-nowPlace small-components-logo" src="../assets/now_place.png" alt="">
               <span class="txt-now-place" id="txt-now-place">{{adm1}} {{adm2}} {{city_name}}</span>
+              <img class = 'voice' src="../assets/yuyin.png">
             </div>   <!--当前位置-->
           </div>
           <div id="content-current-right">
@@ -150,17 +151,21 @@
         </div>
         <div class='tipsRetrace'>
           <div class="wrapper">
-            <ul>
+            <ul class="retraceUl">
               <li class="retrace">
                 <div class='picBox'>
                   <div class='show'>
                     <div class='picContent'>
                       <img class='picture' src="../assets/yusan.png">
-                      <p v-if="weather == ''" class="picTitle">雨伞&nbsp;需要</p>
+                      <p v-if="isYS == true" class="picTitle">雨伞&nbsp;需要</p>
+                      <p v-else class="picTitle">雨伞&nbsp;不需要</p>
                     </div>
                     <div class='hide'>
-                      <h3>
+                      <h3 v-if="isYS == true" >
                         下雨了,注意带伞
+                      </h3>
+                      <h3 v-else >
+                        今天的你可不需要雨伞呢
                       </h3>
                     </div>
                   </div>
@@ -171,10 +176,14 @@
                   <div class='show'>
                     <div class='picContent'>
                       <img class='picture' src="../assets/yao.png">
-                      <p class="picTitle">感冒&nbsp;不易</p>
+                      <p v-if="isGM == true" class="picTitle">感冒&nbsp;容易</p>
+                      <p v-else class="picTitle">感冒&nbsp;不易</p>
                     </div>
                     <div class='hide'>
-                      <h3>
+                      <h3 v-if="isGM == true">
+                        今天有点冷，注意穿衣来抵御感冒哦
+                      </h3>
+                      <h3 v-else>
                         虽然温度适宜,可不要松懈哦
                       </h3>
                     </div>
@@ -186,10 +195,14 @@
                   <div class='show'>
                     <div class='picContent'>
                       <img class='picture' src="../assets/car.png">
-                      <p class="picTitle">洗车&nbsp;适宜</p>
+                      <p v-if="isXC == true" class="picTitle">洗车&nbsp;适宜</p>
+                      <p v-else class="picTitle">洗车&nbsp;不适宜</p>
                     </div>
                     <div class='hide'>
-                      <h3>
+                      <h3 v-if="isXC == true">
+                        今天风力较小,洗完车可以让爱车发光呢
+                      </h3>
+                      <h3 v-else>
                         风力较大,洗车后会蒙上灰尘
                       </h3>
                     </div>
@@ -201,10 +214,14 @@
                   <div class='show'>
                     <div class='picContent'>
                       <img class='picture' src="../assets/taiyang.png">
-                      <p class="picTitle">防晒&nbsp;适宜</p>
+                      <p v-if="isFS == false" class="picTitle">防晒&nbsp;适宜</p>
+                      <p v-else class="picTitle">防晒&nbsp;强烈</p>
                     </div>
                     <div class='hide'>
-                      <h3>
+                      <h3 v-if="isFS == false">
+                        阳光正好，让我们一起欢快的跑
+                      </h3>
+                      <h3 v-else>
                         涂擦SPF20以上,PA++护肤品,避强光
                       </h3>
                     </div>
@@ -216,11 +233,15 @@
                   <div class='show'>
                     <div class='picContent'>
                       <img class='picture' src="../assets/basketball.png">
-                      <p class="picTitle">运动&nbsp;适宜</p>
+                      <p v-if="isYD == true" class="picTitle">运动&nbsp;适宜</p>
+                      <p v-else class="picTitle">运动&nbsp;不适</p>
                     </div>
                     <div class='hide'>
-                      <h3>
+                      <h3 v-if="isYD == true">
                         天气正好，出去运动放松一下吧
+                      </h3>
+                      <h3 v-else>
+                        今天比较适合呆在室内哦
                       </h3>
                     </div>
                   </div>
@@ -231,12 +252,24 @@
                   <div class='show'>
                     <div class='picContent'>
                       <img class='picture' src="../assets/clother.png">
-                      <p class="picTitle">穿衣&nbsp;长袖</p>
+                      <p v-if="isCY == 0" class="picTitle">穿衣&nbsp;短袖</p>
+                      <p v-else-if="isCY == 1" class="picTitle">穿衣&nbsp;长袖</p>
+                      <p v-else-if="isCY == 2" class="picTitle">穿衣&nbsp;夹克</p>
+                      <p v-else class="picTitle">穿衣&nbsp;棉袄</p>
                     </div>
 
                     <div class='hide'>
-                      <h3>
-                        建议穿长袖衬衫单裤等服装
+                      <h3 v-if="isCY == 0">
+                        天气较热,建议穿短袖短裤散热=-=
+                      </h3>
+                      <h3 v-else-if="isCY == 1">
+                        温度适宜,当然是长袖短裤啦
+                      </h3>
+                      <h3 v-else-if="isCY == 2">
+                        温度逐渐凉爽,记得披件夹克哦
+                      </h3>
+                      <h3 v-else>
+                        天气都这么冷了,大棉袄还不整上qaq
                       </h3>
                     </div>
                   </div>
@@ -280,6 +313,12 @@ export default {
       week_data: [],
       week_weather_low: [],
       week_weather_high: [],
+      isYS: false,
+      isGM: false,
+      isXC: false,
+      isFS: false,
+      isYD: false,
+      isCY: 0,
       daily_weather: [
         {
           'id': '',
@@ -311,6 +350,29 @@ export default {
       this.wind_direction = res.windDir
       this.wind_scale = res.windScale
       this.humidity = res.humidity
+      if (this.temperature > 30) {
+        this.isCY = 0
+      } else if (this.temperature > 20) {
+        this.isCY = 1
+      } else if (this.temperature > 10) {
+        this.isCY = 2
+      } else {
+        this.isCY = 3
+        this.isGM = true
+      }
+      if (this.wind_scale <= 4) {
+        this.isXC = true
+      }
+      if (this.weather.equals('晴') || this.weather.equals('多云') || this.weather.equals('阴')) {
+        this.isYD = true
+      }
+      if (this.weather.equals('晴') && this.temperature > 35) {
+        this.isFS = true
+      }
+      if (this.weather.equals('小雨') || this.weather.equals('大雨') || this.weather.equals('中雨') ||
+        this.weather.equals('暴雨') || this.weather.equals('雨')) {
+        this.isYS = true
+      }
     })
 
     this.$ajax({
@@ -465,6 +527,29 @@ export default {
         this.wind_direction = res.windDir
         this.wind_scale = res.windScale
         this.humidity = res.humidity
+        if (this.temperature > 30) {
+          this.isCY = 0
+        } else if (this.temperature > 20) {
+          this.isCY = 1
+        } else if (this.temperature > 10) {
+          this.isCY = 2
+        } else {
+          this.isCY = 3
+          this.isGM = true
+        }
+        if (this.wind_scale < 4) {
+          this.isXC = true
+        }
+        if (this.weather.equals('晴') || this.weather.equals('多云') || this.weather.equals('阴')) {
+          this.isYD = true
+        }
+        if (this.weather.equals('晴') && this.temperature > 35) {
+          this.isFS = true
+        }
+        if (this.weather.equals('小雨') || this.weather.equals('大雨') || this.weather.equals('中雨') ||
+          this.weather.equals('暴雨') || this.weather.equals('雨')) {
+          this.isYS = true
+        }
       })
 
       this.$ajax({

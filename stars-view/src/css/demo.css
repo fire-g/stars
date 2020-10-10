@@ -7,14 +7,18 @@ body {
 }
 
 .wrapper {
-  max-width: 900px;
-  margin: 40px auto 40px 20px;
+  max-width: 100%;
+  height: 100%;
+}
+
+.retraceUl{
+  height: 100%;
 }
 
 .wrapper li {
   position: relative;
-  width: 90px;
-  height: 90px;
+  width: 40%;
+  height: 33%;
   list-style: none;
   margin: 5px;
   display: inline-block;
@@ -30,7 +34,6 @@ body {
   transform-style: preserve-3d;
   transform-origin: 50% 50% -45px;
   animation: 200ms ease-out 0ms 1 normal forwards;
-  margin-left: 20px;
   width: 90px;
   height: 90px;
 }
@@ -41,6 +44,7 @@ body {
   height: 90px;
   border-radius: 5%;
 }
+
 
 .picTitle {
   font-family: "PingFang SC", "Microsoft YaHei", Simsun, Helvetica, Arial, sans-serif;
