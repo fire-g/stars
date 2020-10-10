@@ -302,7 +302,7 @@ export default {
       lookup_city: [
         {
           'locationId': '',
-          'place': ''
+          'name': ''
         }
       ],
       temperature: '',
@@ -513,13 +513,19 @@ export default {
     getCityId () {
       var name = document.getElementById('city-name').value
       var result = name.split('/')
-      name = result[0]
+      var placeName = result[0]
       this.$ajax({
         method: 'GET',
-        url: '/api/location/' + name
+        url: '/api/location/' + placeName
       }).then((response) => {
         const res = response.data
         this.city_id = res[0].locationId
+        // var a
+        // for (a = 0; a < this.lookup_city.length; a++) {
+        //   if ('11' == name) {
+        //     this.city_id = this.lookup_city[a].locationId
+        //   }
+        // }
       })
 
       this.$ajax({
@@ -627,9 +633,11 @@ export default {
       })
     },
 
-    button () {
-      var name = document.getElementById('city-name').value
-      console.log(name)
+    uploadVoice () {
+      var stringVoice = '今天天气,' + (this.weather) + ',当前温度' + this.temperature + '摄氏度,最高气温' +
+        this.day_weather_high + '摄氏度,最低气温' + (this.day_weather_low) + '摄氏度,风力,' + (this.wind_direction) +
+        (this.wind_scale) + '级,湿度百分之' + (this.humidity) + ',空气质量良好'
+      console.log(stringVoice)
     }
   }
 }
