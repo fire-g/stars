@@ -3,13 +3,11 @@
     <div id="header">
       <div id="header-title">
         <img class="img-logo" src="../assets/logo.png" alt="">
+        <input id="confirm" class="confirm" type="button" @click="getCityId()" value="确认查询">
         <label>
-          <input id="city-name" class="city-place" type="text" placeholder="搜索市、区、县等" list="placeholder" value="新建">
+          <input id="city-name" class="city-place" type="text" placeholder="搜索市、区、县等" list="placeholder" value="" @change="getCityName()">
         </label>
-        <datalist id="placeholder">
-          <option value="南昌-上饶"/>
-        </datalist>
-        <input id="aaa" class="bbb" type="button" @click="getCityName()" value="搜索">
+        <datalist id="placeholder"></datalist>
       </div>
       <div id="link-one"></div>
       <div id="header-content">
@@ -206,7 +204,7 @@ export default {
   data () {
     return {
       city_id: 101240102,
-      city_name: '新建',
+      city_name: '',
       adm1: '',
       adm2: '',
       lookup_city: [],
@@ -386,18 +384,16 @@ export default {
     })
   },
   methods: {
-    getCityName () {
+    getCityId () {
       var name = document.getElementById('city-name').value
+      var result = name.split('/')
+      name = result[0]
       this.$ajax({
         method: 'GET',
         url: '/api/location/' + name
       }).then((response) => {
         const res = response.data
         this.city_id = res[0].locationId
-        var i
-        for (i = 0; i < res.length; i++) {
-          this.lookup_city[i] = res[i].adm1 + '/' + res[i].adm2 + '/' + res[i].name
-        }
       })
 
       this.$ajax({
@@ -458,6 +454,26 @@ export default {
         chart2.xAxis[0].setCategories(this.week_data)
         chart2.series[0].setData(this.week_weather_low)
         chart2.series[1].setData(this.week_weather_high)
+      })
+    },
+
+    getCityName () {
+      var name = document.getElementById('city-name').value
+      var result = name.split('/')
+      name = result[0]
+      this.$ajax({
+        method: 'GET',
+        url: '/api/location/' + name
+      }).then((response) => {
+        const res = response.data
+        var i
+        for (i = 0; i < res.length; i++) {
+          this.lookup_city[i] = res[i].name + '/' + res[i].adm2 + '/' + res[i].adm1
+        }
+        $('#placeholder').empty()
+        for (i = 1; i < this.lookup_city.length; i++) {
+          $('#placeholder').append('<option value="' + this.lookup_city[i] + '"></option>')
+        }
       })
     },
 
