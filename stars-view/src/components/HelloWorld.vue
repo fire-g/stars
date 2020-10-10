@@ -208,7 +208,12 @@ export default {
       city_name: '',
       adm1: '',
       adm2: '',
-      lookup_city: [],
+      lookup_city: [
+        {
+          'locationId': '',
+          'place': ''
+        }
+      ],
       temperature: '',
       weather: '',
       day_weather_low: '',
@@ -470,9 +475,10 @@ export default {
         var i
         for (i = 0; i < res.length; i++) {
           this.lookup_city[i] = res[i].name + '/' + res[i].adm2 + '/' + res[i].adm1
+          this.locationId = res.locationId
         }
         $('#placeholder').empty()
-        for (i = 1; i < this.lookup_city.length; i++) {
+        for (i = 0; i < this.lookup_city.length; i++) {
           $('#placeholder').append('<option value="' + this.lookup_city[i] + '"></option>')
         }
       })
