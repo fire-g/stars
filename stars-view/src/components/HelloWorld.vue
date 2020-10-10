@@ -50,7 +50,8 @@
             </div>
           </div>
           <div id="content-current-right">
-            <img class="img-weather" src="../assets/sun to cloud.png" alt="">  <!--天气图标-->
+            <img v-if=" weather == '多云'" class="img-weather" src="../assets/weather/sun-cloudy.png" alt="">  <!--天气图标-->
+            <img v-else-if=" weather == '晴'" class="img-weather" src="../assets/weather/sun.png" alt="">
           </div>
         </div>
         <!--变色当前位置now place cover.png-->
@@ -101,7 +102,7 @@
                     </div>
                     <div class='hide'>
                       <h3>
-                        天冷注意穿衣
+                        下雨了,注意带伞
                       </h3>
                     </div>
                   </div>
@@ -116,7 +117,7 @@
                     </div>
                     <div class='hide'>
                       <h3>
-                        Picture1
+                        虽然温度适宜,可不要松懈哦
                       </h3>
                     </div>
                   </div>
@@ -131,7 +132,7 @@
                     </div>
                     <div class='hide'>
                       <h3>
-                        Picture1
+                        风力较大,洗车后会蒙上灰尘
                       </h3>
                     </div>
                   </div>
@@ -146,7 +147,7 @@
                     </div>
                     <div class='hide'>
                       <h3>
-                        Picture1
+                        涂擦SPF20以上,PA++护肤品,避强光
                       </h3>
                     </div>
                   </div>
@@ -161,7 +162,7 @@
                     </div>
                     <div class='hide'>
                       <h3>
-                        Picture1
+                        天气正好，出去运动放松一下吧
                       </h3>
                     </div>
                   </div>
@@ -177,7 +178,7 @@
 
                     <div class='hide'>
                       <h3>
-                        Picture1
+                        建议穿长袖衬衫单裤等服装
                       </h3>
                     </div>
                   </div>

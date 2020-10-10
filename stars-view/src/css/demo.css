@@ -59,7 +59,7 @@ body {
 
 .show,
 .hide {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.9);
   width: 90px;
   height: 90px;
   position: absolute;
@@ -72,10 +72,12 @@ body {
 
 .hide {
 / / 隐藏文字样式   color: rgba(255,255,255,0.1);
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255,255,255,0.9);
   text-align: center;
-  line-height: 90px;
+  line-height: 20px;
   font-size: 10px;
+  vertical-align:middle;
+  display:table-cell;
   transform: translate3d(0, 0, -1px);
   /* 3D空间内移动一个元素的位置 */
 }
