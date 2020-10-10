@@ -45,7 +45,7 @@
             <div class="content-locate">
               <img class="img-nowPlace small-components-logo" src="../assets/now_place.png" alt="">
               <span class="txt-now-place" id="txt-now-place">{{adm1}} {{adm2}} {{city_name}}</span>
-              <img class = 'voice' src="../assets/yuyin.png">
+              <img class="voice" @click='uploadVoice()' alt="">
             </div>   <!--当前位置-->
           </div>
           <div id="content-current-right">

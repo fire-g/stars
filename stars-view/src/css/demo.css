@@ -17,8 +17,8 @@ body {
 
 .wrapper li {
   position: relative;
-  width: 40%;
-  height: 33%;
+  width: 45%;
+  height: 30%;
   list-style: none;
   margin: 5px;
   display: inline-block;
@@ -36,10 +36,12 @@ body {
   animation: 200ms ease-out 0ms 1 normal forwards;
   width: 90px;
   height: 90px;
+  margin-left: 16px;
+  margin-top: 10px;
 }
 
 .picContent {
-  background: rgba(221,222,224,0.5);
+  background: rgba(161,216,229,0.5);
   width: 90px;
   height: 90px;
   border-radius: 5%;
@@ -76,7 +78,7 @@ body {
 
 .hide {
 / / 隐藏文字样式   color: rgba(255,255,255,0.1);
-  background-color: rgba(255,255,255,0.9);
+  background-color: rgba(161,216,229,0.9);
   text-align: center;
   line-height: 20px;
   font-size: 10px;
