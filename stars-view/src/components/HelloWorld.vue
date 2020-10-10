@@ -42,19 +42,71 @@
                 <span class="txt">空气质量&nbsp;{{air_quality}}</span>
               </p>
             </div>
-            <!--建议-->
-            <div class="content-tips">
+            <div class="content-tips">  <!--建议-->
             </div>
-            <!--当前位置-->
             <div class="content-locate">
               <img class="img-nowPlace small-components-logo" src="../assets/now_place.png" alt="">
               <span class="txt-now-place" id="txt-now-place">{{adm1}} {{adm2}} {{city_name}}</span>
-            </div>
+            </div>   <!--当前位置-->
           </div>
           <div id="content-current-right">
-            <img v-if=" weather == '多云'" class="img-weather" src="../assets/weather/sun-cloudy.png" alt="">  <!--天气图标-->
-            <img v-else-if=" weather == '晴'" class="img-weather" src="../assets/weather/sun.png" alt="">
-          </div>
+            <img v-if="weather == '多云' " class="img-weather" src="../assets/index/101.png" alt="">  <!--天气图标-->
+            <img v-else-if=" weather == '晴'" class="img-weather" src="../assets/index/100.png" alt="">
+            <img v-else-if=" weather == '少云'" class="img-weather" src="../assets/index/102.png" alt="">
+            <img v-else-if=" weather == '晴间多云'" class="img-weather" src="../assets/index/103.png" alt="">
+            <img v-else-if=" weather == '阴'" class="img-weather" src="../assets/index/104.png" alt="">
+            <img v-else-if=" weather == '阵雨'" class="img-weather" src="../assets/index/300.png" alt="">
+            <img v-else-if=" weather == '强阵雨'" class="img-weather" src="../assets/index/301.png" alt="">
+            <img v-else-if=" weather == '雷阵雨'" class="img-weather" src="../assets/index/302.png" alt="">
+            <img v-else-if=" weather == '强雷阵雨'" class="img-weather" src="../assets/index/303.png" alt="">
+            <img v-else-if=" weather == '强雷阵雨伴有冰雹'" class="img-weather" src="../assets/index/304.png" alt="">
+            <img v-else-if=" weather == '小雨'" class="img-weather" src="../assets/index/305.png" alt="">
+            <img v-else-if=" weather == '中雨'" class="img-weather" src="../assets/index/306.png" alt="">
+            <img v-else-if=" weather == '大雨'" class="img-weather" src="../assets/index/307.png" alt="">
+            <img v-else-if=" weather == '极端降雨'" class="img-weather" src="../assets/index/308.png" alt="">
+            <img v-else-if=" weather == '毛毛雨'" class="img-weather" src="../assets/index/309.png" alt="">
+            <img v-else-if=" weather == '暴雨'" class="img-weather" src="../assets/index/310.png" alt="">
+            <img v-else-if=" weather == '大暴雨'" class="img-weather" src="../assets/index/311.png" alt="">
+            <img v-else-if=" weather == '特大暴雨'" class="img-weather" src="../assets/index/312.png" alt="">
+            <img v-else-if=" weather == '冻雨'" class="img-weather" src="../assets/index/313.png" alt="">
+            <img v-else-if=" weather == '小到中雨'" class="img-weather" src="../assets/index/314.png" alt="">
+            <img v-else-if=" weather == '中到大雨'" class="img-weather" src="../assets/index/315.png" alt="">
+            <img v-else-if=" weather == '大到暴雨'" class="img-weather" src="../assets/index/316.png" alt="">
+            <img v-else-if=" weather == '暴雨到大暴雨'" class="img-weather" src="../assets/index/317.png" alt="">
+            <img v-else-if=" weather == '大暴雨到特大暴雨'" class="img-weather" src="../assets/index/318.png" alt="">
+            <img v-else-if=" weather == '雨'" class="img-weather" src="../assets/index/399.png" alt="">
+            <img v-else-if=" weather == '小雪'" class="img-weather" src="../assets/index/400.png" alt="">
+            <img v-else-if=" weather == '中雪'" class="img-weather" src="../assets/index/401.png" alt="">
+            <img v-else-if=" weather == '大雪'" class="img-weather" src="../assets/index/402.png" alt="">
+            <img v-else-if=" weather == '暴雪'" class="img-weather" src="../assets/index/403.png" alt="">
+            <img v-else-if=" weather == '雨夹雪'" class="img-weather" src="../assets/index/404.png" alt="">
+            <img v-else-if=" weather == '雨雪天气'" class="img-weather" src="../assets/index/405.png" alt="">
+            <img v-else-if=" weather == '阵雨夹雪'" class="img-weather" src="../assets/index/406.png" alt="">
+            <img v-else-if=" weather == '阵雪'" class="img-weather" src="../assets/index/407.png" alt="">
+            <img v-else-if=" weather == '小到中雪'" class="img-weather" src="../assets/index/408.png" alt="">
+            <img v-else-if=" weather == '中到大雪'" class="img-weather" src="../assets/index/409.png" alt="">
+            <img v-else-if=" weather == '大到暴雪'" class="img-weather" src="../assets/index/410.png" alt="">
+            <img v-else-if=" weather == '雪'" class="img-weather" src="../assets/index/499.png" alt="">
+            <img v-else-if=" weather == '阵雨夹雪'" class="img-weather" src="../assets/index/456.png" alt="">
+            <img v-else-if=" weather == '阵雪'" class="img-weather" src="../assets/index/457.png" alt="">
+            <img v-else-if=" weather == '薄雾'" class="img-weather" src="../assets/index/500.png" alt="">
+            <img v-else-if=" weather == '雾'" class="img-weather" src="../assets/index/501.png" alt="">
+            <img v-else-if=" weather == '霾'" class="img-weather" src="../assets/index/502.png" alt="">
+            <img v-else-if=" weather == '扬沙'" class="img-weather" src="../assets/index/503.png" alt="">
+            <img v-else-if=" weather == '浮尘'" class="img-weather" src="../assets/index/504.png" alt="">
+            <img v-else-if=" weather == '沙尘暴'" class="img-weather" src="../assets/index/507.png" alt="">
+            <img v-else-if=" weather == '强沙尘暴'" class="img-weather" src="../assets/index/508.png" alt="">
+            <img v-else-if=" weather == '浓雾'" class="img-weather" src="../assets/index/509.png" alt="">
+            <img v-else-if=" weather == '强浓雾'" class="img-weather" src="../assets/index/510.png" alt="">
+            <img v-else-if=" weather == '中度霾'" class="img-weather" src="../assets/index/511.png" alt="">
+            <img v-else-if=" weather == '重度霾'" class="img-weather" src="../assets/index/512.png" alt="">
+            <img v-else-if=" weather == '严重霾'" class="img-weather" src="../assets/index/513.png" alt="">
+            <img v-else-if=" weather == '大雾'" class="img-weather" src="../assets/index/514.png" alt="">
+            <img v-else-if=" weather == '特强浓雾'" class="img-weather" src="../assets/index/515.png" alt="">
+            <img v-else-if=" weather == '热'" class="img-weather" src="../assets/index/900.png" alt="">
+            <img v-else-if=" weather == '冷'" class="img-weather" src="../assets/index/901.png" alt="">
+            <img v-else class="img-weather" src="../assets/index/999.png" alt="">
+          </div> <!-- 当前天气图标 -->
         </div>
         <!--变色当前位置now place cover.png-->
         <!--变色语音播报speech sound cover.png-->
@@ -64,17 +116,23 @@
     <div id="weather-content1">
       <div id="day-weather">
         <div class="day-weather-list">
-          <!--time-1-->
-          <div class="weather-box"  v-for="item in daily_weather" v-bind:key="item.id">
-            <ul class="day-weather-ul">
-              <li class="day-weather-li"><p class="day-weather-time" style="font-size: 12px">{{item.fxDate}}</p></li>
-              <li class="day-weather-li"><p class="day-weather-temperature" style="font-size: 20px">{{item.temp}}℃</p></li>
-              <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png" style="width: 32px;height: 32px" alt=""></li>
-              <li class="day-weather-li"><p class="day-weather-windDirection" style="font-size: 14px">{{item.text}}</p></li>
-              <li class="day-weather-li"><p class="day-weather-windDirection" style="font-size: 14px">{{item.windScale}}级</p></li>
-              <li class="day-weather-li"><p class="day-weather-airQuality" style="font-size: 14px">良</p></li>
-            </ul>
+          <div class="more-weather-nav">
+            <p id = 'titleText'>
+              逐小时预报
+            </p>
           </div>
+          <!--time-1-->
+         <div class = 'more-weather'>
+           <div class="weather-box"  v-for="item in daily_weather" v-bind:key="item.id">
+             <ul class="day-weather-ul">
+               <li class="day-weather-li"><p class="day-weather-time" style="font-size: 16px">{{item.fxDate}}</p></li>
+               <li class="day-weather-li"><p class="day-weather-temperature" style="font-size: 20px">{{item.temp}}℃</p></li>
+               <li class="day-weather-li"><img class="day-weather-weather" src="../assets/weather/thundershower.png" style="width: 32px;height: 32px" alt=""></li>
+               <li class="day-weather-li"><p class="day-weather-windDirection" style="font-size: 16px">{{item.text}}</p></li>
+               <!--<li class="day-weather-li"><p class="day-weather-windDirection" style="font-size: 14px">{{item.windScale}}级</p></li>-->
+             </ul>
+           </div>
+         </div>
         </div>
       </div>
     </div>
@@ -90,7 +148,7 @@
       </div>
       <div id="system-propose">   <!--生活建议-->
         <div class=tipsDiv>
-              <ul><li><p class='tipsText'>生活建议</p></li></ul>
+              <p id='tipsText'>生活建议</p>
         </div>
         <div class='tipsRetrace'>
           <div class="wrapper">
@@ -100,7 +158,7 @@
                   <div class='show'>
                     <div class='picContent'>
                       <img class='picture' src="../assets/yusan.png">
-                      <p class="picTitle">雨伞&nbsp;需要</p>
+                      <p v-if="weather == ''" class="picTitle">雨伞&nbsp;需要</p>
                     </div>
                     <div class='hide'>
                       <h3>
@@ -320,7 +378,7 @@ export default {
         enabled: false
       },
       title: {
-        text: '未来24小时温度变化'
+        text: '未来12小时温度变化'
       },
       xAxis: {
         categories: []

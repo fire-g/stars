@@ -155,21 +155,21 @@ a {
 
 .day-weather-li{
   width: 100px;
-  height: 40px;
+  height: 30%;
   float: left;
 }
 
 .day-weather-time{
   font-size: 20px;
-  color: #c6e6de;
+  color: #767987;
   margin:0 auto;
-  padding-top: 5px;
+  padding-top: 10px;
   text-align: center;
 }
 
 .day-weather-temperature{
   font-size: 35px;
-  color: #c6e6de;
+  color: #241e1e;
   margin:0 auto;
   text-align: center;
 }
@@ -182,7 +182,7 @@ a {
 
 .day-weather-windDirection{
   font-size: 20px;
-  color: #c6e6de;
+  color: #767987;
   margin:0 auto;
   padding-top: 5px;
   text-align: center;
@@ -190,7 +190,7 @@ a {
 
 .day-weather-airQuality{
   font-size: 20px;
-  color: #c6e6de;
+  color: #241e1e;
   margin:0 auto;
   padding-top: 5px;
   text-align: center;
@@ -226,7 +226,7 @@ a {
 .tipsText{
   line-height: 100%;
   color: #2F2F2F;
-  font-size: 120%;
+  font-size: 20px;
   font-family: "PingFang SC","Microsoft YaHei",Simsun,Helvetica,Arial,sans-serif;
 }
 
@@ -244,11 +244,24 @@ a {
   width: 100%;
   margin: 0;
   padding: 0;
+  font-size: 18px;
+}
+
+.more-weather-nav{
+  height: 10%;
+  margin-left: 30px;
+  margin-top: 5px;
+  font-size: 18px;
+}
+
+.more-weather{
+  width: 100%;
+  height: 80%;
 }
 
 .weather-box{
-  width: 8%;
-  height: 90%;
+  width: 10%;
+  height: 100%;
   display: inline-block;
 }
 
@@ -264,7 +277,7 @@ a {
 }
 
 .day-weather-list::-webkit-scrollbar { /*滚动条整体样式*/
-  width: 4px; /*高宽分别对应横竖滚动条的尺寸*/
+  width: 0; /*高宽分别对应横竖滚动条的尺寸*/
   height: 4px;
 }
 
@@ -282,4 +295,21 @@ a {
 
 .container1{
   background: rgba(255.255.255.0.3);
+}
+
+#titleText:before,#tipsText:before{
+  content: '';
+  float: left;
+  height: 7px;
+  width: 7px;
+  overflow: hidden;
+  margin-right: 10px;
+  background: #344665;
+  border-radius: 50%;
+  margin-top: 8px;
+}
+
+.titleText{
+  color: #344665;
+  line-height: 100%;
 }
