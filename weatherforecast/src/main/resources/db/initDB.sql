@@ -11,7 +11,8 @@ CREATE TABLE location (
   lon DOUBLE NOT NULL,
   country VARCHAR(20) NOT NULL,
   location_id VARCHAR(20) NOT NULL,
-  PRIMARY KEY (id));
+  PRIMARY KEY (id)
+);
 
 
 -- -----------------------------------------------------
@@ -31,7 +32,8 @@ CREATE TABLE today_weather (
   vis INT NOT NULL,
   cloud INT NOT NULL,
   location_id VARCHAR(20) NOT NULL,
-  PRIMARY KEY (id));
+  PRIMARY KEY (id)
+);
 
 
 -- -----------------------------------------------------
@@ -57,7 +59,8 @@ CREATE TABLE forecast_weather (
   cloud INT NOT NULL,
   moon_phase VARCHAR(20) NOT NULL,
   location_id VARCHAR(20) NOT NULL,
-  PRIMARY KEY (id));
+  PRIMARY KEY (id)
+);
 
 
 -- -----------------------------------------------------
@@ -91,13 +94,14 @@ CREATE TABLE hourly_weather (
   cloud INT NOT NULL,
   dew INT NOT NULL,
   location_id VARCHAR(20) NOT NULL,
-  PRIMARY KEY (id));
+  PRIMARY KEY (id)
+);
 
 CREATE TABLE user (
-    id INT INDICATOR NOT NULL,
-    username VARCHAR(64) NOT NULL ,
-    email VARCHAR(64) NOT NULL ,
-    password VARCHAR(64) NOT NULL ,
-    salt VARCHAR(64) NOT NULL
+    id INT IDENTITY NOT NULL,
+    username VARCHAR(64) NOT NULL,
+    email VARCHAR(64) NOT NULL,
+    password VARCHAR(64) NOT NULL,
+    salt VARCHAR(64) NOT NULL,
     PRIMARY KEY (id)
 );

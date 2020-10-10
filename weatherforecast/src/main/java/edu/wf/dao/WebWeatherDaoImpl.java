@@ -27,8 +27,14 @@ public class WebWeatherDaoImpl implements WebWeatherDao {
     	Date nowDate = new Date();
     	String json = WebApiConnector.connect(urlString);
     	Map<String, Object> map = JSON.parseObject(json);
-    	Map<String, Object> data = (Map<String, Object>) map.get("now");
+    	
     	TodayWeather todayWeather = new TodayWeather();
+    	System.out.println(map.get("code"));
+    	if ("400".equals(map.get("code"))) {
+			return todayWeather;
+		}
+    	
+    	Map<String, Object> data = (Map<String, Object>) map.get("now");
     	todayWeather.setTemp(Integer.parseInt((String) data.get("temp")));
         todayWeather.setFeelsLike(Integer.parseInt((String) data.get("feelsLike")));
         todayWeather.setText((String) data.get("text"));
@@ -54,6 +60,10 @@ public class WebWeatherDaoImpl implements WebWeatherDao {
 		//System.out.println(map);
 		List<Map<String, Object>> data = (List<Map<String, Object>>) map.get("daily");
 		List<LifeIndex> list = new ArrayList<>(); 
+		
+		if ("400".equals(map.get("code"))) {
+			return list;
+		}
 		
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date nowDate = new Date();
@@ -85,9 +95,14 @@ public class WebWeatherDaoImpl implements WebWeatherDao {
 		
 		String json = WebApiConnector.connect(urlString);
 		Map<String, Object> map = JSON.parseObject(json);
+		List<ForecastWeather> list = new ArrayList<>(); 
+		
+		if ("400".equals(map.get("code"))) {
+			return list;
+		}
 		
 		List<Map<String, Object>> data = (List<Map<String, Object>>) map.get("daily");
-		List<ForecastWeather> list = new ArrayList<>(); 
+		
 		
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date nowDate = new Date();
@@ -130,6 +145,11 @@ public class WebWeatherDaoImpl implements WebWeatherDao {
     	String json = WebApiConnector.connect(urlString);
     	Map<String, Object> map = JSON.parseObject(json);
     	List<HourlyWeather> list = new ArrayList<>(); 
+    	
+    	if ("400".equals(map.get("code"))) {
+			return list;
+		}
+    	
     	List<Map<String, Object>> data = (List<Map<String, Object>>) map.get("hourly");
     	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
     	Date nowDate = new Date();

@@ -3,13 +3,8 @@ package edu.wf.rest;
 import edu.wf.model.User;
 import edu.wf.service.UserService;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -62,6 +57,18 @@ public class UserController {
         objectMap.put("code",400);
         objectMap.put("message","邮箱已经注册,请登录或更换邮箱");
         return objectMap;
+    }
+
+    //邮箱验证码登录
+    @PostMapping(value = "/code-login",produces = {"application/json;charset=UTF-8"})
+    public Map<?,?> codeLogin(){
+        return null;
+    }
+
+    //获取验证码
+    @GetMapping(value = "/code",produces = {"application/json;charset=UTF-8"})
+    public Map<?,?> getCode(){
+        return null;
     }
 
 }
