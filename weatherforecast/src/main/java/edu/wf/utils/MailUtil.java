@@ -7,15 +7,12 @@ import java.util.Properties;
 
 /**
  * @author GOD
- * <p>
  * 实现一个可以发送加密邮件的邮件工具类
- * 流程:
- * 1、
  */
 public class MailUtil implements Runnable {
-    private String email;//收件人邮箱
-    private int code;//激活码
-    private static String from = "Knowlesea@126.com";//发件人电子邮箱
+    private final String email;//收件人邮箱
+    private final int code;//激活码
+    private static final String from = "Knowlesea@126.com";//发件人电子邮箱
 
     public MailUtil(String email, int code) {
         this.email = email;
@@ -85,11 +82,11 @@ public class MailUtil implements Runnable {
         // create message content
         message.setHeader("Content-Type", "VerificationCode");
         String content = "<h1>账户电子邮件验证</h1>\n" +
-                "<h2>验证您Msocsaa账户:</h2>\n" +
+                "<h2>验证您星乐天气账户:</h2>\n" +
                 "<h2>验证码:<strong>" + code + "</strong></h2>" +
-                "<p>您需要向Msocsaa提供一个验证过的的电子邮件地址来使用Msocsaa的完整功能，以及在未来能够安全的找回您的账户。</p>\n" +
+                "<p>您需要向星乐天气提供一个验证过的的电子邮件地址来使用星乐天气的完整功能，以及在未来能够安全的找回您的账户。</p>\n" +
                 "<p>感谢您协助我们确认您的账户的安全性</p>\n" +
-                "<p>*如果您最近并未使用本电子邮件地址新建Msocsaa账户，您可以放心的忽略此邮件。</p>";
+                "<p>*如果您最近并未使用本电子邮件地址新建星乐天气账户，您可以放心的忽略此邮件。</p>";
         //set message content
         message.setContent(content, "text/html;charset=UTF-8");
         return message;
