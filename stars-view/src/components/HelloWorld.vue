@@ -92,7 +92,7 @@
       </div>
       <div id="system-propose">   <!--生活建议-->
         <div class=tipsDiv>
-              <p class='tipsText'>生活建议</p>
+              <ul><li><p class='tipsText'>生活建议</p></li></ul>
         </div>
         <div class='tipsRetrace'>
           <div class="wrapper">

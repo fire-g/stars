@@ -39,6 +39,7 @@ body {
   background: rgba(221,222,224,0.8);
   width: 90px;
   height: 90px;
+  border-radius: 5%;
 }
 
 .picTitle {
@@ -66,6 +67,7 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
+  border-radius: 3%;
 }
 
 .hide {
