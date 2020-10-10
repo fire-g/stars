@@ -8,19 +8,6 @@
         </label>
         <datalist id="placeholder">
           <option value="南昌-上饶"/>
-          <option value="南昌-宜春"/>
-          <option value="南昌-新余"/>
-          <option value="南昌-广丰"/>
-          <option value="重庆-重庆"/>
-          <option value="北京/北京/北京"/>
-          <option value="北京/北京/海淀"/>
-          <option value="北京/北京/朝阳"/>
-          <option value="北京/北京/顺义"/>
-          <option value="北京/北京/怀柔"/>
-          <option value="北京/北京/通州"/>
-          <option value="北京/北京/昌平"/>
-          <option value="北京/北京/延庆"/>
-          <option value="北京/北京/丰台"/>
         </datalist>
         <input id="aaa" class="bbb" type="button" @click="getCityName()" value="搜索">
       </div>
@@ -222,7 +209,7 @@ export default {
       city_name: '新建',
       adm1: '',
       adm2: '',
-      list: [],
+      lookup_city: [],
       temperature: '',
       weather: '',
       day_weather_low: '',
@@ -407,6 +394,10 @@ export default {
       }).then((response) => {
         const res = response.data
         this.city_id = res[0].locationId
+        var i
+        for (i = 0; i < res.length; i++) {
+          this.lookup_city[i] = res[i].adm1 + '/' + res[i].adm2 + '/' + res[i].name
+        }
       })
 
       this.$ajax({
