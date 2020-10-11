@@ -357,6 +357,7 @@ export default {
       contentType: 'application/x-www-form-urlencoded; charset=utf-8'
     }).then((response) => {
       const res = response.data
+      console.log(res)
       this.temperature = res.temp
       this.weather = res.text
       this.wind_direction = res.windDir
@@ -631,10 +632,10 @@ export default {
         this.lookup_city = res
         console.log(this.lookup_city)
         var i
-        // for (i = 0; i < res.length; i++) {
-        //   this.lookup_city[i].name = res[i].name + '/' + res[i].adm2 + '/' + res[i].adm1
-        //   this.lookup_city[i].locationId = res.locationId
-        // }
+        for (i = 0; i < res.length; i++) {
+          this.lookup_city[i].name = res[i].name + '/' + res[i].adm2 + '/' + res[i].adm1
+          this.lookup_city[i].locationId = res.locationId
+        }
         $('#placeholder').empty()
         for (i = 0; i < this.lookup_city.length; i++) {
           $('#placeholder').append('<option value="' + this.lookup_city[i].name + this.lookup_city[i].adm2 + this.lookup_city[i].adm1 + '"></option>')
