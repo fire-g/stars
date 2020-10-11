@@ -18,7 +18,6 @@
     "highcharts": "^8.2.0",
     "vue": "^2.6.12",
     "vue-router": "^3.0.1",
-    "bootstrap-vue": "latest",
     "bootstrap-vue": "latest"
   },
   "devDependencies": {

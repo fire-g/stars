@@ -1,14 +1,6 @@
 <template>
   <div id="body">
     <div id="header">
-      <div id="header-title">
-        <img class="img-logo" src="../assets/logo.png" alt="">
-        <input id="confirm" class="confirm" type="button" @click="getCityId()" value="确认查询">
-        <label>
-          <input id="city-name" class="city-place" type="text" placeholder="搜索市、区、县等" list="placeholder" value="" @change="getCityName()">
-        </label>
-        <datalist id="placeholder"></datalist>
-      </div>
       <div id="link-one"></div>
       <div id="header-content">
         <div id="content-current">
@@ -45,65 +37,65 @@
             <div class="content-locate">
               <img class="img-nowPlace small-components-logo" src="../assets/now_place.png" alt="">
               <span class="txt-now-place" id="txt-now-place">{{adm1}} {{adm2}} {{city_name}}</span>
-              <img class="voice" @click='uploadVoice()' alt="">
+              <img class="voice" @click='uploadVoice()' alt="" src="">
             </div>   <!--当前位置-->
           </div>
           <div id="content-current-right">
-            <img v-if="weather == '多云' " class="img-weather" src="../assets/index/101.png" alt="">  <!--天气图标-->
-            <img v-else-if=" weather == '晴'" class="img-weather" src="../assets/index/100.png" alt="">
-            <img v-else-if=" weather == '少云'" class="img-weather" src="../assets/index/102.png" alt="">
-            <img v-else-if=" weather == '晴间多云'" class="img-weather" src="../assets/index/103.png" alt="">
-            <img v-else-if=" weather == '阴'" class="img-weather" src="../assets/index/104.png" alt="">
-            <img v-else-if=" weather == '阵雨'" class="img-weather" src="../assets/index/300.png" alt="">
-            <img v-else-if=" weather == '强阵雨'" class="img-weather" src="../assets/index/301.png" alt="">
-            <img v-else-if=" weather == '雷阵雨'" class="img-weather" src="../assets/index/302.png" alt="">
-            <img v-else-if=" weather == '强雷阵雨'" class="img-weather" src="../assets/index/303.png" alt="">
-            <img v-else-if=" weather == '强雷阵雨伴有冰雹'" class="img-weather" src="../assets/index/304.png" alt="">
-            <img v-else-if=" weather == '小雨'" class="img-weather" src="../assets/index/305.png" alt="">
-            <img v-else-if=" weather == '中雨'" class="img-weather" src="../assets/index/306.png" alt="">
-            <img v-else-if=" weather == '大雨'" class="img-weather" src="../assets/index/307.png" alt="">
-            <img v-else-if=" weather == '极端降雨'" class="img-weather" src="../assets/index/308.png" alt="">
-            <img v-else-if=" weather == '毛毛雨'" class="img-weather" src="../assets/index/309.png" alt="">
-            <img v-else-if=" weather == '暴雨'" class="img-weather" src="../assets/index/310.png" alt="">
-            <img v-else-if=" weather == '大暴雨'" class="img-weather" src="../assets/index/311.png" alt="">
-            <img v-else-if=" weather == '特大暴雨'" class="img-weather" src="../assets/index/312.png" alt="">
-            <img v-else-if=" weather == '冻雨'" class="img-weather" src="../assets/index/313.png" alt="">
-            <img v-else-if=" weather == '小到中雨'" class="img-weather" src="../assets/index/314.png" alt="">
-            <img v-else-if=" weather == '中到大雨'" class="img-weather" src="../assets/index/315.png" alt="">
-            <img v-else-if=" weather == '大到暴雨'" class="img-weather" src="../assets/index/316.png" alt="">
-            <img v-else-if=" weather == '暴雨到大暴雨'" class="img-weather" src="../assets/index/317.png" alt="">
-            <img v-else-if=" weather == '大暴雨到特大暴雨'" class="img-weather" src="../assets/index/318.png" alt="">
-            <img v-else-if=" weather == '雨'" class="img-weather" src="../assets/index/399.png" alt="">
-            <img v-else-if=" weather == '小雪'" class="img-weather" src="../assets/index/400.png" alt="">
-            <img v-else-if=" weather == '中雪'" class="img-weather" src="../assets/index/401.png" alt="">
-            <img v-else-if=" weather == '大雪'" class="img-weather" src="../assets/index/402.png" alt="">
-            <img v-else-if=" weather == '暴雪'" class="img-weather" src="../assets/index/403.png" alt="">
-            <img v-else-if=" weather == '雨夹雪'" class="img-weather" src="../assets/index/404.png" alt="">
-            <img v-else-if=" weather == '雨雪天气'" class="img-weather" src="../assets/index/405.png" alt="">
-            <img v-else-if=" weather == '阵雨夹雪'" class="img-weather" src="../assets/index/406.png" alt="">
-            <img v-else-if=" weather == '阵雪'" class="img-weather" src="../assets/index/407.png" alt="">
-            <img v-else-if=" weather == '小到中雪'" class="img-weather" src="../assets/index/408.png" alt="">
-            <img v-else-if=" weather == '中到大雪'" class="img-weather" src="../assets/index/409.png" alt="">
-            <img v-else-if=" weather == '大到暴雪'" class="img-weather" src="../assets/index/410.png" alt="">
-            <img v-else-if=" weather == '雪'" class="img-weather" src="../assets/index/499.png" alt="">
-            <img v-else-if=" weather == '阵雨夹雪'" class="img-weather" src="../assets/index/456.png" alt="">
-            <img v-else-if=" weather == '阵雪'" class="img-weather" src="../assets/index/457.png" alt="">
-            <img v-else-if=" weather == '薄雾'" class="img-weather" src="../assets/index/500.png" alt="">
-            <img v-else-if=" weather == '雾'" class="img-weather" src="../assets/index/501.png" alt="">
-            <img v-else-if=" weather == '霾'" class="img-weather" src="../assets/index/502.png" alt="">
-            <img v-else-if=" weather == '扬沙'" class="img-weather" src="../assets/index/503.png" alt="">
-            <img v-else-if=" weather == '浮尘'" class="img-weather" src="../assets/index/504.png" alt="">
-            <img v-else-if=" weather == '沙尘暴'" class="img-weather" src="../assets/index/507.png" alt="">
-            <img v-else-if=" weather == '强沙尘暴'" class="img-weather" src="../assets/index/508.png" alt="">
-            <img v-else-if=" weather == '浓雾'" class="img-weather" src="../assets/index/509.png" alt="">
-            <img v-else-if=" weather == '强浓雾'" class="img-weather" src="../assets/index/510.png" alt="">
-            <img v-else-if=" weather == '中度霾'" class="img-weather" src="../assets/index/511.png" alt="">
-            <img v-else-if=" weather == '重度霾'" class="img-weather" src="../assets/index/512.png" alt="">
-            <img v-else-if=" weather == '严重霾'" class="img-weather" src="../assets/index/513.png" alt="">
-            <img v-else-if=" weather == '大雾'" class="img-weather" src="../assets/index/514.png" alt="">
-            <img v-else-if=" weather == '特强浓雾'" class="img-weather" src="../assets/index/515.png" alt="">
-            <img v-else-if=" weather == '热'" class="img-weather" src="../assets/index/900.png" alt="">
-            <img v-else-if=" weather == '冷'" class="img-weather" src="../assets/index/901.png" alt="">
+            <img v-if="weather === '多云' " class="img-weather" src="../assets/index/101.png" alt="">  <!--天气图标-->
+            <img v-else-if=" weather === '晴'" class="img-weather" src="../assets/index/100.png" alt="">
+            <img v-else-if=" weather === '少云'" class="img-weather" src="../assets/index/102.png" alt="">
+            <img v-else-if=" weather === '晴间多云'" class="img-weather" src="../assets/index/103.png" alt="">
+            <img v-else-if=" weather === '阴'" class="img-weather" src="../assets/index/104.png" alt="">
+            <img v-else-if=" weather === '阵雨'" class="img-weather" src="../assets/index/300.png" alt="">
+            <img v-else-if=" weather === '强阵雨'" class="img-weather" src="../assets/index/301.png" alt="">
+            <img v-else-if=" weather === '雷阵雨'" class="img-weather" src="../assets/index/302.png" alt="">
+            <img v-else-if=" weather === '强雷阵雨'" class="img-weather" src="../assets/index/303.png" alt="">
+            <img v-else-if=" weather === '强雷阵雨伴有冰雹'" class="img-weather" src="../assets/index/304.png" alt="">
+            <img v-else-if=" weather === '小雨'" class="img-weather" src="../assets/index/305.png" alt="">
+            <img v-else-if=" weather === '中雨'" class="img-weather" src="../assets/index/306.png" alt="">
+            <img v-else-if=" weather === '大雨'" class="img-weather" src="../assets/index/307.png" alt="">
+            <img v-else-if=" weather === '极端降雨'" class="img-weather" src="../assets/index/308.png" alt="">
+            <img v-else-if=" weather === '毛毛雨'" class="img-weather" src="../assets/index/309.png" alt="">
+            <img v-else-if=" weather === '暴雨'" class="img-weather" src="../assets/index/310.png" alt="">
+            <img v-else-if=" weather === '大暴雨'" class="img-weather" src="../assets/index/311.png" alt="">
+            <img v-else-if=" weather === '特大暴雨'" class="img-weather" src="../assets/index/312.png" alt="">
+            <img v-else-if=" weather === '冻雨'" class="img-weather" src="../assets/index/313.png" alt="">
+            <img v-else-if=" weather === '小到中雨'" class="img-weather" src="../assets/index/314.png" alt="">
+            <img v-else-if=" weather === '中到大雨'" class="img-weather" src="../assets/index/315.png" alt="">
+            <img v-else-if=" weather === '大到暴雨'" class="img-weather" src="../assets/index/316.png" alt="">
+            <img v-else-if=" weather === '暴雨到大暴雨'" class="img-weather" src="../assets/index/317.png" alt="">
+            <img v-else-if=" weather === '大暴雨到特大暴雨'" class="img-weather" src="../assets/index/318.png" alt="">
+            <img v-else-if=" weather === '雨'" class="img-weather" src="../assets/index/399.png" alt="">
+            <img v-else-if=" weather === '小雪'" class="img-weather" src="../assets/index/400.png" alt="">
+            <img v-else-if=" weather === '中雪'" class="img-weather" src="../assets/index/401.png" alt="">
+            <img v-else-if=" weather === '大雪'" class="img-weather" src="../assets/index/402.png" alt="">
+            <img v-else-if=" weather === '暴雪'" class="img-weather" src="../assets/index/403.png" alt="">
+            <img v-else-if=" weather === '雨夹雪'" class="img-weather" src="../assets/index/404.png" alt="">
+            <img v-else-if=" weather === '雨雪天气'" class="img-weather" src="../assets/index/405.png" alt="">
+            <img v-else-if=" weather === '阵雨夹雪'" class="img-weather" src="../assets/index/406.png" alt="">
+            <img v-else-if=" weather === '阵雪'" class="img-weather" src="../assets/index/407.png" alt="">
+            <img v-else-if=" weather === '小到中雪'" class="img-weather" src="../assets/index/408.png" alt="">
+            <img v-else-if=" weather === '中到大雪'" class="img-weather" src="../assets/index/409.png" alt="">
+            <img v-else-if=" weather === '大到暴雪'" class="img-weather" src="../assets/index/410.png" alt="">
+            <img v-else-if=" weather === '雪'" class="img-weather" src="../assets/index/499.png" alt="">
+            <img v-else-if=" weather === '阵雨夹雪'" class="img-weather" src="../assets/index/456.png" alt="">
+            <img v-else-if=" weather === '阵雪'" class="img-weather" src="../assets/index/457.png" alt="">
+            <img v-else-if=" weather === '薄雾'" class="img-weather" src="../assets/index/500.png" alt="">
+            <img v-else-if=" weather === '雾'" class="img-weather" src="../assets/index/501.png" alt="">
+            <img v-else-if=" weather === '霾'" class="img-weather" src="../assets/index/502.png" alt="">
+            <img v-else-if=" weather === '扬沙'" class="img-weather" src="../assets/index/503.png" alt="">
+            <img v-else-if=" weather === '浮尘'" class="img-weather" src="../assets/index/504.png" alt="">
+            <img v-else-if=" weather === '沙尘暴'" class="img-weather" src="../assets/index/507.png" alt="">
+            <img v-else-if=" weather === '强沙尘暴'" class="img-weather" src="../assets/index/508.png" alt="">
+            <img v-else-if=" weather === '浓雾'" class="img-weather" src="../assets/index/509.png" alt="">
+            <img v-else-if=" weather === '强浓雾'" class="img-weather" src="../assets/index/510.png" alt="">
+            <img v-else-if=" weather === '中度霾'" class="img-weather" src="../assets/index/511.png" alt="">
+            <img v-else-if=" weather === '重度霾'" class="img-weather" src="../assets/index/512.png" alt="">
+            <img v-else-if=" weather === '严重霾'" class="img-weather" src="../assets/index/513.png" alt="">
+            <img v-else-if=" weather === '大雾'" class="img-weather" src="../assets/index/514.png" alt="">
+            <img v-else-if=" weather === '特强浓雾'" class="img-weather" src="../assets/index/515.png" alt="">
+            <img v-else-if=" weather === '热'" class="img-weather" src="../assets/index/900.png" alt="">
+            <img v-else-if=" weather === '冷'" class="img-weather" src="../assets/index/901.png" alt="">
             <img v-else class="img-weather" src="../assets/index/999.png" alt="">
           </div> <!-- 当前天气图标 -->
         </div>
@@ -156,12 +148,12 @@
                 <div class='picBox'>
                   <div class='show'>
                     <div class='picContent'>
-                      <img class='picture' src="../assets/yusan.png">
-                      <p v-if="isYS == true" class="picTitle">雨伞&nbsp;需要</p>
+                      <img class='picture' src="../assets/yusan.png" alt="">
+                      <p v-if="isYS === true" class="picTitle">雨伞&nbsp;需要</p>
                       <p v-else class="picTitle">雨伞&nbsp;不需要</p>
                     </div>
                     <div class='hide'>
-                      <h3 v-if="isYS == true" >
+                      <h3 v-if="isYS === true" >
                         下雨了,注意带伞
                       </h3>
                       <h3 v-else >
@@ -175,12 +167,12 @@
                 <div class='picBox'>
                   <div class='show'>
                     <div class='picContent'>
-                      <img class='picture' src="../assets/yao.png">
-                      <p v-if="isGM == true" class="picTitle">感冒&nbsp;容易</p>
+                      <img class='picture' src="../assets/yao.png" alt="">
+                      <p v-if="isGM === true" class="picTitle">感冒&nbsp;容易</p>
                       <p v-else class="picTitle">感冒&nbsp;不易</p>
                     </div>
                     <div class='hide'>
-                      <h3 v-if="isGM == true">
+                      <h3 v-if="isGM === true">
                         今天有点冷，注意穿衣来抵御感冒哦
                       </h3>
                       <h3 v-else>
@@ -194,12 +186,12 @@
                 <div class='picBox'>
                   <div class='show'>
                     <div class='picContent'>
-                      <img class='picture' src="../assets/car.png">
-                      <p v-if="isXC == true" class="picTitle">洗车&nbsp;适宜</p>
+                      <img class='picture' src="../assets/car.png" alt="">
+                      <p v-if="isXC === true" class="picTitle">洗车&nbsp;适宜</p>
                       <p v-else class="picTitle">洗车&nbsp;不适宜</p>
                     </div>
                     <div class='hide'>
-                      <h3 v-if="isXC == true">
+                      <h3 v-if="isXC === true">
                         今天风力较小,洗完车可以让爱车发光呢
                       </h3>
                       <h3 v-else>
@@ -213,17 +205,13 @@
                 <div class='picBox'>
                   <div class='show'>
                     <div class='picContent'>
-                      <img class='picture' src="../assets/taiyang.png">
-                      <p v-if="isFS == false" class="picTitle">防晒&nbsp;适宜</p>
+                      <img class='picture' src="../assets/taiyang.png" alt="">
+                      <p v-if="isFS === false" class="picTitle">防晒&nbsp;适宜</p>
                       <p v-else class="picTitle">防晒&nbsp;强烈</p>
                     </div>
                     <div class='hide'>
-                      <h3 v-if="isFS == false">
-                        阳光正好，让我们一起欢快的跑
-                      </h3>
-                      <h3 v-else>
-                        涂擦SPF20以上,PA++护肤品,避强光
-                      </h3>
+                      <h3 v-if="isFS === false">阳光正好，让我们一起欢快的跑</h3>
+                      <h3 v-else>涂擦SPF20以上,PA++护肤品,避强光</h3>
                     </div>
                   </div>
                 </div>
@@ -232,12 +220,12 @@
                 <div class='picBox'>
                   <div class='show'>
                     <div class='picContent'>
-                      <img class='picture' src="../assets/basketball.png">
-                      <p v-if="isYD == true" class="picTitle">运动&nbsp;适宜</p>
+                      <img class='picture' src="../assets/basketball.png" alt="">
+                      <p v-if="isYD === true" class="picTitle">运动&nbsp;适宜</p>
                       <p v-else class="picTitle">运动&nbsp;不适</p>
                     </div>
                     <div class='hide'>
-                      <h3 v-if="isYD == true">
+                      <h3 v-if="isYD === true">
                         天气正好，出去运动放松一下吧
                       </h3>
                       <h3 v-else>
@@ -251,21 +239,21 @@
                 <div class='picBox'>
                   <div class='show'>
                     <div class='picContent'>
-                      <img class='picture' src="../assets/clother.png">
-                      <p v-if="isCY == 0" class="picTitle">穿衣&nbsp;短袖</p>
-                      <p v-else-if="isCY == 1" class="picTitle">穿衣&nbsp;长袖</p>
-                      <p v-else-if="isCY == 2" class="picTitle">穿衣&nbsp;夹克</p>
+                      <img class='picture' src="../assets/clother.png" alt="">
+                      <p v-if="isCY === 0" class="picTitle">穿衣&nbsp;短袖</p>
+                      <p v-else-if="isCY === 1" class="picTitle">穿衣&nbsp;长袖</p>
+                      <p v-else-if="isCY === 2" class="picTitle">穿衣&nbsp;夹克</p>
                       <p v-else class="picTitle">穿衣&nbsp;棉袄</p>
                     </div>
 
                     <div class='hide'>
-                      <h3 v-if="isCY == 0">
+                      <h3 v-if="isCY === 0">
                         天气较热,建议穿短袖短裤散热=-=
                       </h3>
-                      <h3 v-else-if="isCY == 1">
+                      <h3 v-else-if="isCY === 1">
                         温度适宜,当然是长袖短裤啦
                       </h3>
-                      <h3 v-else-if="isCY == 2">
+                      <h3 v-else-if="isCY === 2">
                         温度逐渐凉爽,记得披件夹克哦
                       </h3>
                       <h3 v-else>
@@ -287,10 +275,11 @@
 <script>
 import $ from 'jquery'
 import F from '../js/demo'
-import Highcharts from 'highcharts'
+import HighCharts from 'highcharts'
+import $ajax from 'axios'
 
-var chart1
-var chart2
+let chart1
+let chart2
 
 export default {
   data () {
@@ -351,7 +340,11 @@ export default {
     }
   },
   created: function () {
-    this.$ajax({
+    const city = this.$router.currentRoute.query.id
+    if (city !== undefined) {
+      this.city_id = city
+    }
+    $ajax({
       method: 'GET',
       url: '/api/weather/' + this.city_id,
       contentType: 'application/x-www-form-urlencoded; charset=utf-8'
@@ -388,7 +381,7 @@ export default {
       }
     })
 
-    this.$ajax({
+    $ajax({
       method: 'GET',
       url: '/api/location/' + this.city_id
     }).then((response) => {
@@ -398,14 +391,14 @@ export default {
       this.adm2 = res[0].adm2
     })
 
-    this.$ajax({
+    $ajax({
       method: 'GET',
       url: '/api/hourly_weather/' + this.city_id
     }).then((response) => {
       const res = response.data
       this.daily_weather = res
-      var i
-      var j
+      let i
+      let j
       for (i = 0; i < 24; i++) {
         this.daily_weather[i].fxDate = res[i].fxDate
       }
@@ -418,12 +411,12 @@ export default {
       this.daily_weather[0].fxDate = '现在'
     })
 
-    this.$ajax({
+    $ajax({
       method: 'GET',
       url: '/api/forecast_weather/' + this.city_id
     }).then((response) => {
       const res = response.data
-      var i
+      let i
       this.day_weather_low = res[0].tempMin
       this.day_weather_high = res[0].tempMax
       for (i = 0; i < 7; i++) {
@@ -441,7 +434,7 @@ export default {
     a.init()
 
     // 日平均气温
-    chart1 = new Highcharts.Chart('container1', {
+    chart1 = new HighCharts.Chart('container1', {
       chart: {
         type: 'line',
         backgroundColor: 'rgba(255,255,255,0.3)',
@@ -478,7 +471,7 @@ export default {
     })
 
     // 周平均气温
-    chart2 = new Highcharts.Chart('container2', {
+    chart2 = new HighCharts.Chart('container2', {
       chart: {
         type: 'line',
         backgroundColor: 'rgba(255,255,255,0.3)',
@@ -519,16 +512,16 @@ export default {
   },
   methods: {
     getCityId () {
-      var name = document.getElementById('city-name').value
-      var result = name.split('/')
-      var placeName = result[0]
-      this.$ajax({
+      const name = document.getElementById('city-name').value
+      const result = name.split('/')
+      const placeName = result[0]
+      this.$Aajax({
         method: 'GET',
         url: '/api/location/' + placeName
       }).then((response) => {
         const res = response.data
         this.city_id = res[0].locationId
-        var a
+        let a
         for (a = 0; a < this.lookup_city.length; a++) {
           if (name === this.lookup_city[a].name) {
             this.city_id = this.lookup_city[a].locationId
@@ -601,12 +594,12 @@ export default {
         this.daily_weather[0].fxDate = '现在'
       })
 
-      this.$ajax({
+      $ajax({
         method: 'GET',
         url: '/api/forecast_weather/' + this.city_id
       }).then((response) => {
         const res = response.data
-        var i
+        let i
         this.day_weather_low = res[0].tempMin
         this.day_weather_high = res[0].tempMax
         for (i = 0; i < 7; i++) {
@@ -620,31 +613,8 @@ export default {
       })
     },
 
-    getCityName () {
-      var name = document.getElementById('city-name').value
-      var result = name.split('/')
-      name = result[0]
-      this.$ajax({
-        method: 'GET',
-        url: '/api/location/' + name
-      }).then((response) => {
-        const res = response.data
-        this.lookup_city = res
-        console.log(this.lookup_city)
-        var i
-        for (i = 0; i < res.length; i++) {
-          this.lookup_city[i].name = res[i].name + '/' + res[i].adm2 + '/' + res[i].adm1
-          this.lookup_city[i].locationId = res.locationId
-        }
-        $('#placeholder').empty()
-        for (i = 0; i < this.lookup_city.length; i++) {
-          $('#placeholder').append('<option value="' + this.lookup_city[i].name + this.lookup_city[i].adm2 + this.lookup_city[i].adm1 + '"></option>')
-        }
-      })
-    },
-
     uploadVoice () {
-      var stringVoice = '今天天气,' + (this.weather) + ',当前温度' + this.temperature + '摄氏度,最高气温' +
+      const stringVoice = '今天天气,' + (this.weather) + ',当前温度' + this.temperature + '摄氏度,最高气温' +
         this.day_weather_high + '摄氏度,最低气温' + (this.day_weather_low) + '摄氏度,风力,' + (this.wind_direction) +
         (this.wind_scale) + '级,湿度百分之' + (this.humidity) + ',空气质量良好'
       console.log(stringVoice)
@@ -656,6 +626,451 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  @import "../css/index.css";
-  @import "../css/demo.css";
+  /*@import "../css/index.css";*/
+  /*@import "../css/demo.css";*/
+  h1, h2 {
+    font-weight: normal;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  a {
+    color: #42b983;
+  }
+
+  .voice{
+    margin-left: 30px;
+    width: 32px;
+    height: 32px;
+    background: url("../assets/yuyin.png");
+    border: 0;
+  }
+
+  .voice:hover{
+    background: url("../assets/yuyin-cover.png");
+  }
+
+  .small-components-logo {
+    width: 32px;
+    height: 32px;
+    float: left;
+  }
+
+  .content-temperature{
+    height: 86px;
+    margin-bottom: 30px;
+  }
+
+  .content-maximumTemperature{
+    margin-bottom: 30px;
+    height: 40px;
+  }
+
+  .content-other{
+    width: 900px;
+    vertical-align: middle;
+    height:25px;
+    margin-bottom: 30px;
+  }
+
+  .text-temperature{
+    display: inline-block;
+    font-size: 86px;
+    line-height: 86px;
+    color: #fff;
+    margin:0 auto;
+  }
+
+  .text-weather{
+    display: inline-block;
+    font-size: 20px;
+    line-height: 20px;
+    color: #c6e6de;
+    margin:0 auto;
+  }
+
+  .text-up-low{
+    display: inline-block;
+    font-size: 20px;
+    line-height: 20px;
+    color: #c6e6de;
+    margin:0 auto;
+  }
+
+  .img-weather{
+    width:200px;
+    height: 200px;
+  }
+
+  .txt{
+    line-height: 20px;
+    color: #c6e6de;
+    display: inline-block;
+    font-size: 19px;
+    margin-left: 10px;
+    float: left;
+  }
+
+  .txt-now-place{
+    line-height: 32px;
+    color: #c6e6de;
+    display: inline-block;
+    font-size: 25px;
+    margin-left: 10px;
+    float: left;
+  }
+
+  .icon{
+    width: 20px;
+    height: 20px;
+  }
+
+  .windDirection{
+    margin-top:1px;
+    float: left;
+  }
+
+  .item{
+    display: inline-block;
+    margin-right: 42px;
+    color: #c6e6de;
+    height: 20px;
+    line-height: 20px;
+    font-size: 0;
+  }
+
+  .day-weather-ul{
+    width: 6%;
+    height: 90%;
+  }
+
+  .day-weather-li{
+    width: 100px;
+    height: 30%;
+    float: left;
+  }
+
+  .day-weather-time{
+    font-size: 20px;
+    color: #767987;
+    margin:0 auto;
+    padding-top: 10px;
+    text-align: center;
+  }
+
+  .day-weather-temperature{
+    font-size: 35px;
+    color: #241e1e;
+    margin:0 auto;
+    text-align: center;
+  }
+
+  .day-weather-weather{
+    width: 40px;
+    height: 40px;
+    padding-left: 30%;
+  }
+
+  .day-weather-windDirection{
+    font-size: 20px;
+    color: #767987;
+    margin:0 auto;
+    padding-top: 5px;
+    text-align: center;
+  }
+
+  .tipsRetrace{
+    width: 100%;
+    height: 90%;
+    display: block;
+    float: left;
+    border-radius: 3%;
+    box-shadow: 0 0 14px 0 rgba(0,0,0,0.3);
+  }
+
+  .tipsDiv{
+    height: 9%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+  }
+
+  .more-weather-nav{
+    height: 10%;
+    margin-left: 30px;
+    margin-top: 5px;
+    font-size: 18px;
+  }
+
+  .more-weather{
+    width: 100%;
+    height: 80%;
+  }
+
+  .weather-box{
+    width: 10%;
+    height: 100%;
+    display: inline-block;
+  }
+
+  .day-weather-list{
+    height: 100%;
+    width: 100%;
+    overflow-y:auto;
+    white-space: nowrap;
+  }
+
+  .day-weather-list::-webkit-scrollbar { /*滚动条整体样式*/
+    width: 0; /*高宽分别对应横竖滚动条的尺寸*/
+    height: 4px;
+  }
+
+  .day-weather-list::-webkit-scrollbar-thumb { /*滚动条里面小方块*/
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .day-weather-list::-webkit-scrollbar-track { /*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  #titleText:before,#tipsText:before{
+    content: '';
+    float: left;
+    height: 7px;
+    width: 7px;
+    overflow: hidden;
+    margin-right: 10px;
+    background: #344665;
+    border-radius: 50%;
+    margin-top: 8px;
+  }
+  .wrapper {
+    max-width: 100%;
+    height: 100%;
+  }
+
+  .retraceUl{
+    height: 100%;
+  }
+
+  .wrapper li {
+    position: relative;
+    width: 45%;
+    height: 30%;
+    list-style: none;
+    margin: 5px;
+    display: inline-block;
+    perspective: 300px;
+  }
+
+  .picBox {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform-style: preserve-3d;
+    transform-origin: 50% 50% -45px;
+    animation: 200ms ease-out 0ms 1 normal forwards;
+    width: 90px;
+    height: 90px;
+    margin-left: 16px;
+    margin-top: 10px;
+  }
+
+  .picContent {
+    background: rgba(161,216,229,0.5);
+    width: 90px;
+    height: 90px;
+    border-radius: 5%;
+  }
+
+  .picTitle {
+    font-family: "PingFang SC", "Microsoft YaHei", Simsun, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    color: #384c78;
+    margin-top: 5px;
+    text-align: center;
+  }
+
+  .picture {
+    height: 30px;
+    width: 30px;
+    margin-left: 30px;
+    margin-top: 15px;
+  }
+
+  .show,
+  .hide {
+    background: rgba(255,255,255,0.9);
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 3%;
+  }
+
+  .hide {
+  / / 隐藏文字样式   color: rgba(255,255,255,0.1);
+    background-color: rgba(161,216,229,0.9);
+    text-align: center;
+    line-height: 20px;
+    font-size: 10px;
+    vertical-align:middle;
+    display:table-cell;
+    transform: translate3d(0, 0, -1px);
+    /* 3D空间内移动一个元素的位置 */
+  }
+
+  .in-top .hide,
+  .out-top .hide {
+    transform-origin: 0 100%;
+    transform: translate3d(0, -100%, 0) rotate3d(1, 0, 0, 90deg);
+  }
+
+  .in-top .picBox {
+    animation-name: in-top;
+    animation-play-state: running;
+  }
+
+  .out-top .picBox {
+    animation-name: out-top;
+    animation-play-state: running;
+  }
+
+  @keyframes in-top {
+    from {
+      transform: rotate3d(0, 0, 0, 0deg)
+    }
+    to {
+      transform: rotate3d(-1, 0, 0, 90deg)
+    }
+  }
+
+  @keyframes out-top {
+    from {
+      transform: rotate3d(-1, 0, 0, 90deg)
+    }
+    to {
+      transform: rotate3d(0, 0, 0, 0deg)
+    }
+  }
+
+  .in-right .hide,
+  .out-right .hide {
+    transform-origin: 0 0;
+    transform: translate3d(100%, 0, 0) rotate3d(0, 1, 0, 90deg);
+  }
+
+  .in-right .picBox {
+    animation-name: in-right;
+    animation-play-state: running;
+  }
+
+  .out-right .picBox {
+    animation-name: out-right;
+    animation-play-state: running;
+  }
+
+  @keyframes in-right {
+    from {
+      transform: rotate3d(0, 0, 0, 0deg)
+    }
+    to {
+      transform: rotate3d(0, -1, 0, 90deg)
+    }
+  }
+
+  @keyframes out-right {
+    from {
+      transform: rotate3d(0, -1, 0, 90deg)
+    }
+    to {
+      transform: rotate3d(0, 0, 0, 0deg)
+    }
+  }
+
+  .in-bottom .hide,
+  .out-bottom .hide {
+    transform-origin: 0 0;
+    transform: translate3d(0, 100%, 0) rotate3d(-1, 0, 0, 90deg);
+  }
+
+  .in-bottom .picBox {
+    animation-name: in-bottom;
+    animation-play-state: running;
+  }
+
+  .out-bottom .picBox {
+    animation-name: out-bottom;
+    animation-play-state: running;
+  }
+
+  @keyframes in-bottom {
+    from {
+      transform: rotate3d(0, 0, 0, 0deg)
+    }
+    to {
+      transform: rotate3d(1, 0, 0, 90deg)
+    }
+  }
+
+  @keyframes out-bottom {
+    from {
+      transform: rotate3d(1, 0, 0, 90deg)
+    }
+    to {
+      transform: rotate3d(0, 0, 0, 0deg)
+    }
+  }
+
+  .in-left .hide,
+  .out-left .hide {
+    transform-origin: 100% 0;
+    transform: translate3d(-100%, 0, 0) rotate3d(0, -1, 0, 90deg);
+  }
+
+  @keyframes in-left {
+    from {
+      transform: rotate3d(0, 0, 0, 0deg)
+    }
+    to {
+      transform: rotate3d(0, 1, 0, 90deg)
+    }
+  }
+
+  @keyframes out-left {
+    from {
+      transform: rotate3d(0, 1, 0, 90deg)
+    }
+    to {
+      transform: rotate3d(0, 0, 0, 0deg)
+    }
+  }
+
+  .in-left .picBox {
+    animation-name: in-left;
+    animation-play-state: running;
+  }
+
+  .out-left .picBox {
+    animation-name: out-left;
+    animation-play-state: running;
+  }
 </style>
