@@ -353,7 +353,8 @@ export default {
   created: function () {
     this.$ajax({
       method: 'GET',
-      url: '/api/weather/' + this.city_id
+      url: '/api/weather/' + this.city_id,
+      contentType: 'application/x-www-form-urlencoded; charset=utf-8'
     }).then((response) => {
       const res = response.data
       this.temperature = res.temp
@@ -636,7 +637,7 @@ export default {
         // }
         $('#placeholder').empty()
         for (i = 0; i < this.lookup_city.length; i++) {
-          $('#placeholder').append('<option value="' + this.lookup_city[i].name + '"></option>')
+          $('#placeholder').append('<option value="' + this.lookup_city[i].name + this.lookup_city[i].adm2 + this.lookup_city[i].adm1 + '"></option>')
         }
       })
     },
