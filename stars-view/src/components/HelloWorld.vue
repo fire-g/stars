@@ -372,17 +372,17 @@ export default {
         this.isCY = 3
         this.isGM = true
       }
-      if (this.wind_scale <= 4) {
+      if (this.wind_scale < 4) {
         this.isXC = true
       }
-      if (this.weather.equals('晴') || this.weather.equals('多云') || this.weather.equals('阴')) {
+      if (this.weather === '晴' || this.weather === '多云' || this.weather === '阴') {
         this.isYD = true
       }
-      if (this.weather.equals('晴') && this.temperature > 35) {
+      if (this.weather === '晴' && this.temperature > 35) {
         this.isFS = true
       }
-      if (this.weather.equals('小雨') || this.weather.equals('大雨') || this.weather.equals('中雨') ||
-        this.weather.equals('暴雨') || this.weather.equals('雨')) {
+      if (this.weather === '小雨' || this.weather === '中雨' || this.weather === '大雨' ||
+        this.weather === '暴雨' || this.weather === '雨') {
         this.isYS = true
       }
     })
@@ -558,14 +558,14 @@ export default {
         if (this.wind_scale < 4) {
           this.isXC = true
         }
-        if (this.weather.equals('晴') || this.weather.equals('多云') || this.weather.equals('阴')) {
+        if (this.weather === '晴' || this.weather === '多云' || this.weather === '阴') {
           this.isYD = true
         }
-        if (this.weather.equals('晴') && this.temperature > 35) {
+        if (this.weather === '晴' && this.temperature > 35) {
           this.isFS = true
         }
-        if (this.weather.equals('小雨') || this.weather.equals('大雨') || this.weather.equals('中雨') ||
-          this.weather.equals('暴雨') || this.weather.equals('雨')) {
+        if (this.weather === '小雨' || this.weather === '中雨' || this.weather === '大雨' ||
+          this.weather === '暴雨' || this.weather === '雨') {
           this.isYS = true
         }
       })
