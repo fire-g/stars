@@ -23,7 +23,9 @@ public class UserServiceImpl implements UserService {
             return false;
         }
         user.setSalt(UUID.randomUUID().toString());
-        user.setPassword(DigestUtils.md5DigestAsHex((user.getPassword()+user.getSalt()).getBytes()));
+        if (user.getPassword()!=null) {
+            user.setPassword(DigestUtils.md5DigestAsHex((user.getPassword() + user.getSalt()).getBytes()));
+        }
         repository.save(user);
         return true;
     }
@@ -34,9 +36,21 @@ public class UserServiceImpl implements UserService {
         if (u==null){
             return null;
         }
-        if (u.getPassword().equals(DigestUtils.md5DigestAsHex((user.getPassword()+u.getSalt()).getBytes()))){
+        if ((DigestUtils.md5DigestAsHex((user.getPassword()+u.getSalt()).getBytes())).equals(u.getPassword())){
             return u;
         }
         return null;
+    }
+
+    @Override
+    public User findUser(String email) {
+        return repository.findByEmail(email);
+    }
+
+    @Override
+    public boolean modifyPassword(User user) {
+        user.setPassword(DigestUtils.md5DigestAsHex((user.getPassword() + user.getSalt()).getBytes()));
+        repository.save(user);
+        return true;
     }
 }

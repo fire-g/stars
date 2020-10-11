@@ -301,7 +301,13 @@ export default {
       adm2: '',
       lookup_city: [
         {
+          'adm1': '',
+          'adm2': '',
+          'country': '',
+          'id': '',
+          'lat': '',
           'locationId': '',
+          'lon': '',
           'name': ''
         }
       ],
@@ -520,12 +526,12 @@ export default {
       }).then((response) => {
         const res = response.data
         this.city_id = res[0].locationId
-        // var a
-        // for (a = 0; a < this.lookup_city.length; a++) {
-        //   if ('11' == name) {
-        //     this.city_id = this.lookup_city[a].locationId
-        //   }
-        // }
+        var a
+        for (a = 0; a < this.lookup_city.length; a++) {
+          if (name === this.lookup_city[a].name) {
+            this.city_id = this.lookup_city[a].locationId
+          }
+        }
       })
 
       this.$ajax({
@@ -621,14 +627,16 @@ export default {
         url: '/api/location/' + name
       }).then((response) => {
         const res = response.data
+        this.lookup_city = res
+        console.log(this.lookup_city)
         var i
-        for (i = 0; i < res.length; i++) {
-          this.lookup_city[i] = res[i].name + '/' + res[i].adm2 + '/' + res[i].adm1
-          this.locationId = res.locationId
-        }
+        // for (i = 0; i < res.length; i++) {
+        //   this.lookup_city[i].name = res[i].name + '/' + res[i].adm2 + '/' + res[i].adm1
+        //   this.lookup_city[i].locationId = res.locationId
+        // }
         $('#placeholder').empty()
         for (i = 0; i < this.lookup_city.length; i++) {
-          $('#placeholder').append('<option value="' + this.lookup_city[i] + '"></option>')
+          $('#placeholder').append('<option value="' + this.lookup_city[i].name + '"></option>')
         }
       })
     },
