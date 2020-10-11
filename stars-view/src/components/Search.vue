@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <div v-for="item in list" v-bind:key="item.locationId" @click="click(item.locationId)">
+  <div style="margin: auto;width: 800px">
+    <li  v-for="item in list" v-bind:key="item.locationId" @click="click(item.locationId)">
       <span>{{item.country}}</span>
       <span>{{item.adm1}}</span>
       <span>{{item.adm2}}</span>
       <span>{{item.name}}</span>
-    </div>
+    </li>
   </div>
 </template>
 

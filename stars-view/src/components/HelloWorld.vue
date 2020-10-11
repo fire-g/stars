@@ -247,18 +247,18 @@
                     </div>
 
                     <div class='hide'>
-                      <h3 v-if="isCY === 0">
+                      <span v-if="isCY === 0">
                         天气较热,建议穿短袖短裤散热=-=
-                      </h3>
-                      <h3 v-else-if="isCY === 1">
+                      </span>
+                      <span v-else-if="isCY === 1">
                         温度适宜,当然是长袖短裤啦
-                      </h3>
-                      <h3 v-else-if="isCY === 2">
+                      </span>
+                      <span v-else-if="isCY === 2">
                         温度逐渐凉爽,记得披件夹克哦
-                      </h3>
-                      <h3 v-else>
+                      </span>
+                      <span v-else>
                         天气都这么冷了,大棉袄还不整上qaq
-                      </h3>
+                      </span>
                     </div>
                   </div>
                 </div>
