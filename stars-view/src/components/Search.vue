@@ -2,9 +2,6 @@
   <div style="margin: auto;width: 800px">
     <b-list-group v-for="item in list" v-bind:key="item.locationId" @click="click(item.locationId)">
       <b-list-group-item class="list-group">{{item.country}} {{item.adm1}} {{item.adm2}} {{item.name}}</b-list-group-item>
-<!--      <b-list-group-item></b-list-group-item>-->
-<!--      <b-list-group-item></b-list-group-item>-->
-<!--      <b-list-group-item></b-list-group-item>-->
     </b-list-group>
   </div>
 </template>
@@ -54,6 +51,6 @@ export default {
   }
 
   .list-group:hover {
-    background: #1cccf4;
+    background: #ACC0D8;
   }
 </style>
