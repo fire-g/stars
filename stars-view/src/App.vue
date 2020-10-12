@@ -42,11 +42,6 @@ export default {
     height:39%;
   }
 
-  #header-title {
-    width:100%;
-    height:17%;
-  }
-
   #link-one {
     width:100%;
     height:1%;

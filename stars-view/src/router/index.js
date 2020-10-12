@@ -5,6 +5,7 @@ import DayTrend from '../components/DayTrend'
 import WeekTrend from '../components/WeekTrend'
 import login from '../components/login'
 import register from '../components/register'
+import Search from '../components/Search'
 
 Vue.use(Router)
 
@@ -15,6 +16,11 @@ export default new Router({
       path: '/',
       name: 'HelloWorld',
       component: HelloWorld
+    },
+    {
+      path: '/search',
+      name: 'Search',
+      component: Search
     },
     {
       path: '/day-trend',
