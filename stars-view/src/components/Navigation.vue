@@ -1,9 +1,10 @@
 <template>
   <div id="header-title">
     <img class="img-logo" src="../assets/logo.png" alt="">
+    <span class="setting"></span>
     <div id="city-search">
       <label>
-        <input id="city-name" class="city-place" type="text" :value="city" placeholder="搜索市、区、县等" list="placeholder">
+        <input id="city-name" class="city-place" type="text" :value="city" placeholder="搜索市、区、县等">
       </label>
       <b-button class="confirm" variant="outline-primary" @click="getCityId()">确认查询</b-button>
     </div>
@@ -39,15 +40,15 @@ export default {
 <style scoped>
   #header-title {
     width:100%;
-    height:80px;
+    height:60px;
   }
 
   #city-search {
-    width:20%;
+    width:300px;
     height:100%;
     float:right;
-    margin-right: 10%;
-    padding-top: 1%;
+    margin-right: 5%;
+    margin-top: 5px;
   }
 
   h1, h2 {
@@ -70,9 +71,22 @@ export default {
 
   .img-logo{
     float: left;
-    width: 200px;
-    height: 80px;
+    width: 180px;
+    height: 60px;
     margin-left: 10%;
+  }
+
+  .setting{
+    width: 32px;
+    height: 32px;
+    float: right;
+    margin-top: 14px;
+    margin-right: 30px;
+    background: url("../assets/set.png");
+  }
+
+  .setting:hover{
+    background: url("../assets/set-cover.png");
   }
 
   .confirm{
@@ -84,7 +98,7 @@ export default {
 
   .city-place {
     float: right;
-    width: 240px;
+    width: 200px;
     height: 45px;
     padding-left:10px;
     border-radius: 20px;
