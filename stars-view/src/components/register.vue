@@ -50,14 +50,47 @@ export default {
   created () {
   },
   methods: {
-    getEmail () {
-
+    getEmail (val) {
+      var emil = document.getElementById('emil').value
+      var form = new URLSearchParams()
+      form.append('email', emil)
+      $ajax({
+        method: 'POST',
+        url: '/api/email/',
+        data: form
+      }).then((response) => {
+        const res = response.data
+        // eslint-disable-next-line eqeqeq
+        if (res.code === 0) {
+          this.rerefreshTime(val)
+        } else {
+          alert('邮箱已注册！！！')
+        }
+        console.log(res.message)
+      })
     },
     checkEmail () {
+      var myReg = /^[a-zA-Z0-9_-]+@([a-zA-Z0-9]+\.)+(com|cn|net|org)$/
+      var email = document.getElementById('emil').value
+      var tip = document.getElementById('registerEmail')
 
+      if (myReg.test(email)) {
+        tip.style.display = 'none'
+      } else {
+        tip.style.display = 'block'
+      }
     },
     checkPassword () {
+      var password = document.getElementById('password').value
+      var passwordRepeat = document.getElementById('passwordRepeat').value
+      var tip = document.getElementById('registerPrompt')
 
+      // eslint-disable-next-line eqeqeq
+      if (password == passwordRepeat) {
+        tip.style.display = 'none'
+      } else {
+        tip.style.display = 'block'
+      }
     },
     submit () {
 
@@ -84,7 +117,6 @@ export default {
         refreshTime(val)
       }, 1000)
     }
-
   }
 }
 </script>

@@ -35,7 +35,7 @@ public class UserController {
         if (u != null) {
             objectMap.put("code", 0);
             objectMap.put("message", "登录成功");
-            objectMap.put("data", user);
+            objectMap.put("data", u);
             session.setAttribute("login", true);
             return objectMap;
         }

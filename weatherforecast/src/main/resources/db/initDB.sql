@@ -106,4 +106,7 @@ CREATE TABLE user (
     PRIMARY KEY (id)
 );
 
-INSERT INTO user (id, username, email, password, salt) values (1,'测试','18296517259@163.com','92beb28f883568be281fa54cab1b9481','476f3605-0973-46fd-895a-807d0cb7ed48')
+-- 邮箱:18296517259@163.com
+-- 密码:123456
+INSERT INTO user (id, username, email, password, salt)
+values (1,'测试','18296517259@163.com','b06cff8cdc8df9f59722c784b6a215b0','4ef80102-50a6-4908-9969-109bab2d1546');
