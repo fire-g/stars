@@ -108,13 +108,19 @@
       <div id="day-weather">
         <div class="day-weather-list">
           <div class="more-weather-nav">
-            <p id = 'titleText'>
-              逐小时预报
-            </p>
+            <div class="title-text">
+              <p id = 'titleText'>
+                逐小时预报
+              </p>
+            </div>
+            <div class="move-button">
+              <button class="move-right" @click='clickRight()'>→</button>
+              <button class="move-left" @click='clickLeft()'>←</button>
+            </div>
           </div>
           <!--time-1-->
          <div class = 'more-weather'>
-           <div class="weather-box"  v-for="item in daily_weather" v-bind:key="item.id">
+           <div class="weather-box"  v-for="(item,index) in daily_weather" v-bind:key="item.id" v-bind:id="weatherBox(index)">
              <ul class="day-weather-ul">
                <li class="day-weather-li"><p class="day-weather-time" style="font-size: 16px">{{item.fxDate}}</p></li>
                <li class="day-weather-li"><p class="day-weather-temperature" style="font-size: 20px">{{item.temp}}℃</p></li>
@@ -336,6 +342,7 @@ import $ajax from 'axios'
 
 let chart1
 let chart2
+var nowPlace = 0
 
 export default {
   data () {
@@ -682,6 +689,26 @@ export default {
         audio.play()
       })
       audio.src = 'http://localhost:8080/api/v1/speech/' + stringVoice
+    },
+
+    weatherBox (index) {
+      return 'weatherBox' + index
+    },
+
+    clickRight () {
+      nowPlace = nowPlace + 18
+      if (nowPlace > 23) {
+        nowPlace = 23
+      }
+      window.location.hash = '#weatherBox' + nowPlace
+    },
+
+    clickLeft () {
+      nowPlace = nowPlace - 18
+      if (nowPlace < 0) {
+        nowPlace = 0
+      }
+      window.location.hash = '#weatherBox' + nowPlace
     }
   }
 }
@@ -811,6 +838,34 @@ export default {
     font-size: 0;
   }
 
+  .title-text{
+    width: 50%;
+    height: 100%;
+    float: left;
+  }
+
+  .move-button{
+    width: 50%;
+    height: 100%;
+    float: right;
+  }
+
+  .move-left{
+    width: 20px;
+    height: 20px;
+    float: right;
+    margin-right: 1%;
+    border-radius: 10px;
+  }
+
+  .move-right{
+    width: 20px;
+    height: 20px;
+    float: right;
+    margin-right: 8%;
+    border-radius: 10px;
+  }
+
   .day-weather-ul{
     width: 6%;
     height: 90%;
@@ -880,6 +935,9 @@ export default {
   .more-weather{
     width: 100%;
     height: 80%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    white-space: nowrap;
   }
 
   .weather-box{
@@ -891,26 +949,24 @@ export default {
   .day-weather-list{
     height: 100%;
     width: 100%;
-    overflow-y:auto;
-    white-space: nowrap;
   }
 
-  .day-weather-list::-webkit-scrollbar { /*滚动条整体样式*/
-    width: 0; /*高宽分别对应横竖滚动条的尺寸*/
-    height: 4px;
-  }
+  /*.more-weather::-webkit-scrollbar { !*滚动条整体样式*!*/
+  /*  width: 0; !*高宽分别对应横竖滚动条的尺寸*!*/
+  /*  height: 4px;*/
+  /*}*/
 
-  .day-weather-list::-webkit-scrollbar-thumb { /*滚动条里面小方块*/
-    border-radius: 5px;
-    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-    background: rgba(0, 0, 0, 0.2);
-  }
+  /*.more-weather::-webkit-scrollbar-thumb { !*滚动条里面小方块*!*/
+  /*  border-radius: 5px;*/
+  /*  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);*/
+  /*  background: rgba(0, 0, 0, 0.2);*/
+  /*}*/
 
-  .day-weather-list::-webkit-scrollbar-track { /*滚动条里面轨道*/
-    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-    border-radius: 0;
-    background: rgba(0, 0, 0, 0.1);
-  }
+  /*.more-weather::-webkit-scrollbar-track { !*滚动条里面轨道*!*/
+  /*  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);*/
+  /*  border-radius: 0;*/
+  /*  background: rgba(0, 0, 0, 0.1);*/
+  /*}*/
 
   #titleText:before,#tipsText:before{
     content: '';
