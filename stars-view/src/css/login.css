@@ -27,8 +27,9 @@ html {
 
 body {
   height: 100%;
-  background: #fff url(../assets/backgroud.png) 50% 50% no-repeat;
+  background: #fff url("../assets/background.jpg");
   background-size: cover;
+  opacity: 5%;
 }
 
 .dowebok {
@@ -44,11 +45,10 @@ body {
 }
 
 .logo {
-  width: 170px;
-  height: 222px;
-  margin: 30px auto 50px;
-  background: url(../assets/login.png) 0 0 no-repeat transparent;
-  background-color: transparent;
+  width: 224px;
+  height: 224px;
+  margin: 1px auto 30px;
+  background: url(../assets/login-logo.png);
 }
 
 .form-item {
