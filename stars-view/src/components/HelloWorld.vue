@@ -119,9 +119,62 @@
                <li class="day-weather-li"><p class="day-weather-time" style="font-size: 16px">{{item.fxDate}}</p></li>
                <li class="day-weather-li"><p class="day-weather-temperature" style="font-size: 20px">{{item.temp}}℃</p></li>
                <li class="day-weather-li">
-                 <p v-if="item.cloud === 0" class="day-weather-weather" style="font-size: 20px">无云</p>
-                 <p v-else-if="item.cloud > 0 && item.cloud <= 4" class="day-weather-weather" style="font-size: 20px">少云</p>
-                 <p v-else-if="item.cloud > 4" class="day-weather-weather" style="font-size: 20px">多云</p>
+                 <img v-if="item.text === '多云' " class="day-weather-weather" src="../assets/index/101.png" alt="">  <!--天气图标-->
+                 <img v-else-if=" item.text === '晴'" class="day-weather-weather" src="../assets/index/100.png" alt="">
+                 <img v-else-if=" item.text === '少云'" class="day-weather-weather" src="../assets/index/102.png" alt="">
+                 <img v-else-if=" item.text === '晴间多云'" class="day-weather-weather" src="../assets/index/103.png" alt="">
+                 <img v-else-if=" item.text === '阴'" class="day-weather-weather" src="../assets/index/104.png" alt="">
+                 <img v-else-if=" item.text === '阵雨'" class="day-weather-weather" src="../assets/index/300.png" alt="">
+                 <img v-else-if=" item.text === '强阵雨'" class="day-weather-weather" src="../assets/index/301.png" alt="">
+                 <img v-else-if=" item.text === '雷阵雨'" class="day-weather-weather" src="../assets/index/302.png" alt="">
+                 <img v-else-if=" item.text === '强雷阵雨'" class="day-weather-weather" src="../assets/index/303.png" alt="">
+                 <img v-else-if=" item.text === '强雷阵雨伴有冰雹'" class="day-weather-weather" src="../assets/index/304.png" alt="">
+                 <img v-else-if=" item.text === '小雨'" class="day-weather-weather" src="../assets/index/305.png" alt="">
+                 <img v-else-if=" item.text === '中雨'" class="day-weather-weather" src="../assets/index/306.png" alt="">
+                 <img v-else-if=" item.text === '大雨'" class="day-weather-weather" src="../assets/index/307.png" alt="">
+                 <img v-else-if=" item.text === '极端降雨'" class="day-weather-weather" src="../assets/index/308.png" alt="">
+                 <img v-else-if=" item.text === '毛毛雨'" class="day-weather-weather" src="../assets/index/309.png" alt="">
+                 <img v-else-if=" item.text === '暴雨'" class="day-weather-weather" src="../assets/index/310.png" alt="">
+                 <img v-else-if=" item.text === '大暴雨'" class="day-weather-weather" src="../assets/index/311.png" alt="">
+                 <img v-else-if=" item.text === '特大暴雨'" class="day-weather-weather" src="../assets/index/312.png" alt="">
+                 <img v-else-if=" item.text === '冻雨'" class="day-weather-weather" src="../assets/index/313.png" alt="">
+                 <img v-else-if=" item.text === '小到中雨'" class="day-weather-weather" src="../assets/index/314.png" alt="">
+                 <img v-else-if=" item.text === '中到大雨'" class="day-weather-weather" src="../assets/index/315.png" alt="">
+                 <img v-else-if=" item.text === '大到暴雨'" class="day-weather-weather" src="../assets/index/316.png" alt="">
+                 <img v-else-if=" item.text === '暴雨到大暴雨'" class="day-weather-weather" src="../assets/index/317.png" alt="">
+                 <img v-else-if=" item.text === '大暴雨到特大暴雨'" class="day-weather-weather" src="../assets/index/318.png" alt="">
+                 <img v-else-if=" item.text === '雨'" class="day-weather-weather" src="../assets/index/399.png" alt="">
+                 <img v-else-if=" item.text === '小雪'" class="day-weather-weather" src="../assets/index/400.png" alt="">
+                 <img v-else-if=" item.text === '中雪'" class="day-weather-weather" src="../assets/index/401.png" alt="">
+                 <img v-else-if=" item.text === '大雪'" class="day-weather-weather" src="../assets/index/402.png" alt="">
+                 <img v-else-if=" item.text === '暴雪'" class="day-weather-weather" src="../assets/index/403.png" alt="">
+                 <img v-else-if=" item.text === '雨夹雪'" class="day-weather-weather" src="../assets/index/404.png" alt="">
+                 <img v-else-if=" item.text === '雨雪天气'" class="day-weather-weather" src="../assets/index/405.png" alt="">
+                 <img v-else-if=" item.text === '阵雨夹雪'" class="day-weather-weather" src="../assets/index/406.png" alt="">
+                 <img v-else-if=" item.text === '阵雪'" class="day-weather-weather" src="../assets/index/407.png" alt="">
+                 <img v-else-if=" item.text === '小到中雪'" class="day-weather-weather" src="../assets/index/408.png" alt="">
+                 <img v-else-if=" item.text === '中到大雪'" class="day-weather-weather" src="../assets/index/409.png" alt="">
+                 <img v-else-if=" item.text === '大到暴雪'" class="day-weather-weather" src="../assets/index/410.png" alt="">
+                 <img v-else-if=" item.text === '雪'" class="day-weather-weather" src="../assets/index/499.png" alt="">
+                 <img v-else-if=" item.text === '阵雨夹雪'" class="day-weather-weather" src="../assets/index/456.png" alt="">
+                 <img v-else-if=" item.text === '阵雪'" class="day-weather-weather" src="../assets/index/457.png" alt="">
+                 <img v-else-if=" item.text === '薄雾'" class="day-weather-weather" src="../assets/index/500.png" alt="">
+                 <img v-else-if=" item.text === '雾'" class="day-weather-weather" src="../assets/index/501.png" alt="">
+                 <img v-else-if=" item.text === '霾'" class="day-weather-weather" src="../assets/index/502.png" alt="">
+                 <img v-else-if=" item.text === '扬沙'" class="day-weather-weather" src="../assets/index/503.png" alt="">
+                 <img v-else-if=" item.text === '浮尘'" class="day-weather-weather" src="../assets/index/504.png" alt="">
+                 <img v-else-if=" item.text === '沙尘暴'" class="day-weather-weather" src="../assets/index/507.png" alt="">
+                 <img v-else-if=" item.text === '强沙尘暴'" class="day-weather-weather" src="../assets/index/508.png" alt="">
+                 <img v-else-if=" item.text === '浓雾'" class="day-weather-weather" src="../assets/index/509.png" alt="">
+                 <img v-else-if=" item.text === '强浓雾'" class="day-weather-weather" src="../assets/index/510.png" alt="">
+                 <img v-else-if=" item.text === '中度霾'" class="day-weather-weather" src="../assets/index/511.png" alt="">
+                 <img v-else-if=" item.text === '重度霾'" class="day-weather-weather" src="../assets/index/512.png" alt="">
+                 <img v-else-if=" item.text === '严重霾'" class="day-weather-weather" src="../assets/index/513.png" alt="">
+                 <img v-else-if=" item.text === '大雾'" class="day-weather-weather" src="../assets/index/514.png" alt="">
+                 <img v-else-if=" item.text === '特强浓雾'" class="day-weather-weather" src="../assets/index/515.png" alt="">
+                 <img v-else-if=" item.text === '热'" class="day-weather-weather" src="../assets/index/900.png" alt="">
+                 <img v-else-if=" item.text === '冷'" class="day-weather-weather" src="../assets/index/901.png" alt="">
+                 <img v-else class="day-weather-weather" src="../assets/index/999.png" alt="">
                </li>
                <li class="day-weather-li"><p class="day-weather-windDirection" style="font-size: 16px">{{item.text}}</p></li>
              </ul>
@@ -156,12 +209,12 @@
                       <p v-else class="picTitle">雨伞&nbsp;不需要</p>
                     </div>
                     <div class='hide'>
-                      <h3 v-if="isYS === true" >
+                      <span v-if="isYS === true" >
                         下雨了,注意带伞
-                      </h3>
-                      <h3 v-else >
+                      </span>
+                      <span v-else >
                         今天的你可不需要雨伞呢
-                      </h3>
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -175,12 +228,12 @@
                       <p v-else class="picTitle">感冒&nbsp;不易</p>
                     </div>
                     <div class='hide'>
-                      <h3 v-if="isGM === true">
+                      <span v-if="isGM === true">
                         今天有点冷，注意穿衣来抵御感冒哦
-                      </h3>
-                      <h3 v-else>
+                      </span>
+                      <span v-else>
                         虽然温度适宜,可不要松懈哦
-                      </h3>
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -194,12 +247,12 @@
                       <p v-else class="picTitle">洗车&nbsp;不适宜</p>
                     </div>
                     <div class='hide'>
-                      <h3 v-if="isXC === true">
+                      <span v-if="isXC === true">
                         今天风力较小,洗完车可以让爱车发光呢
-                      </h3>
-                      <h3 v-else>
+                      </span>
+                      <span v-else>
                         风力较大,洗车后会蒙上灰尘
-                      </h3>
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -213,8 +266,8 @@
                       <p v-else class="picTitle">防晒&nbsp;强烈</p>
                     </div>
                     <div class='hide'>
-                      <h3 v-if="isFS === false">阳光正好，让我们一起欢快的跑</h3>
-                      <h3 v-else>涂擦SPF20以上,PA++护肤品,避强光</h3>
+                      <span v-if="isFS === false">阳光正好，让我们一起欢快的跑</span>
+                      <span v-else>涂擦SPF20以上,PA++护肤品,避强光</span>
                     </div>
                   </div>
                 </div>
@@ -228,12 +281,12 @@
                       <p v-else class="picTitle">运动&nbsp;不适</p>
                     </div>
                     <div class='hide'>
-                      <h3 v-if="isYD === true">
+                      <span v-if="isYD === true">
                         天气正好，出去运动放松一下吧
-                      </h3>
-                      <h3 v-else>
+                      </span>
+                      <span v-else>
                         今天比较适合呆在室内哦
-                      </h3>
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -311,6 +364,7 @@ export default {
       wind_scale: '',
       humidity: '',
       air_quality: '良',
+      text: '',
       today_data: [],
       today_temperature: [],
       week_data: [],
@@ -402,12 +456,15 @@ export default {
       this.daily_weather = res
       let i
       let j
-      for (i = 0; i < 24; i++) {
-        this.daily_weather[i].fxDate = res[i].fxDate
-      }
       for (i = 0, j = 0; i < 24; i = i + 2, j++) {
         this.today_data[j] = res[i].fxDate
         this.today_temperature[j] = res[i].temp
+      }
+      for (i = 0; i < 24; i++) {
+        this.daily_weather[i].fxDate = res[i].fxDate
+        if (res[i].fxDate === '00:00') {
+          this.daily_weather[i].fxDate = '明天'
+        }
       }
       chart1.xAxis[0].setCategories(this.today_data)
       chart1.series[0].setData(this.today_temperature)
@@ -620,7 +677,11 @@ export default {
       const stringVoice = '今天天气,' + (this.weather) + ',当前温度' + this.temperature + '摄氏度,最高气温' +
         this.day_weather_high + '摄氏度,最低气温' + (this.day_weather_low) + '摄氏度,风力,' + (this.wind_direction) +
         (this.wind_scale) + '级,湿度百分之' + (this.humidity) + ',空气质量良好'
-      console.log(stringVoice)
+      var audio = new Audio()
+      audio.addEventListener('canplaythrough', function () {
+        audio.play()
+      })
+      audio.src = 'http://localhost:8080/api/v1/speech/' + stringVoice
     }
   }
 }
@@ -779,7 +840,9 @@ export default {
   .day-weather-weather{
     width: 40px;
     height: 40px;
-    padding-left: 30%;
+    display: table-cell;
+    vertical-align: middle;
+    margin:0 auto;
   }
 
   .day-weather-windDirection{
@@ -927,16 +990,18 @@ export default {
     bottom: 0;
     left: 0;
     border-radius: 3%;
+    display:table-cell;
+    vertical-align:middle;
   }
 
   .hide {
   / / 隐藏文字样式   color: rgba(255,255,255,0.1);
     background-color: rgba(161,216,229,0.9);
-    text-align: center;
-    line-height: 20px;
-    font-size: 10px;
-    vertical-align:middle;
     display:table-cell;
+    text-align: center;
+    /*line-height: 20px;*/
+    font-size: 10px;
+    vertical-align:center;
     transform: translate3d(0, 0, -1px);
     /* 3D空间内移动一个元素的位置 */
   }
