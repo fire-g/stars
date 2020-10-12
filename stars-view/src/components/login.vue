@@ -44,7 +44,7 @@ export default {
     login () {
       var emil = document.getElementById('emil').value
       var password = document.getElementById('password').value
-      var form = new FormData()
+      var form = new URLSearchParams()
       form.append('email', emil)
       form.append('password', password)
       $ajax({
