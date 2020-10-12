@@ -1,11 +1,12 @@
 <template>
   <div id="header-title">
     <img class="img-logo" src="../assets/logo.png" alt="">
-    <input id="confirm" class="confirm" type="button" @click="getCityId()" value="确认查询">
-    <label>
-      <input id="city-name" class="city-place" type="text" :value="city" placeholder="搜索市、区、县等" list="placeholder">
-    </label>
-    <datalist id="placeholder"></datalist>
+    <div id="city-search">
+      <label>
+        <input id="city-name" class="city-place" type="text" :value="city" placeholder="搜索市、区、县等" list="placeholder">
+      </label>
+      <b-button class="confirm" variant="outline-primary" @click="getCityId()">确认查询</b-button>
+    </div>
   </div>
 </template>
 
@@ -40,6 +41,15 @@ export default {
     width:100%;
     height:80px;
   }
+
+  #city-search {
+    width:20%;
+    height:100%;
+    float:right;
+    margin-right: 10%;
+    padding-top: 1%;
+  }
+
   h1, h2 {
     font-weight: normal;
   }
@@ -67,21 +77,15 @@ export default {
 
   .confirm{
     float: right;
-    width: 80px;
-    height: 40px;
-    margin-top: 1%;
-    margin-right: 10%;
-    padding-left:10px;
-    border-radius: 8px;
+    width: 90px;
+    height: 45px;
+    border-radius: 15px;
   }
 
   .city-place {
     float: right;
     width: 240px;
-    height: 35px;
-    margin-top: 1%;
-    margin-bottom: 0;
-    margin-right: 1%;
+    height: 45px;
     padding-left:10px;
     border-radius: 20px;
     background-color: #ffffff;

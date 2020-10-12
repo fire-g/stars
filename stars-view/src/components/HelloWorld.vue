@@ -118,9 +118,12 @@
              <ul class="day-weather-ul">
                <li class="day-weather-li"><p class="day-weather-time" style="font-size: 16px">{{item.fxDate}}</p></li>
                <li class="day-weather-li"><p class="day-weather-temperature" style="font-size: 20px">{{item.temp}}℃</p></li>
-               <li class="day-weather-li"><img class="day-weather-weather" src="../assets/weather/thundershower.png" style="width: 32px;height: 32px" alt=""></li>
+               <li class="day-weather-li">
+                 <p v-if="item.cloud === 0" class="day-weather-weather" style="font-size: 20px">无云</p>
+                 <p v-else-if="item.cloud > 0 && item.cloud <= 4" class="day-weather-weather" style="font-size: 20px">少云</p>
+                 <p v-else-if="item.cloud > 4" class="day-weather-weather" style="font-size: 20px">多云</p>
+               </li>
                <li class="day-weather-li"><p class="day-weather-windDirection" style="font-size: 16px">{{item.text}}</p></li>
-               <!--<li class="day-weather-li"><p class="day-weather-windDirection" style="font-size: 14px">{{item.windScale}}级</p></li>-->
              </ul>
            </div>
          </div>
