@@ -27,13 +27,8 @@
       <div class="form-item">
         <button id="submit" onclick = "submitMessage()">注  册</button>
       </div>
-
-      <div class="form-item">
-        <button id="next" onclick = "change()">下一步</button>
-      </div>
       <div class="reg-bar">
         <p style='color: #ffffff; font-family: Tahoma,Arial,"宋体";'>已有账号？点击这里 <a href="login">登录</a></p>
-
       </div>
     </div>
     <div style="text-align:center;"></div>
@@ -45,16 +40,56 @@ import $ajax from 'axios'
 export default {
   data () {
     return {
+      emil: '',
+      checkCode: '',
+      password: '',
+      repeatPassword: '',
+      countdown: 60
     }
   },
   created () {
   },
   methods: {
+    getEmail () {
+
+    },
+    checkEmail () {
+
+    },
+    checkPassword () {
+
+    },
+    submit () {
+
+    },
+    nowTime (val) {
+      if (val.value === '获取验证码') {
+        // eslint-disable-next-line no-undef
+        getEmail(val)
+      }
+    },
+    refreshTime (val) {
+      // eslint-disable-next-line eqeqeq
+      if (this.countdown == 0) {
+        val.value = '获取验证码'
+        this.countdown = 60
+        return false
+      } else {
+        val.value = this.countdown
+        this.countdown--
+      }
+
+      setTimeout(function () { // 设置一个定时器，每秒刷新一次
+        // eslint-disable-next-line no-undef
+        refreshTime(val)
+      }, 1000)
+    }
+
   }
 }
 </script>
 
 <style scoped>
-@import "../css/register.css";
+/*@import "../css/register.css";*/
 
 </style>
