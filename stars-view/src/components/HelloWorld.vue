@@ -529,7 +529,7 @@ export default {
         }
       })
 
-      this.$ajax({
+      $ajax({
         method: 'GET',
         url: '/api/weather/' + this.city_id
       }).then((response) => {
@@ -564,7 +564,7 @@ export default {
         }
       })
 
-      this.$ajax({
+      $ajax({
         method: 'GET',
         url: '/api/location/' + this.city_id
       }).then((response) => {
@@ -574,14 +574,14 @@ export default {
         this.adm2 = res[0].adm2
       })
 
-      this.$ajax({
+      $ajax({
         method: 'GET',
         url: '/api/hourly_weather/' + this.city_id
       }).then((response) => {
         const res = response.data
         this.daily_weather = res
-        var i
-        var j
+        let i
+        let j
         for (i = 0; i < 24; i++) {
           this.daily_weather[i].fxDate = res[i].fxDate
         }
