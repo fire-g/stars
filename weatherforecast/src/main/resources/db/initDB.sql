@@ -105,3 +105,5 @@ CREATE TABLE user (
     salt VARCHAR(64) NOT NULL,
     PRIMARY KEY (id)
 );
+
+INSERT INTO user (id, username, email, password, salt) values (1,'测试','18296517259@163.com','92beb28f883568be281fa54cab1b9481','476f3605-0973-46fd-895a-807d0cb7ed48')
