@@ -770,8 +770,8 @@ export default {
   }
 
   .img-weather{
-    width:200px;
-    height: 200px;
+    width:300px;
+    height: 300px;
   }
 
   .txt{
@@ -878,6 +878,7 @@ export default {
   }
 
   .more-weather{
+    margin-top: 10px;
     width: 100%;
     height: 80%;
   }
