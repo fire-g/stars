@@ -23,7 +23,7 @@ export default {
   #body{
     width:100%;
     height:1200px;
-    background: url("../src/assets/background.jpg") no-repeat left;
+    background: url("../src/assets/back-low.png") no-repeat left;
     background-size: cover;
   }
 

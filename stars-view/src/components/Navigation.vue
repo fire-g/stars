@@ -1,12 +1,14 @@
 <template>
-  <div id="header-title">
-    <img class="img-logo" src="../assets/logo.png" alt="">
-    <span class="setting"></span>
-    <div id="city-search">
-      <label>
-        <input id="city-name" class="city-place" type="text" :value="city" placeholder="搜索市、区、县等">
-      </label>
-      <b-button class="confirm" variant="outline-primary" @click="getCityId()">确认查询</b-button>
+  <div id = "background">
+    <div id="header-title">
+      <img class="img-logo" src="../assets/logo.png" alt="">
+      <span class="setting"></span>
+      <div id="city-search">
+        <label>
+          <input id="city-name" class="city-place" type="text" :value="city" placeholder="搜索市、区、县等">
+        </label>
+        <b-button class="confirm" variant="outline-primary" @click="getCityId()">确认查询</b-button>
+      </div>
     </div>
   </div>
 </template>
@@ -67,6 +69,10 @@ export default {
 
   a {
     color: #42b983;
+  }
+
+  #background{
+    background: url("../assets/back-up.png");
   }
 
   .img-logo{
