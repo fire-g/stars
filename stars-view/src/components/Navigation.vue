@@ -2,6 +2,35 @@
   <div id = "background">
     <div id="header-title">
       <img class="img-logo" src="../assets/logo.png" alt="">
+      <div class="dropdownV">
+        <b-dropdown id="dropdown-form" right text="set" ref="dropdown" class="m-2">
+          <b-dropdown-form>
+            <b-form-group label="温度显示设置" label-for="dropdown-form-email" @submit.stop.prevent>
+              <b-form-select id="getTemperatureType" v-model="temperatureType">
+                <option>摄氏度</option>
+                <option>华氏度</option>
+              </b-form-select>
+            </b-form-group>
+            <b-form-group label="更新天气间隔" label-for="dropdown-form-password">
+              <b-form-select v-model='updateWeather'>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+              </b-form-select>
+            </b-form-group>
+            <b-form-group label="预报天气设置" label-for="dropdown-form-password">
+              <b-form-select v-model='forecaseWeather'>
+                <option>3</option>
+                <option>7</option>
+              </b-form-select>
+            </b-form-group>
+
+            <b-button variant="primary" size="sm" @click="getMessage">确认</b-button>
+          </b-dropdown-form>
+          <b-dropdown-divider></b-dropdown-divider>
+          <b-dropdown-item-button>New around here? Sign up</b-dropdown-item-button>
+        </b-dropdown>
+      </div>
       <span class="setting"></span>
       <div id="city-search">
         <label>
@@ -19,14 +48,23 @@ export default {
   name: 'Nav',
   data () {
     return {
-      city: ''
+      city: '',
+      temperatureType: '摄氏度',
+      updateWeather: 1,
+      forecaseWeather: 7
     }
   },
   created () {
+    this.temperatureType = this.$cookieStore.getCookie('temperatureType') // 获取cookie的值
+    this.updateWeather = this.$cookieStore.getCookie('updateWeather')
+    this.forecaseWeather = this.$cookieStore.getCookie('forecaseWeather')
     const city = this.$router.currentRoute.query.city
     if (city !== undefined) {
       this.city = city
     }
+    this.$cookieStore.setCookie('temperatureType', this.temperatureType)
+    this.$cookieStore.setCookie('updateWeather', this.updateWeather)
+    this.$cookieStore.setCookie('forecaseWeather', this.forecaseWeather)
   },
   methods: {
     getCityId () {
@@ -34,6 +72,12 @@ export default {
       this.city = name
       // 使用Vue路由进行跳转
       this.$router.push('/search?city=' + name)
+    },
+    getMessage () {
+      this.$cookieStore.setCookie('temperatureType', this.temperatureType)
+      this.$cookieStore.setCookie('updateWeather', this.updateWeather)
+      this.$cookieStore.setCookie('forecaseWeather', this.forecaseWeather)
+      location.reload()
     }
   }
 }
@@ -82,12 +126,18 @@ export default {
     margin-left: 10%;
   }
 
+  .dropdownV{
+    float: right;
+    margin-top: 4px;
+    margin-right: 10px;
+  }
+
   .setting{
     width: 32px;
     height: 32px;
     float: right;
     margin-top: 14px;
-    margin-right: 30px;
+    margin-right: 3px;
     background: url("../assets/set.png");
   }
 

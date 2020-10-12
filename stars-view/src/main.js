@@ -8,6 +8,9 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import Navigation from './components/Navigation'
 
+import { setCookie, getCookie, delCookie } from './js/cookie'
+Vue.prototype.$cookieStore = { setCookie, getCookie, delCookie }
+
 Vue.config.productionTip = false
 Vue.component('Navigation', Navigation)
 Vue.use(BootstrapVue)

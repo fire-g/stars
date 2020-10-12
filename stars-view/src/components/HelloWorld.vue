@@ -7,7 +7,8 @@
           <div id="content-current-left">
             <!--当时天气详情-->
             <div class="content-temperature">
-              <p class="text-temperature">{{temperature}}℃</p>
+              <p v-if="this.temperatureType == '摄氏度'" class="text-temperature">{{temperature}}℃</p>
+              <p v-else class="text-temperature">{{temperature}}℉</p>
               <input type="hidden" v-model="weather">
               <p class="text-weather">{{weather}}</p>
             </div>
@@ -383,6 +384,9 @@ export default {
       isFS: false,
       isYD: false,
       isCY: 0,
+      temperatureType: '摄氏度',
+      updateWeather: 1,
+      forecaseWeather: 7,
       daily_weather: [
         {
           'id': '',
@@ -413,6 +417,9 @@ export default {
       url: '/api/weather/' + this.city_id,
       contentType: 'application/x-www-form-urlencoded; charset=utf-8'
     }).then((response) => {
+      this.temperatureType = this.$cookieStore.getCookie('temperatureType') // 获取cookie的值
+      this.updateWeather = this.$cookieStore.getCookie('updateWeather')
+      this.forecaseWeather = this.$cookieStore.getCookie('forecaseWeather')
       const res = response.data
       console.log(res)
       this.temperature = res.temp
@@ -442,6 +449,12 @@ export default {
       if (this.weather === '小雨' || this.weather === '中雨' || this.weather === '大雨' ||
         this.weather === '暴雨' || this.weather === '雨') {
         this.isYS = true
+      }
+      // eslint-disable-next-line eqeqeq
+      if (this.temperatureType == '华氏度') {
+        this.temperature = parseFloat(this.temperature * 1.8 + 32).toFixed(1)
+        this.day_weather_low = parseFloat(this.day_weather_low * 1.8 + 32).toFixed(1)
+        this.day_weather_high = parseFloat(this.day_weather_high * 1.8 + 32).toFixed(1)
       }
     })
 
