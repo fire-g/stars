@@ -390,19 +390,19 @@ export default {
       week_data: [], // 就现在起过后一周日期
       week_weather_low: [], // 就现在起过后一周日期的最低温
       week_weather_high: [], // 就现在起过后一周日期的最高温
-      isYS: false,
-      isGM: false,
-      isXC: false,
-      isFS: false,
-      isYD: false,
-      isCY: 0,
-      temperatureType: '摄氏度',
-      updateWeather: 1,
-      forecaseWeather: 3,
-      chart: {
+      isYS: false, // 生活建议 雨伞
+      isGM: false, // 生活建议 感冒
+      isXC: false, // 生活建议 洗车
+      isFS: false, // 生活建议 防晒
+      isYD: false, // 生活建议 运动
+      isCY: 0, // 生活建议 穿衣
+      temperatureType: '摄氏度', // 显示温度类型
+      updateWeather: 1, // 更新天气间隔
+      forecaseWeather: 3, // 预报天气数设置
+      chart: { // 图表y轴标题
         name: '气温 (°C)'
       },
-      daily_weather: [
+      daily_weather: [ // 当地天气情况
         {
           'id': '',
           'date': '',
@@ -423,11 +423,11 @@ export default {
     }
   },
   created: function () {
-    this.getLocation()
-
     const city = this.$router.currentRoute.query.id
     if (city !== undefined) {
       this.city_id = city
+    } else {
+      this.getLocation()
     }
 
     this.getCityData()

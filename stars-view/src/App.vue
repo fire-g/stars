@@ -7,7 +7,26 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  created () {
+  },
+  methods: {
+    getCookies () {
+      const query = this.$router.currentRoute.query
+      if (query.temperatureType !== undefined) {
+
+      }
+      if (query.updateWeather !== undefined) {
+
+      }
+      if (query.forecaseWeather !== undefined) {
+
+      }
+      this.$cookieStore.setCookie('temperatureType', this.temperatureType)
+      this.$cookieStore.setCookie('updateWeather', this.updateWeather)
+      this.$cookieStore.setCookie('forecaseWeather', this.forecaseWeather)
+    }
+  }
 }
 </script>
 
