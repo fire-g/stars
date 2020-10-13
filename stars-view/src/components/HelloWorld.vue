@@ -116,8 +116,8 @@
               </p>
             </div>
             <div class="move-button">
-              <button class="move-right" @click='clickRight()'>→</button>
-              <button class="move-left" @click='clickLeft()'>←</button>
+              <span class="move-right" @click='clickRight()'></span>
+              <span class="move-left" @click='clickLeft()'></span>
             </div>
           </div>
           <!--time-1-->
@@ -441,6 +441,10 @@ export default {
     }
 
     this.getCityData()
+
+    this.$cookieStore.setCookie('temperatureType', this.temperatureType)
+    this.$cookieStore.setCookie('updateWeather', this.updateWeather)
+    this.$cookieStore.setCookie('forecaseWeather', this.forecaseWeather)
   },
   mounted () {
     const a = new F($('li.retrace'))
@@ -884,19 +888,29 @@ export default {
   }
 
   .move-left{
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     float: right;
     margin-right: 1%;
-    border-radius: 10px;
+    margin-top: 10px;
+    background: url("../assets/left.png");
+  }
+
+  .move-left:hover{
+    background: url("../assets/left-cover.png");
   }
 
   .move-right{
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     float: right;
     margin-right: 8%;
-    border-radius: 10px;
+    margin-top: 10px;
+    background: url("../assets/right.png");
+  }
+
+  .move-right:hover{
+    background: url("../assets/right-cover.png");
   }
 
   .day-weather-ul{
