@@ -359,7 +359,7 @@ export default {
       lookup_city: [
         {
           'adm1': '',
-          'adm2': '',
+          'adm2': '2',
           'country': '',
           'id': '',
           'lat': '',
