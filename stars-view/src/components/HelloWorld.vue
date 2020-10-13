@@ -390,7 +390,7 @@ export default {
       isCY: 0,
       temperatureType: '摄氏度',
       updateWeather: 1,
-      forecaseWeather: 7,
+      forecaseWeather: 3,
       chart: {
         name: '气温 (°C)'
       },
@@ -417,7 +417,7 @@ export default {
   created: function () {
     // $ajax({
     //   method: 'GET',
-    //   url: 'https://restapi.amap.com/v3/ip?key=945cea1dbf29fd5bfa5f05ac61add885&ip=' + localStorage.getItem('ip')
+    //   url: 'http://tools.knowlesea.top/ip?ip=' + localStorage.getItem('ip')
     // }).then((response1) => {
     //   const res1 = response1.data
     //   $ajax({
@@ -436,123 +436,7 @@ export default {
       this.city_id = city
     }
 
-    $ajax({
-      method: 'GET',
-      url: '/api/weather/' + this.city_id,
-      contentType: 'application/x-www-form-urlencoded; charset=utf-8'
-    }).then((response) => {
-      this.temperatureType = this.$cookieStore.getCookie('temperatureType') // 获取cookie的值
-      this.updateWeather = this.$cookieStore.getCookie('updateWeather')
-      this.forecaseWeather = this.$cookieStore.getCookie('forecaseWeather')
-      const res = response.data
-      this.temperature = res.temp
-      this.weather = res.text
-      this.wind_direction = res.windDir
-      this.wind_scale = res.windScale
-      this.humidity = res.humidity
-      if (this.temperature > 30) {
-        this.isCY = 0
-      } else if (this.temperature > 20) {
-        this.isCY = 1
-      } else if (this.temperature > 10) {
-        this.isCY = 2
-      } else {
-        this.isCY = 3
-        this.isGM = true
-      }
-      if (this.wind_scale < 4) {
-        this.isXC = true
-      }
-      if (this.weather === '晴' || this.weather === '多云' || this.weather === '阴') {
-        this.isYD = true
-      }
-      if (this.weather === '晴' && this.temperature > 35) {
-        this.isFS = true
-      }
-      if (this.weather === '小雨' || this.weather === '中雨' || this.weather === '大雨' ||
-        this.weather === '暴雨' || this.weather === '雨') {
-        this.isYS = true
-      }
-      if (this.temperatureType === '华氏度') {
-        this.temperature = parseFloat(this.temperature * 1.8 + 32).toFixed(1)
-      }
-    })
-
-    $ajax({
-      method: 'GET',
-      url: '/api/location/' + this.city_id
-    }).then((response) => {
-      const res = response.data
-      this.city_name = res[0].name
-      this.adm1 = res[0].adm1
-      this.adm2 = res[0].adm2
-    })
-
-    $ajax({
-      method: 'GET',
-      url: '/api/hourly_weather/' + this.city_id
-    }).then((response) => {
-      const res = response.data
-      this.daily_weather = res
-      let i
-      let j
-      for (i = 0, j = 0; i < 24; i = i + 2, j++) {
-        this.today_data[j] = res[i].fxDate
-        this.today_temperature[j] = res[i].temp
-      }
-      for (i = 0; i < 24; i++) {
-        this.daily_weather[i].fxDate = res[i].fxDate
-        if (res[i].fxDate === '00:00') {
-          this.daily_weather[i].fxDate = '明天'
-        }
-      }
-
-      if (this.temperatureType === '华氏度') {
-        for (i = 0; i < 24; i++) {
-          this.daily_weather[i].temp = parseFloat(this.daily_weather[i].temp * 1.8 + 32).toFixed(1)
-        }
-        for (i = 0; i < 12; i++) {
-          this.today_temperature[i] = parseInt(this.today_temperature[i] * 1.8 + 32)
-          this.chart.name = '气温 (°F)'
-        }
-      }
-      chart1.xAxis[0].setCategories(this.today_data)
-      chart1.series[0].setData(this.today_temperature)
-      this.daily_weather[0].fxDate = '现在'
-    })
-
-    $ajax({
-      method: 'GET',
-      url: '/api/forecast_weather/' + this.city_id
-    }).then((response) => {
-      const res = response.data
-      let i
-      var dayLimit
-      this.day_weather_low = res[0].tempMin
-      this.day_weather_high = res[0].tempMax
-      if (this.forecaseWeather === 3) {
-        dayLimit = 3
-      } else {
-        dayLimit = 7
-      }
-      for (i = 0; i < dayLimit; i++) {
-        this.week_weather_low[i] = res[i].tempMin
-        this.week_weather_high[i] = res[i].tempMax
-        this.week_data[i] = res[i].fxDate.substring(5, 11)
-      }
-      if (this.temperatureType === '华氏度') {
-        this.day_weather_low = parseFloat(this.day_weather_low * 1.8 + 32).toFixed(1)
-        this.day_weather_high = parseFloat(this.day_weather_high * 1.8 + 32).toFixed(1)
-
-        for (i = 0; i < dayLimit; i++) {
-          this.week_weather_low[i] = parseInt(this.week_weather_low[i] * 1.8 + 32)
-          this.week_weather_high[i] = parseInt(this.week_weather_high[i] * 1.8 + 32)
-        }
-      }
-      chart2.xAxis[0].setCategories(this.week_data)
-      chart2.series[0].setData(this.week_weather_low)
-      chart2.series[1].setData(this.week_weather_high)
-    })
+    this.getCityData()
   },
   mounted () {
     const a = new F($('li.retrace'))
@@ -677,11 +561,8 @@ export default {
     //     }]
     //   })
     // },
-    getCityId () {
-      const name = document.getElementById('city-name').value
-      const result = name.split('/')
-      const placeName = result[0]
-      this.$Aajax({
+    getCityId (placeName) {
+      $ajax({
         method: 'GET',
         url: '/api/location/' + placeName
       }).then((response) => {
@@ -694,11 +575,17 @@ export default {
           }
         }
       })
+    },
 
+    getCityData () {
       $ajax({
         method: 'GET',
-        url: '/api/weather/' + this.city_id
+        url: '/api/weather/' + this.city_id,
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8'
       }).then((response) => {
+        this.temperatureType = this.$cookieStore.getCookie('temperatureType') // 获取cookie的值
+        this.updateWeather = this.$cookieStore.getCookie('updateWeather')
+        this.forecaseWeather = this.$cookieStore.getCookie('forecaseWeather')
         const res = response.data
         this.temperature = res.temp
         this.weather = res.text
@@ -728,6 +615,9 @@ export default {
           this.weather === '暴雨' || this.weather === '雨') {
           this.isYS = true
         }
+        if (this.temperatureType === '华氏度') {
+          this.temperature = parseFloat(this.temperature * 1.8 + 32).toFixed(1)
+        }
       })
 
       $ajax({
@@ -748,12 +638,25 @@ export default {
         this.daily_weather = res
         let i
         let j
-        for (i = 0; i < 24; i++) {
-          this.daily_weather[i].fxDate = res[i].fxDate
-        }
         for (i = 0, j = 0; i < 24; i = i + 2, j++) {
           this.today_data[j] = res[i].fxDate
           this.today_temperature[j] = res[i].temp
+        }
+        for (i = 0; i < 24; i++) {
+          this.daily_weather[i].fxDate = res[i].fxDate
+          if (res[i].fxDate === '00:00') {
+            this.daily_weather[i].fxDate = '明天'
+          }
+        }
+
+        if (this.temperatureType === '华氏度') {
+          for (i = 0; i < 24; i++) {
+            this.daily_weather[i].temp = parseFloat(this.daily_weather[i].temp * 1.8 + 32).toFixed(1)
+          }
+          for (i = 0; i < 12; i++) {
+            this.today_temperature[i] = parseInt(this.today_temperature[i] * 1.8 + 32)
+            this.chart.name = '气温 (°F)'
+          }
         }
         chart1.xAxis[0].setCategories(this.today_data)
         chart1.series[0].setData(this.today_temperature)
@@ -768,10 +671,20 @@ export default {
         let i
         this.day_weather_low = res[0].tempMin
         this.day_weather_high = res[0].tempMax
-        for (i = 0; i < 7; i++) {
+        console.log(this.forecaseWeather)
+        for (i = 0; i < this.forecaseWeather; i++) {
           this.week_weather_low[i] = res[i].tempMin
           this.week_weather_high[i] = res[i].tempMax
           this.week_data[i] = res[i].fxDate.substring(5, 11)
+        }
+        if (this.temperatureType === '华氏度') {
+          this.day_weather_low = parseFloat(this.day_weather_low * 1.8 + 32).toFixed(1)
+          this.day_weather_high = parseFloat(this.day_weather_high * 1.8 + 32).toFixed(1)
+
+          for (i = 0; i < this.forecaseWeather; i++) {
+            this.week_weather_low[i] = parseInt(this.week_weather_low[i] * 1.8 + 32)
+            this.week_weather_high[i] = parseInt(this.week_weather_high[i] * 1.8 + 32)
+          }
         }
         chart2.xAxis[0].setCategories(this.week_data)
         chart2.series[0].setData(this.week_weather_low)
