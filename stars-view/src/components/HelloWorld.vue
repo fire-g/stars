@@ -434,6 +434,8 @@ export default {
     const city = this.$router.currentRoute.query.id
     if (city !== undefined) {
       this.city_id = city
+    } else {
+      this.getLocation()
     }
 
     this.getCityData()
@@ -565,6 +567,26 @@ export default {
     //     }]
     //   })
     // },
+
+    // getLocation () {
+    //   $ajax({
+    //     method: 'GET',
+    //     url: 'http://tools.knowlesea.top/ip?ip=' + localStorage.getItem('ip')
+    //   }).then((response1) => {
+    //     const res1 = response1.data
+    //     console.log(res1.city)
+    //     $ajax({
+    //       method: 'GET',
+    //       url: '/api/location/' + res1.city,
+    //       contentType: 'application/x-www-form-urlencoded; charset=utf-8'
+    //     }).then((response2) => {
+    //       const res2 = response2.data
+    //       this.locationId = res2[0].locationId
+    //       console.log(this.locationId)
+    //     })
+    //   })
+    // },
+
     getCityId (placeName) {
       $ajax({
         method: 'GET',
