@@ -77,7 +77,8 @@ export default {
       this.$cookieStore.setCookie('temperatureType', this.temperatureType)
       this.$cookieStore.setCookie('updateWeather', this.updateWeather)
       this.$cookieStore.setCookie('forecaseWeather', this.forecaseWeather)
-      location.reload()
+      history.go(0)
+      // location.reload()
     }
   }
 }

@@ -352,14 +352,14 @@ var nowPlace = 0
 export default {
   data () {
     return {
-      city_id: '',
-      city_name: '',
-      adm1: '',
-      adm2: '',
-      lookup_city: [
+      city_id: '', // 城市id
+      city_name: '', // 城市名
+      adm1: '', // 城市省级
+      adm2: '', // 城市县级
+      lookup_city: [ // 城市基本信息
         {
           'adm1': '',
-          'adm2': '2',
+          'adm2': '',
           'country': '',
           'id': '',
           'lat': '',
@@ -368,20 +368,20 @@ export default {
           'name': ''
         }
       ],
-      temperature: '',
-      weather: '',
-      day_weather_low: '',
-      day_weather_high: '',
-      wind_direction: '',
-      wind_scale: '',
-      humidity: '',
-      air_quality: '良',
-      text: '',
-      today_data: [],
-      today_temperature: [],
-      week_data: [],
-      week_weather_low: [],
-      week_weather_high: [],
+      temperature: '', // 温度
+      weather: '', // 天气情况
+      day_weather_low: '', // 当日最低温
+      day_weather_high: '', // 当日最高温
+      wind_direction: '', // 风向
+      wind_scale: '', // 风速
+      humidity: '', // 湿度
+      air_quality: '良', // 空气质量
+      text: '', // 今日建议
+      today_data: [], // 就现在起过后24小时时间
+      today_temperature: [], // 就现在起过后24小时的温度
+      week_data: [], // 就现在起过后一周日期
+      week_weather_low: [], // 就现在起过后一周日期的最低温
+      week_weather_high: [], // 就现在起过后一周日期的最高温
       isYS: false,
       isGM: false,
       isXC: false,
@@ -415,23 +415,6 @@ export default {
     }
   },
   created: function () {
-    // $ajax({
-    //   method: 'GET',
-    //   url: 'https://restapi.amap.com/v3/ip?key=945cea1dbf29fd5bfa5f05ac61add885&ip=' + localStorage.getItem('ip')
-    // }).then((response1) => {
-    //   const res1 = response1.data
-    //   console.log(localStorage.getItem('ip'))
-    //   console.log(res1)
-    //   $ajax({
-    //     method: 'GET',
-    //     url: '/api/location/' + res1.city,
-    //     contentType: 'application/x-www-form-urlencoded; charset=utf-8'
-    //   }).then((response2) => {
-    //     const res2 = response2.data
-    //     this.locationId = res2[0].locationId
-    //     this.$router.push('/?id=' + this.locationId)
-    //   })
-    // })
     this.getLocation()
 
     const city = this.$router.currentRoute.query.id
@@ -440,10 +423,6 @@ export default {
     }
 
     this.getCityData()
-
-    // this.$cookieStore.setCookie('temperatureType', this.temperatureType)
-    // this.$cookieStore.setCookie('updateWeather', this.updateWeather)
-    // this.$cookieStore.setCookie('forecaseWeather', this.forecaseWeather)
   },
   mounted () {
     const a = new F($('li.retrace'))
@@ -853,8 +832,8 @@ export default {
   }
 
   .move-left{
-    width: 16px;
-    height: 16px;
+    width: 25px;
+    height: 25px;
     float: right;
     margin-right: 1%;
     margin-top: 10px;
@@ -866,8 +845,8 @@ export default {
   }
 
   .move-right{
-    width: 16px;
-    height: 16px;
+    width: 25px;
+    height: 25px;
     float: right;
     margin-right: 8%;
     margin-top: 10px;
