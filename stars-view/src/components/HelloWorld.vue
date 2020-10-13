@@ -195,6 +195,14 @@
       </div>
     </div>
 
+    <div class="wrap">
+      <b-dropdown id="dropdown-dropleft" dropleft text="" class="m-2" offset="5px" block>
+        <b-dropdown-item href="#">Action</b-dropdown-item>
+        <b-dropdown-item href="#">Another action</b-dropdown-item>
+        <b-dropdown-item href="#">Something else here</b-dropdown-item>
+      </b-dropdown>
+    </div>
+
     <div id="link-two"></div>
 
     <div id="weather-content2">
@@ -790,6 +798,24 @@ export default {
     margin:0 auto;
   }
 
+  .wrap{
+    position: absolute;
+    display: block;
+    bottom: 240px;
+    right: 70px !important;
+    right: 18px;
+    width: 48px;
+    height:48px;
+    position: fixed;
+    background: rgba(190,231,233,0.5);
+    border-radius: 10%;
+    background: url("../assets/qrCode.png");
+  }
+
+  .wrap:hover{
+    background: url("../assets/qrCode-cover.png");
+  }
+
   .text-up-low{
     display: inline-block;
     font-size: 20px;
@@ -1069,7 +1095,7 @@ export default {
     display:table-cell;
     text-align: center;
     /*line-height: 20px;*/
-    font-size: 10px;
+    font-size: 14px;
     vertical-align:center;
     transform: translate3d(0, 0, -1px);
     /* 3D空间内移动一个元素的位置 */
