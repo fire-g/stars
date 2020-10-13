@@ -14,8 +14,7 @@
             </div>
             <!--最高 / 最低 温度-->
             <div class="content-maximumTemperature">
-              <p v-if="this.temperatureType == '摄氏度'" class="text-up-low">{{day_weather_low}}℃ / {{day_weather_high}}℃</p>
-              <p v-else class="text-up-low">{{day_weather_low}}℉ / {{day_weather_high}}℉</p>
+              <p class="text-up-low">{{day_weather_low}}℃ / {{day_weather_high}}℃</p>
             </div>
             <div class="content-other">
               <!--风向-->
@@ -121,14 +120,11 @@
             </div>
           </div>
           <!--time-1-->
-         <div class = 'more-weather'>
+         <div class = 'more-weather' @touchmove='scroop'>
            <div class="weather-box"  v-for="(item,index) in daily_weather" v-bind:key="item.id" v-bind:id="weatherBox(index)">
              <ul class="day-weather-ul">
                <li class="day-weather-li"><p class="day-weather-time" style="font-size: 16px">{{item.fxDate}}</p></li>
-               <li class="day-weather-li">
-                 <p v-if="temperatureType == '摄氏度'" class="day-weather-temperature" style="font-size: 20px">{{item.temp}}℃</p>
-                 <p v-else class="day-weather-temperature" style="font-size: 20px">{{item.temp}}℉</p>
-               </li>
+               <li class="day-weather-li"><p class="day-weather-temperature" style="font-size: 20px">{{item.temp}}℃</p></li>
                <li class="day-weather-li">
                  <img v-if="item.text === '多云' " class="day-weather-weather" src="../assets/index/101.png" alt="">  <!--天气图标-->
                  <img v-else-if=" item.text === '晴'" class="day-weather-weather" src="../assets/index/100.png" alt="">
@@ -352,7 +348,9 @@ var nowPlace = 0
 export default {
   data () {
     return {
-      city_id: 101210101,
+      x: 0,
+      y: 0,
+      city_id: 101240102,
       city_name: '',
       adm1: '',
       adm2: '',
@@ -391,9 +389,6 @@ export default {
       temperatureType: '摄氏度',
       updateWeather: 1,
       forecaseWeather: 7,
-      chart: {
-        name: '气温 (°C)'
-      },
       daily_weather: [
         {
           'id': '',
@@ -415,27 +410,10 @@ export default {
     }
   },
   created: function () {
-    // $ajax({
-    //   method: 'GET',
-    //   url: 'https://restapi.amap.com/v3/ip?key=945cea1dbf29fd5bfa5f05ac61add885&ip=' + localStorage.getItem('ip')
-    // }).then((response1) => {
-    //   const res1 = response1.data
-    //   $ajax({
-    //     method: 'GET',
-    //     url: '/api/location/' + res1.city,
-    //     contentType: 'application/x-www-form-urlencoded; charset=utf-8'
-    //   }).then((response2) => {
-    //     const res2 = response2.data
-    //     this.locationId = res2[0].locationId
-    //     this.$router.push('/?id=' + this.locationId)
-    //   })
-    // })
-
     const city = this.$router.currentRoute.query.id
     if (city !== undefined) {
       this.city_id = city
     }
-
     $ajax({
       method: 'GET',
       url: '/api/weather/' + this.city_id,
@@ -445,6 +423,7 @@ export default {
       this.updateWeather = this.$cookieStore.getCookie('updateWeather')
       this.forecaseWeather = this.$cookieStore.getCookie('forecaseWeather')
       const res = response.data
+      console.log(res)
       this.temperature = res.temp
       this.weather = res.text
       this.wind_direction = res.windDir
@@ -473,8 +452,11 @@ export default {
         this.weather === '暴雨' || this.weather === '雨') {
         this.isYS = true
       }
-      if (this.temperatureType === '华氏度') {
+      // eslint-disable-next-line eqeqeq
+      if (this.temperatureType == '华氏度') {
         this.temperature = parseFloat(this.temperature * 1.8 + 32).toFixed(1)
+        this.day_weather_low = parseFloat(this.day_weather_low * 1.8 + 32).toFixed(1)
+        this.day_weather_high = parseFloat(this.day_weather_high * 1.8 + 32).toFixed(1)
       }
     })
 
@@ -506,16 +488,6 @@ export default {
           this.daily_weather[i].fxDate = '明天'
         }
       }
-
-      if (this.temperatureType === '华氏度') {
-        for (i = 0; i < 24; i++) {
-          this.daily_weather[i].temp = parseFloat(this.daily_weather[i].temp * 1.8 + 32).toFixed(1)
-        }
-        for (i = 0; i < 12; i++) {
-          this.today_temperature[i] = parseInt(this.today_temperature[i] * 1.8 + 32)
-          this.chart.name = '气温 (°F)'
-        }
-      }
       chart1.xAxis[0].setCategories(this.today_data)
       chart1.series[0].setData(this.today_temperature)
       this.daily_weather[0].fxDate = '现在'
@@ -527,27 +499,12 @@ export default {
     }).then((response) => {
       const res = response.data
       let i
-      var dayLimit
       this.day_weather_low = res[0].tempMin
       this.day_weather_high = res[0].tempMax
-      if (this.forecaseWeather === 3) {
-        dayLimit = 3
-      } else {
-        dayLimit = 7
-      }
-      for (i = 0; i < dayLimit; i++) {
+      for (i = 0; i < 7; i++) {
         this.week_weather_low[i] = res[i].tempMin
         this.week_weather_high[i] = res[i].tempMax
         this.week_data[i] = res[i].fxDate.substring(5, 11)
-      }
-      if (this.temperatureType === '华氏度') {
-        this.day_weather_low = parseFloat(this.day_weather_low * 1.8 + 32).toFixed(1)
-        this.day_weather_high = parseFloat(this.day_weather_high * 1.8 + 32).toFixed(1)
-
-        for (i = 0; i < dayLimit; i++) {
-          this.week_weather_low[i] = parseInt(this.week_weather_low[i] * 1.8 + 32)
-          this.week_weather_high[i] = parseInt(this.week_weather_high[i] * 1.8 + 32)
-        }
       }
       chart2.xAxis[0].setCategories(this.week_data)
       chart2.series[0].setData(this.week_weather_low)
@@ -569,14 +526,14 @@ export default {
         enabled: false
       },
       title: {
-        text: '未来24小时温度变化'
+        text: '未来12小时温度变化'
       },
       xAxis: {
         categories: []
       },
       yAxis: {
         title: {
-          text: this.chart.name
+          text: '气温 (°C)'
         }
       },
       plotOptions: {
@@ -613,7 +570,7 @@ export default {
       },
       yAxis: {
         title: {
-          text: this.chart.name
+          text: '气温 (°C)'
         }
       },
       plotOptions: {
@@ -636,47 +593,6 @@ export default {
     })
   },
   methods: {
-    // createCharts (data) {
-    //   // 周平均气温
-    //   return new HighCharts.Chart('container2', {
-    //     chart: {
-    //       type: 'line',
-    //       backgroundColor: 'rgba(255,255,255,0.3)',
-    //       borderRadius: 10
-    //     },
-    //     credits: {
-    //       enabled: false
-    //     },
-    //     title: {
-    //       text: '未来一周温度变化'
-    //     },
-    //     xAxis: {
-    //       categories: []
-    //     },
-    //     yAxis: {
-    //       title: {
-    //         text: this.chart.name
-    //       }
-    //     },
-    //     plotOptions: {
-    //       line: {
-    //         dataLabels: {
-    //           // 开启数据标签
-    //           enabled: true
-    //         },
-    //         // 关闭鼠标跟踪，对应的提示框、点击事件会失效
-    //         enableMouseTracking: false
-    //       }
-    //     },
-    //     series: [{
-    //       name: '最高气温',
-    //       data: []
-    //     }, {
-    //       name: '最低气温',
-    //       data: []
-    //     }]
-    //   })
-    // },
     getCityId () {
       const name = document.getElementById('city-name').value
       const result = name.split('/')
@@ -780,7 +696,7 @@ export default {
     },
 
     uploadVoice () {
-      const stringVoice = '今天天气,' + (this.weather) + ',当前温度' + this.temperature + this.temperatureType + ',最高气温' +
+      const stringVoice = '今天天气,' + (this.weather) + ',当前温度' + this.temperature + '摄氏度,最高气温' +
         this.day_weather_high + '摄氏度,最低气温' + (this.day_weather_low) + '摄氏度,风力,' + (this.wind_direction) +
         (this.wind_scale) + '级,湿度百分之' + (this.humidity) + ',空气质量良好'
       var audio = new Audio()
@@ -808,13 +724,22 @@ export default {
         nowPlace = 0
       }
       window.location.hash = '#weatherBox' + nowPlace
+    },
+
+    scroop (e) {
+      this.x = e.targetTouches[0].clientX
+      console.log(this.x)
     }
+
   }
 }
 
 </script>
 
+<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  /*@import "../css/index.css";*/
+  /*@import "../css/demo.css";*/
   h1, h2 {
     font-weight: normal;
   }
@@ -1294,4 +1219,5 @@ export default {
     animation-name: out-left;
     animation-play-state: running;
   }
+
 </style>
