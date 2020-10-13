@@ -352,7 +352,7 @@ var nowPlace = 0
 export default {
   data () {
     return {
-      city_id: 101210101,
+      city_id: '',
       city_name: '',
       adm1: '',
       adm2: '',
@@ -415,21 +415,23 @@ export default {
     }
   },
   created: function () {
-    // $ajax({
-    //   method: 'GET',
-    //   url: 'http://tools.knowlesea.top/ip?ip=' + localStorage.getItem('ip')
-    // }).then((response1) => {
-    //   const res1 = response1.data
-    //   $ajax({
-    //     method: 'GET',
-    //     url: '/api/location/' + res1.city,
-    //     contentType: 'application/x-www-form-urlencoded; charset=utf-8'
-    //   }).then((response2) => {
-    //     const res2 = response2.data
-    //     this.locationId = res2[0].locationId
-    //     this.$router.push('/?id=' + this.locationId)
-    //   })
-    // })
+    $ajax({
+      method: 'GET',
+      url: 'https://restapi.amap.com/v3/ip?key=945cea1dbf29fd5bfa5f05ac61add885&ip=' + localStorage.getItem('ip')
+    }).then((response1) => {
+      const res1 = response1.data
+      console.log(localStorage.getItem('ip'))
+      console.log(res1)
+      $ajax({
+        method: 'GET',
+        url: '/api/location/' + res1.city,
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8'
+      }).then((response2) => {
+        const res2 = response2.data
+        this.locationId = res2[0].locationId
+        this.$router.push('/?id=' + this.locationId)
+      })
+    })
 
     const city = this.$router.currentRoute.query.id
     if (city !== undefined) {
@@ -564,24 +566,24 @@ export default {
     //   })
     // },
 
-    // getLocation () {
-    //   $ajax({
-    //     method: 'GET',
-    //     url: 'http://tools.knowlesea.top/ip?ip=' + localStorage.getItem('ip')
-    //   }).then((response1) => {
-    //     const res1 = response1.data
-    //     console.log(res1.city)
-    //     $ajax({
-    //       method: 'GET',
-    //       url: '/api/location/' + res1.city,
-    //       contentType: 'application/x-www-form-urlencoded; charset=utf-8'
-    //     }).then((response2) => {
-    //       const res2 = response2.data
-    //       this.locationId = res2[0].locationId
-    //       console.log(this.locationId)
-    //     })
-    //   })
-    // },
+    getLocation () {
+      $ajax({
+        method: 'GET',
+        url: 'http://tools.knowlesea.top/ip?ip=' + localStorage.getItem('ip')
+      }).then((response1) => {
+        const res1 = response1.data
+        console.log(res1.city)
+        $ajax({
+          method: 'GET',
+          url: '/api/location/' + res1.city,
+          contentType: 'application/x-www-form-urlencoded; charset=utf-8'
+        }).then((response2) => {
+          const res2 = response2.data
+          this.locationId = res2[0].locationId
+          console.log(this.locationId)
+        })
+      })
+    },
 
     getCityId (placeName) {
       $ajax({
