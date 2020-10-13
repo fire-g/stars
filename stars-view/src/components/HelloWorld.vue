@@ -120,7 +120,7 @@
             </div>
           </div>
           <!--time-1-->
-         <div class = 'more-weather'>
+         <div class = 'more-weather' @touchmove='scroop'>
            <div class="weather-box"  v-for="(item,index) in daily_weather" v-bind:key="item.id" v-bind:id="weatherBox(index)">
              <ul class="day-weather-ul">
                <li class="day-weather-li"><p class="day-weather-time" style="font-size: 16px">{{item.fxDate}}</p></li>
@@ -348,6 +348,8 @@ var nowPlace = 0
 export default {
   data () {
     return {
+      x: 0,
+      y: 0,
       city_id: 101240102,
       city_name: '',
       adm1: '',
@@ -722,7 +724,13 @@ export default {
         nowPlace = 0
       }
       window.location.hash = '#weatherBox' + nowPlace
+    },
+
+    scroop (e) {
+      this.x = e.targetTouches[0].clientX
+      console.log(this.x)
     }
+
   }
 }
 
@@ -1211,4 +1219,5 @@ export default {
     animation-name: out-left;
     animation-play-state: running;
   }
+
 </style>
