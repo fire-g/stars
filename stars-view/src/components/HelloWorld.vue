@@ -352,7 +352,7 @@ var nowPlace = 0
 export default {
   data () {
     return {
-      city_id: 101210101,
+      city_id: '',
       city_name: '',
       adm1: '',
       adm2: '',
@@ -417,9 +417,11 @@ export default {
   created: function () {
     // $ajax({
     //   method: 'GET',
-    //   url: 'http://tools.knowlesea.top/ip?ip=' + localStorage.getItem('ip')
+    //   url: 'https://restapi.amap.com/v3/ip?key=945cea1dbf29fd5bfa5f05ac61add885&ip=' + localStorage.getItem('ip')
     // }).then((response1) => {
     //   const res1 = response1.data
+    //   console.log(localStorage.getItem('ip'))
+    //   console.log(res1)
     //   $ajax({
     //     method: 'GET',
     //     url: '/api/location/' + res1.city,
@@ -430,19 +432,18 @@ export default {
     //     this.$router.push('/?id=' + this.locationId)
     //   })
     // })
+    this.getLocation()
 
     const city = this.$router.currentRoute.query.id
     if (city !== undefined) {
       this.city_id = city
-    } else {
-      this.getLocation()
     }
 
     this.getCityData()
 
-    this.$cookieStore.setCookie('temperatureType', this.temperatureType)
-    this.$cookieStore.setCookie('updateWeather', this.updateWeather)
-    this.$cookieStore.setCookie('forecaseWeather', this.forecaseWeather)
+    // this.$cookieStore.setCookie('temperatureType', this.temperatureType)
+    // this.$cookieStore.setCookie('updateWeather', this.updateWeather)
+    // this.$cookieStore.setCookie('forecaseWeather', this.forecaseWeather)
   },
   mounted () {
     const a = new F($('li.retrace'))
@@ -526,67 +527,28 @@ export default {
     })
   },
   methods: {
-    // createCharts (data) {
-    //   // 周平均气温
-    //   return new HighCharts.Chart('container2', {
-    //     chart: {
-    //       type: 'line',
-    //       backgroundColor: 'rgba(255,255,255,0.3)',
-    //       borderRadius: 10
-    //     },
-    //     credits: {
-    //       enabled: false
-    //     },
-    //     title: {
-    //       text: '未来一周温度变化'
-    //     },
-    //     xAxis: {
-    //       categories: []
-    //     },
-    //     yAxis: {
-    //       title: {
-    //         text: this.chart.name
-    //       }
-    //     },
-    //     plotOptions: {
-    //       line: {
-    //         dataLabels: {
-    //           // 开启数据标签
-    //           enabled: true
-    //         },
-    //         // 关闭鼠标跟踪，对应的提示框、点击事件会失效
-    //         enableMouseTracking: false
-    //       }
-    //     },
-    //     series: [{
-    //       name: '最高气温',
-    //       data: []
-    //     }, {
-    //       name: '最低气温',
-    //       data: []
-    //     }]
-    //   })
-    // },
+    // ip获取当前位置
+    getLocation () {
+      $ajax({
+        method: 'GET',
+        url: 'https://restapi.amap.com/v3/ip?key=945cea1dbf29fd5bfa5f05ac61add885&ip=' + localStorage.getItem('ip')
+      }).then((response1) => {
+        const res1 = response1.data
+        console.log(res1.city)
+        $ajax({
+          method: 'GET',
+          url: '/api/location/' + res1.city,
+          contentType: 'application/x-www-form-urlencoded; charset=utf-8'
+        }).then((response2) => {
+          const res2 = response2.data
+          this.locationId = res2[0].locationId
+          this.$router.push('/?id=' + this.locationId)
+          console.log(this.locationId)
+        })
+      })
+    },
 
-    // getLocation () {
-    //   $ajax({
-    //     method: 'GET',
-    //     url: 'http://tools.knowlesea.top/ip?ip=' + localStorage.getItem('ip')
-    //   }).then((response1) => {
-    //     const res1 = response1.data
-    //     console.log(res1.city)
-    //     $ajax({
-    //       method: 'GET',
-    //       url: '/api/location/' + res1.city,
-    //       contentType: 'application/x-www-form-urlencoded; charset=utf-8'
-    //     }).then((response2) => {
-    //       const res2 = response2.data
-    //       this.locationId = res2[0].locationId
-    //       console.log(this.locationId)
-    //     })
-    //   })
-    // },
-
+    // 通过城市名获取城市id
     getCityId (placeName) {
       $ajax({
         method: 'GET',
@@ -603,6 +565,7 @@ export default {
       })
     },
 
+    // 通过城市id获取各项天气数据
     getCityData () {
       $ajax({
         method: 'GET',
@@ -718,6 +681,7 @@ export default {
       })
     },
 
+    // 语音播报
     uploadVoice () {
       const stringVoice = '今天天气,' + (this.weather) + ',当前温度' + this.temperature + this.temperatureType + ',最高气温' +
         this.day_weather_high + '摄氏度,最低气温' + (this.day_weather_low) + '摄氏度,风力,' + (this.wind_direction) +
@@ -729,10 +693,12 @@ export default {
       audio.src = 'http://localhost:8080/api/v1/speech/' + stringVoice
     },
 
+    // 为逐时天气情况添加div
     weatherBox (index) {
       return 'weatherBox' + index
     },
 
+    // 逐时天气情况向右滑动
     clickRight () {
       nowPlace = nowPlace + 18
       if (nowPlace > 23) {
@@ -741,6 +707,7 @@ export default {
       window.location.hash = '#weatherBox' + nowPlace
     },
 
+    // 逐时天气情况向左滑动
     clickLeft () {
       nowPlace = nowPlace - 18
       if (nowPlace < 0) {
