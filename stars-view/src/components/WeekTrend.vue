@@ -2,8 +2,10 @@
   <div id="body">
     <div id="header">
       <div id="header-title">
-        <img class="img-logo" src="../assets/logo.png">
-        <input class="city-place" type="text" placeholder="搜索市、区、县等">
+        <img class="img-logo" src="../assets/logo.png" alt="">
+        <label>
+          <input class="city-place" type="text" placeholder="搜索市、区、县等">
+        </label>
         <input class="back-home" type="button" value="返回" onclick="window.location.href='/'">
       </div>
       <div id="link-one"></div>
@@ -17,7 +19,7 @@
         <ul class="day-weather-ul">
           <li class="day-weather-li"><p class="day-weather-time">18:00</p></li>
           <li class="day-weather-li"><p class="day-weather-temperature">28℃</p></li>
-          <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png"></li>
+          <li class="day-weather-li"><img class="day-weather-weather" src="../assets/sun to cloud.png" alt=""></li>
           <li class="day-weather-li"><p class="day-weather-windDirection">东北风&nbsp;1级</p></li>
           <li class="day-weather-li"><p class="day-weather-airQuality">优</p></li>
         </ul>
