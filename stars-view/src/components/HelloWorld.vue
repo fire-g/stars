@@ -196,6 +196,9 @@
     </div>
 
     <div class="QRcode-outer">
+      <div class="QRcode-nav">
+        用手机扫码查看
+      </div>
       <div id="QRcode-inner" class="QRcode-inner">
         <img id="QRcode" class="QRcode" src="https://tools.knowlesea.top/api/v1/qr?content=http://localhost:8081/?id=${city_id}">
       </div>
@@ -827,11 +830,11 @@ export default {
 
   .QRcode-outer{
     display: none;
-    bottom: 250px;
+    bottom: 290px;
     right: 20px !important;
     right: 18px;
     width: 130px;
-    height:130px;
+    height:160px;
     position: fixed;
     border-radius: 10%;
     background: rgba(190,231,233,0.3);
@@ -846,15 +849,16 @@ export default {
     border-radius: 10%;
     position:absolute;
     left:0;
-    top: 0;
+    top: 30px;
     bottom: 0;
     right: 0;
     margin: auto;
+    border-radius: 5%;
   }
 
   .QRcode{
-    width: 100px;
-    height:100px;
+    width: 96px;
+    height:96px;
     position:absolute;
     left:0;
     top: 0;
@@ -863,9 +867,18 @@ export default {
     margin: auto;
   }
 
+  .QRcode-nav{
+    height: 30px;
+    width: 100%;
+    margin-top: 10px;
+    line-height: 30px;
+    border-radius: 10%;
+    padding-left: 8px;
+  }
+
   .wrap{
     display: block;
-    bottom: 200px;
+    bottom: 240px;
     right: 60px !important;
     right: 18px;
     width: 48px;

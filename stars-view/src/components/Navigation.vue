@@ -34,10 +34,8 @@
       </div>
 <!--      <span class="setting"></span>-->
       <div id="city-search">
-        <label>
-          <input id="city-name" class="city-place" type="text" :value="city" placeholder="搜索市、区、县等">
-        </label>
-        <b-button class="confirm" variant="outline-primary" @click="getCityId()">确认查询</b-button>
+        <b-button class="confirm" @click="getCityId()">确认查询</b-button>
+        <b-form-input id="city-name" class="city-place" type="text" :value="city" placeholder="搜索市、区、县等"></b-form-input>
       </div>
     </div>
   </div>
@@ -146,7 +144,7 @@ export default {
 
   .dropdownV{
     float: right;
-    margin-top: 4px;
+    margin-top: 5px;
     margin-right: 10px;
   }
 
@@ -166,30 +164,14 @@ export default {
   .confirm{
     float: right;
     width: 90px;
-    height: 45px;
-    border-radius: 15px;
+    margin-top: 6px;
+    margin-left: 10px;
   }
 
   .city-place {
     float: right;
     width: 200px;
-    height: 45px;
-    padding-left:10px;
-    border-radius: 20px;
-    background-color: #ffffff;
-
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
-  }
-
-  .city-place:focus {
-    border-color: #66afe9;
-    outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+    margin-top: 6px;
   }
 
   .wrapper li {
