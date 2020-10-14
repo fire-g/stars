@@ -7,20 +7,20 @@
           <b-dropdown-form>
             <b-form-group label="温度显示设置" label-for="dropdown-form-email" @submit.stop.prevent>
               <b-form-select id="getTemperatureType" v-model="temperatureType">
-                <option selected>摄氏度</option>
+                <option>摄氏度</option>
                 <option>华氏度</option>
               </b-form-select>
             </b-form-group>
-            <b-form-group label="更新天气间隔" label-for="dropdown-form-password">
-              <b-form-select v-model='updateWeather'>
-                <option selected>1</option>
-                <option>2</option>
-                <option>3</option>
-              </b-form-select>
-            </b-form-group>
+<!--            <b-form-group label="更新天气间隔" label-for="dropdown-form-password">-->
+<!--              <b-form-select v-model='updateWeather'>-->
+<!--                <option>1</option>-->
+<!--                <option>2</option>-->
+<!--                <option>3</option>-->
+<!--              </b-form-select>-->
+<!--            </b-form-group>-->
             <b-form-group label="预报天气设置" label-for="dropdown-form-password">
               <b-form-select v-model='forecaseWeather' id="forecaseWeather">
-                <option selected>3</option>
+                <option>3</option>
                 <option>7</option>
               </b-form-select>
             </b-form-group>
@@ -51,7 +51,7 @@ export default {
       city: '',
       temperatureType: '摄氏度',
       updateWeather: 1,
-      forecaseWeather: 7
+      forecaseWeather: 3
     }
   },
   created () {
