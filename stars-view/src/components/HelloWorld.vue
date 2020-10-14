@@ -787,21 +787,22 @@ export default {
   .QRcode-outer{
     display: none;
     bottom: 250px;
-    right: 25px !important;
+    right: 20px !important;
     right: 18px;
-    width: 150px;
-    height:150px;
-    position: fixed;
-    border-radius: 10%;
-    border: 1px solid;
-  }
-
-  .QRcode-inner{
     width: 130px;
     height:130px;
     position: fixed;
     border-radius: 10%;
-    border: 1px solid;
+    background: rgba(190,231,233,0.3);
+    margin-bottom: 20px;
+  }
+
+  .QRcode-inner{
+    background: rgba(202,233,234,0.3);
+    width: 100px;
+    height:100px;
+    position: fixed;
+    border-radius: 10%;
     position:absolute;
     left:0;
     top: 0;
@@ -811,6 +812,8 @@ export default {
   }
 
   .QRcode{
+    width: 100px;
+    height:100px;
     position:absolute;
     left:0;
     top: 0;
@@ -822,7 +825,7 @@ export default {
   .wrap{
     display: block;
     bottom: 200px;
-    right: 70px !important;
+    right: 60px !important;
     right: 18px;
     width: 48px;
     height:48px;
