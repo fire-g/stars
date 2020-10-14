@@ -2,12 +2,12 @@
   <div id="app">
     <div class="logo"></div>
     <div class="form-item" id='form-div1'>
-      <input id="emil" type="text" autocomplete="off" placeholder="邮箱" :value="emil">
+      <label for="emil"></label><input id="emil" type="text" autocomplete="off" placeholder="邮箱" :value="emil">
     </div>
     <div class="form-item" id='form-div2'>
-      <input id="password" type="password" autocomplete="off" placeholder="登录密码" :value="password">
-      <div class='forgot'><a href="register"
-                             style='color: #1cccf4;font-size: 16px;text-decoration: none;'>忘记密码?</a></div>
+      <label for="password"></label><input id="password" type="password" autocomplete="off" placeholder="登录密码" :value="password">
+      <div class='forgot'><router-link to="/register"
+                             style='color: #1cccf4;font-size: 16px;text-decoration: none;'>忘记密码?</router-link></div>
       <p class="tip">{{this.loginPrompt}}</p>
     </div>
     <!-- <div class="form-item">
@@ -22,7 +22,7 @@
       <button id="submit" @click="login()">登 录</button>
     </div>
     <div class="reg-bar">
-      <p style='color: #ffffff; font-family: Tahoma,Arial,"宋体",serif;'>还没有账号？点击这里 <a href="register">进行注册</a></p>
+      <p style='color: #ffffff; font-family: Tahoma,Arial,"宋体",serif;'>还没有账号？点击这里 <router-link to="/register">进行注册</router-link></p>
     </div>
   </div>
 </template>
@@ -42,9 +42,9 @@ export default {
   },
   methods: {
     login () {
-      var emil = document.getElementById('emil').value
-      var password = document.getElementById('password').value
-      var form = new URLSearchParams()
+      const emil = document.getElementById('emil').value
+      const password = document.getElementById('password').value
+      const form = new URLSearchParams()
       form.append('email', emil)
       form.append('password', password)
       $ajax({
@@ -54,11 +54,11 @@ export default {
       }).then((response) => {
         const res = response.data
         // eslint-disable-next-line eqeqeq
-        if (res.code == 400) {
+        if (res.code === 400) {
           this.isSuccess = false
           this.loginPrompt = '邮箱或密码错误'
           // eslint-disable-next-line eqeqeq
-        } else if (res.code == 0) {
+        } else if (res.code === 0) {
           this.$router.push('/')
           this.isSuccess = true
         } else {
