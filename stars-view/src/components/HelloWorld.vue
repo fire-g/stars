@@ -195,12 +195,12 @@
       </div>
     </div>
 
+    <div class="QRcode-outer">
+      <div class="QRcode-inner">
+        <img class="QRcode" src="../assets/index/100.png">
+      </div>
+    </div>
     <div class="wrap">
-      <b-dropdown id="dropdown-dropleft" dropleft text="" class="m-2" offset="5px" block>
-        <b-dropdown-item href="#">Action</b-dropdown-item>
-        <b-dropdown-item href="#">Another action</b-dropdown-item>
-        <b-dropdown-item href="#">Something else here</b-dropdown-item>
-      </b-dropdown>
     </div>
 
     <div id="link-two"></div>
@@ -357,6 +357,15 @@ let chart1
 let chart2
 var nowPlace = 0
 
+// 鼠标悬停显示二维码
+$(document).ready(function () {
+  $('.wrap').hover(function () {
+    $('.QRcode-outer').css('display', 'block')
+  }, function () {
+    $('.QRcode-outer').css('display', 'none')
+  })
+})
+
 export default {
   data () {
     return {
@@ -447,7 +456,7 @@ export default {
         enabled: false
       },
       title: {
-        text: '未来24小时温度变化'
+        text: '未来逐时温度变化情况'
       },
       xAxis: {
         categories: []
@@ -484,7 +493,7 @@ export default {
         enabled: false
       },
       title: {
-        text: '未来一周温度变化'
+        text: '未来逐日温度变化情况'
       },
       xAxis: {
         categories: []
@@ -521,7 +530,6 @@ export default {
         url: 'https://restapi.amap.com/v3/ip?key=945cea1dbf29fd5bfa5f05ac61add885&ip=' + localStorage.getItem('ip')
       }).then((response1) => {
         const res1 = response1.data
-        console.log(res1.city)
         $ajax({
           method: 'GET',
           url: '/api/location/' + res1.city,
@@ -530,7 +538,6 @@ export default {
           const res2 = response2.data
           this.locationId = res2[0].locationId
           this.$router.push('/?id=' + this.locationId)
-          console.log(this.locationId)
         })
       })
     },
@@ -731,7 +738,7 @@ export default {
     width: 32px;
     height: 32px;
     background: url("../assets/yuyin.png");
-    border: 0;
+    border: none;
   }
 
   .voice:hover{
@@ -777,10 +784,44 @@ export default {
     margin:0 auto;
   }
 
+  .QRcode-outer{
+    display: none;
+    bottom: 250px;
+    right: 25px !important;
+    right: 18px;
+    width: 150px;
+    height:150px;
+    position: fixed;
+    border-radius: 10%;
+    border: 1px solid;
+  }
+
+  .QRcode-inner{
+    width: 130px;
+    height:130px;
+    position: fixed;
+    border-radius: 10%;
+    border: 1px solid;
+    position:absolute;
+    left:0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  .QRcode{
+    position:absolute;
+    left:0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+  }
+
   .wrap{
-    position: absolute;
     display: block;
-    bottom: 240px;
+    bottom: 200px;
     right: 70px !important;
     right: 18px;
     width: 48px;
