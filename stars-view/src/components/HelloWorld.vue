@@ -356,6 +356,7 @@ import $ajax from 'axios'
 let chart1
 let chart2
 var nowPlace = 0
+var setTime = setTimeout(this.test, 10000)
 
 // 鼠标悬停显示二维码
 $(document).ready(function () {
@@ -371,6 +372,7 @@ export default {
     return {
       city_id: '', // 城市id
       city_name: '', // 城市名
+      city_ip: '223.104.10.206', // 默认ip地址
       adm1: '', // 城市省级
       adm2: '', // 城市县级
       lookup_city: [ // 城市基本信息
@@ -408,6 +410,7 @@ export default {
       temperatureType: '摄氏度', // 显示温度类型
       updateWeather: 1, // 更新天气间隔
       forecaseWeather: 3, // 预报天气数设置
+      timing: 0,
       chart: { // 图表y轴标题
         name: '气温 (°C)'
       },
@@ -436,7 +439,11 @@ export default {
     if (city !== undefined) {
       this.city_id = city
     } else {
-      this.getLocation()
+      if (localStorage.getItem('ip') === null) {
+        this.getLocation(this.city_ip)
+      } else {
+        this.getLocation(localStorage.getItem('ip'))
+      }
     }
 
     this.getCityData()
@@ -524,10 +531,10 @@ export default {
   },
   methods: {
     // ip获取当前位置
-    getLocation () {
+    getLocation (ip) {
       $ajax({
         method: 'GET',
-        url: 'https://restapi.amap.com/v3/ip?key=945cea1dbf29fd5bfa5f05ac61add885&ip=' + localStorage.getItem('ip')
+        url: 'https://restapi.amap.com/v3/ip?key=945cea1dbf29fd5bfa5f05ac61add885&ip=' + ip
       }).then((response1) => {
         const res1 = response1.data
         $ajax({
@@ -569,6 +576,7 @@ export default {
         this.temperatureType = this.$cookieStore.getCookie('temperatureType') // 获取cookie的值
         this.updateWeather = this.$cookieStore.getCookie('updateWeather')
         this.forecaseWeather = this.$cookieStore.getCookie('forecaseWeather')
+        this.timing = this.$cookieStore.getCookie('timing')
         const res = response.data
         this.temperature = res.temp
         this.weather = res.text
@@ -600,6 +608,11 @@ export default {
         }
         if (this.temperatureType === '华氏度') {
           this.temperature = parseFloat(this.temperature * 1.8 + 32).toFixed(1)
+        }
+        if (this.timing > 0) {
+          this.timing = this.timing * 1000
+          console.log('定时' + this.timing)
+          this.setTime(this.timing)
         }
       })
 
@@ -685,6 +698,7 @@ export default {
         audio.play()
       })
       audio.src = 'http://localhost:8080/api/v1/speech/' + stringVoice
+      clearTimeout(setTime)
     },
 
     // 为逐时天气情况添加div
@@ -708,6 +722,15 @@ export default {
         nowPlace = 0
       }
       window.location.hash = '#weatherBox' + nowPlace
+    },
+
+    // 定时播放音频文件
+    setTime (time) {
+      setTime = setTimeout(this.uploadVoice, time)
+    },
+
+    test () {
+
     }
   }
 }
