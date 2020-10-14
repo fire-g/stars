@@ -56,9 +56,7 @@ export default {
     }
   },
   created () {
-    this.temperatureType = this.$cookieStore.getCookie('temperatureType') // 获取cookie的值
-    this.forecaseWeather = this.$cookieStore.getCookie('forecaseWeather')
-    this.timing = this.$cookieStore.getCookie('timing')
+    this.setCookie()
     const city = this.$router.currentRoute.query.city
     if (city !== undefined) {
       this.city = city
@@ -79,6 +77,25 @@ export default {
       this.$cookieStore.setCookie('forecaseWeather', this.forecaseWeather)
       this.$cookieStore.setCookie('timing', this.timing)
       history.go(0)
+    },
+
+    // 设置cookie初始值
+    setCookie () {
+      if (this.$cookieStore.getCookie('temperatureType') === '') {
+        this.$cookieStore.setCookie('temperatureType', this.temperatureType)
+      } else {
+        this.temperatureType = this.$cookieStore.getCookie('temperatureType')
+      }
+      if (this.$cookieStore.getCookie('forecaseWeather') === '') {
+        this.$cookieStore.setCookie('forecaseWeather', this.forecaseWeather)
+      } else {
+        this.forecaseWeather = this.$cookieStore.getCookie('forecaseWeather')
+      }
+      // if (this.$cookieStore.getCookie('timing') === '') {
+      //   this.$cookieStore.setCookie('timing', this.timing)
+      // } else {
+      //   this.timing = this.$cookieStore.getCookie('timing')
+      // }
     }
   }
 }
