@@ -197,7 +197,7 @@
 
     <div class="QRcode-outer">
       <div class="QRcode-nav">
-        用手机扫码查看
+        扫一扫
       </div>
       <div id="QRcode-inner" class="QRcode-inner">
         <img id="QRcode" class="QRcode" v-bind:src="'https://tools.knowlesea.top/api/v1/qr?content=http://localhost:8081/?id=' + city_id">
@@ -873,7 +873,7 @@ export default {
     margin-top: 10px;
     line-height: 30px;
     border-radius: 10%;
-    padding-left: 8px;
+    padding-left: 38px;
   }
 
   .wrap{
