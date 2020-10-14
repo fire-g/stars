@@ -3,7 +3,7 @@
     <div id="header-title">
       <img class="img-logo" src="../assets/logo.png" alt="">
       <div class="dropdownV">
-        <b-dropdown id="dropdown-form" right text="set" ref="dropdown" class="m-2">
+        <b-dropdown id="dropdown-form" right text="设置" ref="dropdown" class="m-2">
           <b-dropdown-form>
             <b-form-group label="温度显示设置" label-for="dropdown-form-email" @submit.stop.prevent>
               <b-form-select id="getTemperatureType" v-model="temperatureType">
@@ -11,17 +11,18 @@
                 <option>华氏度</option>
               </b-form-select>
             </b-form-group>
-<!--            <b-form-group label="更新天气间隔" label-for="dropdown-form-password">-->
-<!--              <b-form-select v-model='updateWeather'>-->
-<!--                <option>1</option>-->
-<!--                <option>2</option>-->
-<!--                <option>3</option>-->
-<!--              </b-form-select>-->
-<!--            </b-form-group>-->
             <b-form-group label="预报天气设置" label-for="dropdown-form-password">
               <b-form-select v-model='forecaseWeather' id="forecaseWeather">
                 <option>3</option>
                 <option>7</option>
+              </b-form-select>
+            </b-form-group>
+            <b-form-group label="定时播报（测试-秒）" label-for="dropdown-form-password">
+              <b-form-select v-model='timing' id="timing">
+                <option>0</option>
+                <option>5</option>
+                <option>10</option>
+                <option>15</option>
               </b-form-select>
             </b-form-group>
 
@@ -31,7 +32,7 @@
           <b-dropdown-item-button>星乐天气-设置</b-dropdown-item-button>
         </b-dropdown>
       </div>
-      <span class="setting"></span>
+<!--      <span class="setting"></span>-->
       <div id="city-search">
         <label>
           <input id="city-name" class="city-place" type="text" :value="city" placeholder="搜索市、区、县等">
@@ -51,13 +52,15 @@ export default {
       city: '',
       temperatureType: '摄氏度',
       updateWeather: 1,
-      forecaseWeather: 3
+      forecaseWeather: 3,
+      timing: 0
     }
   },
   created () {
     this.temperatureType = this.$cookieStore.getCookie('temperatureType') // 获取cookie的值
     this.updateWeather = this.$cookieStore.getCookie('updateWeather')
     this.forecaseWeather = this.$cookieStore.getCookie('forecaseWeather')
+    this.timing = this.$cookieStore.getCookie('timing')
     const city = this.$router.currentRoute.query.city
     if (city !== undefined) {
       this.city = city
@@ -65,6 +68,7 @@ export default {
     this.$cookieStore.setCookie('temperatureType', this.temperatureType)
     this.$cookieStore.setCookie('updateWeather', this.updateWeather)
     this.$cookieStore.setCookie('forecaseWeather', this.forecaseWeather)
+    this.$cookieStore.setCookie('timing', this.timing)
   },
   methods: {
     getCityId () {
@@ -77,8 +81,8 @@ export default {
       this.$cookieStore.setCookie('temperatureType', this.temperatureType)
       this.$cookieStore.setCookie('updateWeather', this.updateWeather)
       this.$cookieStore.setCookie('forecaseWeather', this.forecaseWeather)
+      this.$cookieStore.setCookie('timing', this.timing)
       history.go(0)
-      // location.reload()
     }
   }
 }
