@@ -356,7 +356,7 @@ import $ajax from 'axios'
 let chart1
 let chart2
 var nowPlace = 0
-var setTime = setTimeout(this.test, 100000000)
+var setTime = setTimeout(this.test, 1000000000)
 
 export default {
   data () {
