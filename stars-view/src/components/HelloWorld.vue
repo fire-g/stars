@@ -196,8 +196,8 @@
     </div>
 
     <div class="QRcode-outer">
-      <div class="QRcode-inner">
-        <img class="QRcode" src="../assets/index/100.png">
+      <div id="QRcode-inner" class="QRcode-inner">
+        <img id="QRcode" class="QRcode" src="https://tools.knowlesea.top/api/v1/qr?content=http://localhost:8081/?id=${city_id}">
       </div>
     </div>
     <div class="wrap">
@@ -356,16 +356,7 @@ import $ajax from 'axios'
 let chart1
 let chart2
 var nowPlace = 0
-var setTime = setTimeout(this.test, 10000)
-
-// 鼠标悬停显示二维码
-$(document).ready(function () {
-  $('.wrap').hover(function () {
-    $('.QRcode-outer').css('display', 'block')
-  }, function () {
-    $('.QRcode-outer').css('display', 'none')
-  })
-})
+var setTime = setTimeout(this.test, 100000000)
 
 export default {
   data () {
@@ -408,9 +399,9 @@ export default {
       isYD: false, // 生活建议 运动
       isCY: 0, // 生活建议 穿衣
       temperatureType: '摄氏度', // 显示温度类型
-      updateWeather: 1, // 更新天气间隔
       forecaseWeather: 3, // 预报天气数设置
       timing: 0,
+      QRcode_src: '',
       chart: { // 图表y轴标题
         name: '气温 (°C)'
       },
@@ -435,6 +426,7 @@ export default {
     }
   },
   created: function () {
+    this.setCookie()
     const city = this.$router.currentRoute.query.id
     if (city !== undefined) {
       this.city_id = city
@@ -445,8 +437,8 @@ export default {
         this.getLocation(localStorage.getItem('ip'))
       }
     }
-
     this.getCityData()
+    this.setQRcode()
   },
   mounted () {
     const a = new F($('li.retrace'))
@@ -698,6 +690,7 @@ export default {
         audio.play()
       })
       audio.src = 'http://localhost:8080/api/v1/speech/' + stringVoice
+      this.$cookieStore.setCookie('timing', this.timing)
       clearTimeout(setTime)
     },
 
@@ -729,6 +722,31 @@ export default {
       setTime = setTimeout(this.uploadVoice, time)
     },
 
+    // 设置cookie初始值
+    setCookie () {
+      if (this.$cookieStore.getCookie('temperatureType') === '') {
+        this.$cookieStore.setCookie('temperatureType', this.temperatureType)
+      }
+      if (this.$cookieStore.getCookie('forecaseWeather') === '') {
+        this.$cookieStore.setCookie('forecaseWeather', this.forecaseWeather)
+      }
+      if (this.$cookieStore.getCookie('timing') === '') {
+        this.$cookieStore.setCookie('timing', this.timing)
+      }
+    },
+
+    // 设置鼠标悬停显示二维码
+    setQRcode () {
+      $(document).ready(function () {
+        $('.wrap').hover(function () {
+          $('.QRcode-outer').css('display', 'block')
+        }, function () {
+          $('.QRcode-outer').css('display', 'none')
+        })
+      })
+    },
+
+    // 测试空方法
     test () {
 
     }

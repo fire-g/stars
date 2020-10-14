@@ -51,14 +51,12 @@ export default {
     return {
       city: '',
       temperatureType: '摄氏度',
-      updateWeather: 1,
       forecaseWeather: 3,
       timing: 0
     }
   },
   created () {
     this.temperatureType = this.$cookieStore.getCookie('temperatureType') // 获取cookie的值
-    this.updateWeather = this.$cookieStore.getCookie('updateWeather')
     this.forecaseWeather = this.$cookieStore.getCookie('forecaseWeather')
     this.timing = this.$cookieStore.getCookie('timing')
     const city = this.$router.currentRoute.query.city
@@ -66,7 +64,6 @@ export default {
       this.city = city
     }
     this.$cookieStore.setCookie('temperatureType', this.temperatureType)
-    this.$cookieStore.setCookie('updateWeather', this.updateWeather)
     this.$cookieStore.setCookie('forecaseWeather', this.forecaseWeather)
     this.$cookieStore.setCookie('timing', this.timing)
   },
@@ -79,7 +76,6 @@ export default {
     },
     getMessage () {
       this.$cookieStore.setCookie('temperatureType', this.temperatureType)
-      this.$cookieStore.setCookie('updateWeather', this.updateWeather)
       this.$cookieStore.setCookie('forecaseWeather', this.forecaseWeather)
       this.$cookieStore.setCookie('timing', this.timing)
       history.go(0)
