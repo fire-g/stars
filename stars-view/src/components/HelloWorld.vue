@@ -442,6 +442,7 @@ export default {
     }
     this.getCityData()
     this.setQRcode()
+    this.$cookieStore.setCookie('locationId', this.city_id)
   },
   mounted () {
     const a = new F($('li.retrace'))
@@ -686,7 +687,7 @@ export default {
     // 语音播报
     uploadVoice () {
       const stringVoice = '今天天气,' + (this.weather) + ',当前温度' + this.temperature + this.temperatureType + ',最高气温' +
-        this.day_weather_high + '摄氏度,最低气温' + (this.day_weather_low) + '摄氏度,风力,' + (this.wind_direction) +
+        this.day_weather_high + this.temperatureType + ',最低气温' + (this.day_weather_low) + this.temperatureType + ',风力,' + (this.wind_direction) +
         (this.wind_scale) + '级,湿度百分之' + (this.humidity) + ',空气质量良好'
       var audio = new Audio()
       audio.addEventListener('canplaythrough', function () {

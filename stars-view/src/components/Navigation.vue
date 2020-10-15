@@ -17,7 +17,7 @@
                 <option>7</option>
               </b-form-select>
             </b-form-group>
-            <b-form-group label="定时播报（测试-秒）" label-for="dropdown-form-password">
+            <b-form-group label="定时语音播报（演示-秒）" label-for="dropdown-form-password">
               <b-form-select v-model='timing' id="timing">
                 <option>0</option>
                 <option>5</option>
@@ -32,7 +32,6 @@
           <b-dropdown-item-button>星乐天气-设置</b-dropdown-item-button>
         </b-dropdown>
       </div>
-<!--      <span class="setting"></span>-->
       <div id="city-search">
         <b-button class="confirm" @click="getCityId()">确认查询</b-button>
         <b-form-input id="city-name" class="city-place" type="text" :value="city" placeholder="搜索市、区、县等"></b-form-input>
@@ -59,16 +58,20 @@ export default {
     if (city !== undefined) {
       this.city = city
     }
-    this.$cookieStore.setCookie('temperatureType', this.temperatureType)
-    this.$cookieStore.setCookie('forecaseWeather', this.forecaseWeather)
-    this.$cookieStore.setCookie('timing', this.timing)
+    // this.$cookieStore.setCookie('temperatureType', this.temperatureType)
+    // this.$cookieStore.setCookie('forecaseWeather', this.forecaseWeather)
+    // this.$cookieStore.setCookie('timing', this.timing)
   },
   methods: {
     getCityId () {
       const name = document.getElementById('city-name').value
       this.city = name
-      // 使用Vue路由进行跳转
-      this.$router.push('/search?city=' + name)
+      if (this.city === '') {
+        alert('请不要输入空的城市名！！！')
+      } else {
+        // 使用Vue路由进行跳转
+        this.$router.push('/search?city=' + name)
+      }
     },
     getMessage () {
       this.$cookieStore.setCookie('temperatureType', this.temperatureType)
@@ -89,11 +92,6 @@ export default {
       } else {
         this.forecaseWeather = this.$cookieStore.getCookie('forecaseWeather')
       }
-      // if (this.$cookieStore.getCookie('timing') === '') {
-      //   this.$cookieStore.setCookie('timing', this.timing)
-      // } else {
-      //   this.timing = this.$cookieStore.getCookie('timing')
-      // }
     }
   }
 }

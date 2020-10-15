@@ -1,7 +1,8 @@
 <template>
   <div style="margin: auto;width: 800px">
     <b-list-group v-for="item in list" v-bind:key="item.locationId" @click="click(item.locationId)">
-      <b-list-group-item class="list-group">{{item.country}} {{item.adm1}} {{item.adm2}} {{item.name}}</b-list-group-item>
+      <b-list-group-item v-if="item.locationId === '0'" class="list-group">搜索城市不存在，返回主界面</b-list-group-item>
+      <b-list-group-item v-else class="list-group">{{item.country}} {{item.adm1}} {{item.adm2}} {{item.name}}</b-list-group-item>
     </b-list-group>
   </div>
 </template>
@@ -16,12 +17,12 @@ export default {
       city: '',
       list: [{
         id: 0,
-        locationId: '101011500',
-        name: '平谷',
+        locationId: '0',
+        name: '南昌',
         lat: 40.14478,
         lon: 117,
-        adm1: '北京',
-        adm2: '北京',
+        adm1: '江西',
+        adm2: '南昌',
         country: '中国'
       }]
     }
@@ -38,8 +39,13 @@ export default {
   },
   methods: {
     click (id) {
-      // 使用Vue路由进行跳转
-      this.$router.push('/?id=' + id)
+      if (this.list[0].locationId === '0') {
+        this.list[0].locationId = this.$cookieStore.getCookie('locationId')
+        this.$router.push('/?id=' + this.list[0].locationId)
+      } else {
+        // 使用Vue路由进行跳转
+        this.$router.push('/?id=' + id)
+      }
     }
   }
 }
